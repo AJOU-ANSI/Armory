@@ -15,7 +15,7 @@
     "clean:client": "rimraf ./public/ && mkdirp ./public",
     "build:client": "cd armory-client && yarn install && yarn build && ncp build/ ../public",
     "copy:config": "ncp config/config_sample.js config/config.js",
-    "heroku-postbuild": "yarn clean:client && copy:config && yarn build:client"
+    "heroku-postbuild": "yarn clean:client && yarn copy:config && yarn build:client"
   },
   "dependencies": {
     "body-parser": "^1.13.3",
