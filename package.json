@@ -14,7 +14,7 @@
     "test:integration": "mocha test/integration",
     "clean:client": "rimraf ./public/ && mkdirp ./public",
     "build:client": "cd armory-client && yarn install && yarn build && ncp build/ ../public",
-    "heroku-postbuild": "yarn clean:client && yarn build:client"
+    "heroku-postbuild": "yarn install && yarn clean:client && yarn build:client"
   },
   "dependencies": {
     "body-parser": "^1.13.3",
