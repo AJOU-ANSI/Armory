@@ -21,11 +21,6 @@ export class Header extends Component {
     <% } %>
     */
 
-    /*
-    <div className="menu-toggle ">
-              <i className="ti-menu" />
-            </div>
-     */
     const menus = [
       {to: "/", title: "메인"},
       {to: "/ranking", title: "랭킹"},
@@ -35,7 +30,7 @@ export class Header extends Component {
     ];
 
     return (
-      <header id="header" className="Header">
+      <header className="Header fixed-top">
         <div className="container">
           <div className="row">
             <div className="col-md-3">
@@ -67,3 +62,5 @@ export class Header extends Component {
     );
   }
 }
+
+export default Header;

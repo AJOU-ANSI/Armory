@@ -9,6 +9,7 @@ $menu-font-size: 15px;
 
 .Header {
   @include box_shadow(1);
+  background-color: white;
 
   .menu-toggle {
     @extend .flex-align-items-center;
