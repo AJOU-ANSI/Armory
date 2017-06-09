@@ -1,0 +1,73 @@
+@import "../../shadow.scss";
+@import "../../grid.scss";
+
+$header-height: 90px;
+$header-fold-height: 45px;
+
+$logo-height: 24px;
+$menu-font-size: 15px;
+
+.Header {
+  @include box_shadow(1);
+
+  .menu-toggle {
+    @extend .flex-align-items-center;
+
+    & > .ti-menu {
+      cursor: pointer;
+    }
+  }
+
+  .logo-link {
+    @media (max-width: 767px) {
+      height: $header-fold-height !important;
+    }
+
+    height: $header-height;
+    @extend .flex-align-items-center;
+  }
+
+  .logo-image {
+    height: $logo-height;
+  }
+
+  .menu-list {
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none;
+    margin-bottom: 0;
+
+    @extend .flex-justify-content-end;
+  }
+
+  .menu-item {
+    display: flex;
+    padding: 0 5px;
+    margin: 0 8px;
+
+    @media (max-width: 767px) {
+      height: $header-fold-height !important;
+    }
+
+    height: $header-height;
+
+    & > a {
+      font-size: $menu-font-size;
+      font-weight: 200;
+      color: #222;
+
+      border-top: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+
+      @extend .flex-align-items-center;
+
+      &:hover, &.active {
+        text-decoration: none;
+
+        color: #F75B3C;
+        border-top: 2px solid transparent;
+        border-bottom: 2px solid #F75B3C;
+      }
+    }
+  }
+}

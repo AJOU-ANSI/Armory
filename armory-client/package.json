@@ -4,15 +4,24 @@
   "private": true,
   "dependencies": {
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
+    "flow-bin": "^0.47.0",
+    "node-sass-chokidar": "^0.0.2",
+    "npm-run-all": "^4.0.2",
     "react-scripts": "1.0.7"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "yarn build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "run-p watch-css start-js",
+    "build": "yarn build-css && react-scripts build",
+    "flow": "flow"
   }
 }

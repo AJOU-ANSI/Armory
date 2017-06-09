@@ -1,0 +1,7 @@
+.flex-align-items-center {
+  display: flex;
+  align-items: center; }
+
+.flex-justify-content-end {
+  display: flex;
+  justify-content: flex-end; }
