@@ -136,3 +136,5 @@ fabric.properties
 .idea/
 config.js
 public/
+
+!armory-client/public
