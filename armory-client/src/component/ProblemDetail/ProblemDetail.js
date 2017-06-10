@@ -35,7 +35,7 @@ export class ProblemDetail extends Component {
         <div className="page-title">
           <div className="container">
             <div className="row">
-              <div className="col-10 offset-1">
+              <div className="col-12">
                 <h1> Problem <strong>{problemCode}</strong> </h1>
               </div>
             </div>
@@ -45,7 +45,7 @@ export class ProblemDetail extends Component {
         <div className="content">
           <div className="container">
             <div className="row">
-              <div className="offset-md-1 col-md-8 flex-last flex-md-start">
+              <div className="col-md-9 flex-last flex-md-start">
                 <div className="card problem-card paper">
                   <div className="card-header font-weight-bold">
                     <h3> {problem.title} </h3>
@@ -104,7 +104,7 @@ export class ProblemDetail extends Component {
                   </div>
                 </div>
 
-                <div>
+                <div className="mb-3">
                   <button className="btn btn-custom btn-success w-100 py-3">
                     제출하기
                   </button>

@@ -16,3 +16,6 @@
 .ProblemDetail .sample {
   background-color: #eee;
   min-height: 100px; }
+
+.ProblemDetail .problem-info-card {
+  border: 0; }
