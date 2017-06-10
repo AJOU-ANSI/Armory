@@ -1,0 +1,38 @@
+@import "../../shadow.scss";
+
+.problems-header {
+  &-title {
+    letter-spacing: .5em;
+    font-size: 30px;
+    line-height: 1.8;
+    text-transform: uppercase;
+  }
+
+  &-desc {
+    letter-spacing: 1px;
+    font-weight: 300;
+    font-size: 13px;
+  }
+}
+
+
+.card.problem-card {
+  border: 0;
+
+  @include box_shadow(1);
+  transition: all .3s ease;
+
+  &:hover {
+    @include box_shadow(2);
+    transform: scale(1.02, 1);
+  }
+
+  & > .card-block {
+    padding: 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+}

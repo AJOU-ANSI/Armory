@@ -1,3 +1,5 @@
+@import "./shadow.scss";
+
 body {
   font-family: "Noto Sans", sans-serif;
 
@@ -14,4 +16,51 @@ body {
 
 .font-weight-light {
   font-weight: 300;
+}
+
+.btn-custom {
+  padding: 8px 12px;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  min-width: 120px;
+
+  border-radius: 2px;
+
+  @include box_shadow(1);
+  cursor: pointer;
+
+  border: 0;
+
+  &.btn-danger {
+    background-color: #FF4D4D;
+    color: #fff;
+
+    &:hover {
+      background-color: #EA3636;
+      border-color: #EA3636;
+      color: #fff;
+    }
+  }
+
+  &.btn-black {
+    background-color: #212121;
+    color: #fff;
+
+    &:hover {
+      background-color: #080808;
+      border-color: #080808;
+      color: #fff;
+    }
+  }
+
+  &.btn-info {
+    background-color: #296CCE;
+  }
+
+  &:hover {
+    @include box_shadow(2);
+  }
 }

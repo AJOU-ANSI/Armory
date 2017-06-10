@@ -57,7 +57,7 @@ export class Home extends Component {
     }, 1000);
   }
 
-  componentWillMount() {
+  componentWillUnmount() {
     clearInterval(this.timer);
   }
 

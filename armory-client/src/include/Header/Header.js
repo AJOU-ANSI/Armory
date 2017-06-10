@@ -35,7 +35,7 @@ export class Header extends Component {
           <div className="row">
             <div className="col-md-3">
               <div className="logo">
-                <Link className="logo-link" to="/contest">
+                <Link className="logo-link" to="/">
                   <img src={blackLogo} className="logo-image" alt="shake logo" />
                 </Link>
               </div>

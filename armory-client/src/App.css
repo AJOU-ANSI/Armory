@@ -10,3 +10,32 @@ body {
 
 .font-weight-light {
   font-weight: 300; }
+
+.btn-custom {
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  min-width: 120px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+  border: 0; }
+  .btn-custom.btn-danger {
+    background-color: #FF4D4D;
+    color: #fff; }
+    .btn-custom.btn-danger:hover {
+      background-color: #EA3636;
+      border-color: #EA3636;
+      color: #fff; }
+  .btn-custom.btn-black {
+    background-color: #212121;
+    color: #fff; }
+    .btn-custom.btn-black:hover {
+      background-color: #080808;
+      border-color: #080808;
+      color: #fff; }
+  .btn-custom.btn-info {
+    background-color: #296CCE; }
+  .btn-custom:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
