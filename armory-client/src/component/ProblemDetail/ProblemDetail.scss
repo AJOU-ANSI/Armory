@@ -1,0 +1,30 @@
+@import "../../shadow.scss";
+
+.ProblemDetail {
+  .problem-card {
+    transition: all .3s ease;
+
+    border: 0;
+
+    .card-header {
+      background-color: #296CCE;
+      color: #fff;
+
+      padding: 30px 60px;
+      border-top-right-radius: 2px;
+      border-top-left-radius: 2px;
+      border-bottom: 1px solid rgba(255,255,255,.3);
+    }
+
+    .card-block {
+      padding: 60px;
+      border-bottom-right-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+  }
+
+  .sample {
+    background-color: #eee;
+    min-height: 100px;
+  }
+}

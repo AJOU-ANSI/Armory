@@ -18,7 +18,6 @@ body {
   letter-spacing: 2px;
   min-width: 120px;
   border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   cursor: pointer;
   border: 0; }
   .btn-custom.btn-danger {
@@ -36,6 +35,30 @@ body {
       border-color: #080808;
       color: #fff; }
   .btn-custom.btn-info {
-    background-color: #296CCE; }
-  .btn-custom:hover {
+    background-color: #296CCE;
+    color: white; }
+
+.page {
+  padding-top: 50px;
+  padding-bottom: 50px; }
+  .page.page-grey {
+    background-color: #eeedee;
+    color: #212121; }
+  .page-title {
+    margin-bottom: 50px; }
+    .page-title h1 {
+      letter-spacing: .5em;
+      font-size: 30px;
+      line-height: 1.8;
+      text-transform: uppercase;
+      margin-bottom: 0; }
+    .page-title p {
+      letter-spacing: 1px;
+      font-weight: 300;
+      font-size: 13px; }
+
+.paper, .btn-custom {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: box_shadow .3s ease; }
+  .paper:hover, .btn-custom:hover {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }

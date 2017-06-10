@@ -7,13 +7,13 @@ import StatusHeading from './StatusHeading';
 import whiteLogo from '../../image/white-logo.png';
 import bgMainColored from '../../image/bg-main-colored.png';
 
-import contestRule from './data/contest_rule.json';
-import contestStyle from './data/contest_style.json';
-import answerJudge from './data/answer_judge.json';
-import rankJudge from './data/rank_judge.json';
+import contestRule from '../../data/contest_rule.json';
+import contestStyle from '../../data/contest_style.json';
+import answerJudge from '../../data/answer_judge.json';
+import rankJudge from '../../data/rank_judge.json';
 
-import judgeResult from './data/judge_result.json';
-import judgeEnv from './data/judge_env.json';
+import judgeResult from '../../data/judge_result.json';
+import judgeEnv from '../../data/judge_env.json';
 
 import './Home.css';
 

@@ -1,0 +1,17 @@
+[
+  {
+    "code": "A",
+    "title": "How to drink coffee",
+    "result": "none"
+  },
+  {
+    "code": "B",
+    "title": "How to drink tea",
+    "result": "success"
+  },
+  {
+    "code": "C",
+    "title": "How to drink drink",
+    "result": "fail"
+  }
+]

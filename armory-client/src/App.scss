@@ -28,11 +28,11 @@ body {
   min-width: 120px;
 
   border-radius: 2px;
-
-  @include box_shadow(1);
   cursor: pointer;
 
   border: 0;
+
+  @extend .paper;
 
   &.btn-danger {
     background-color: #FF4D4D;
@@ -58,7 +58,42 @@ body {
 
   &.btn-info {
     background-color: #296CCE;
+    color: white;
   }
+}
+
+.page {
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  &.page-grey {
+    background-color: #eeedee;
+    color: #212121;
+  }
+
+  &-title {
+    margin-bottom: 50px;
+
+    & h1 {
+      letter-spacing: .5em;
+      font-size: 30px;
+      line-height: 1.8;
+      text-transform: uppercase;
+
+      margin-bottom: 0;
+    }
+
+    & p {
+      letter-spacing: 1px;
+      font-weight: 300;
+      font-size: 13px;
+    }
+  }
+}
+
+.paper {
+  @include box_shadow(1);
+  transition: box_shadow .3s ease;
 
   &:hover {
     @include box_shadow(2);
