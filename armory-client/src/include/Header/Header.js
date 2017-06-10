@@ -47,7 +47,9 @@ export class Header extends Component {
                   {
                     menus.map((menu, idx) => (
                       <li className="menu-item" key={idx}>
-                        <NavLink activeClassName="active" exact to={menu.to}> {menu.title} </NavLink>
+                        <NavLink activeClassName="active" exact={menu.to === '/'} to={menu.to}>
+                          {menu.title}
+                        </NavLink>
                       </li>
                     ))
                   }

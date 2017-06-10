@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import classnames from 'classnames';
 
 import './ProblemList.css';
+import {Link} from 'react-router-dom';
 
 export class ProblemList extends Component {
   render() {
@@ -31,8 +32,10 @@ export class ProblemList extends Component {
               </h5>
 
               <span className="d-flex">
-              <button className={classnames('btn btn-custom', btnClass)} disabled={result === 'success'}> {btnLabel} </button>
-            </span>
+                <Link to={`/problems/${problem.code}`} className={classnames('btn btn-custom', btnClass)}>
+                  {btnLabel}
+                </Link>
+              </span>
             </div>
           </div>
         </div>

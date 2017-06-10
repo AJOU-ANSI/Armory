@@ -8,6 +8,7 @@ import Footer from './include/Footer/Footer';
 import Home from './component/Home/Home';
 import ProblemList from './component/ProblemList/ProblemList';
 import NotFound from './component/NotFound/NotFound';
+import ProblemDetail from './component/ProblemDetail/ProblemDetail';
 
 class App extends Component {
   render() {
@@ -19,7 +20,9 @@ class App extends Component {
           <div>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/problems" component={ProblemList} />
+              <Route exact path="/problems" component={ProblemList} />
+              <Route exact path="/problems/:problemCode" component={ProblemDetail} />
+
               <Route component={NotFound} />
             </Switch>
           </div>
