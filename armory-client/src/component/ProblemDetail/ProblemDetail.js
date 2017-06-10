@@ -78,7 +78,7 @@ export class ProblemDetail extends Component {
 
                       <li className="list-group-item d-block">
                         메모리 제한
-                        <strong className="float-right"> {problem.time_limit} </strong>
+                        <strong className="float-right"> {problem.memory_limit} </strong>
                       </li>
                     </ul>
                   </div>
