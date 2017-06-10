@@ -1,5 +1,12 @@
 body {
-  font-family: "Noto Sans", sans-serif; }
+  font-family: "Noto Sans", sans-serif;
+  -webkit-font-smoothing: antialiased; }
 
 .App {
   padding-top: 90px; }
+
+.font-weight-lighter {
+  font-weight: lighter; }
+
+.font-weight-light {
+  font-weight: 300; }

@@ -1,0 +1,22 @@
+[
+  {
+    "title": "OS",
+    "items": [
+      {"title": "", "desc": "Ubuntu 14.04.2 LTS"}
+    ]
+  },
+  {
+    "title": "컴파일러",
+    "items": [
+      {"title": "C/C++", "desc": "gcc/g++ 4.8.4 (MS C/C++ 사용시 유의할 것)"},
+      {"title": "Java", "desc": "java 1.8.0 (Main.java로 작성할 것)"}
+    ]
+  },
+  {
+    "title": "입력 및 출력",
+    "items": [
+      {"title": "C/C++", "desc": "stdin, stdout"},
+      {"title": "Java", "desc": "System.in, System.out"}
+    ]
+  }
+]
