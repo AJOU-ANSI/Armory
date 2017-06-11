@@ -9,7 +9,8 @@ var config = {
       name: 'armory'
     },
     port: process.env.PORT || 3000,
-    db: 'mysql://localhost/armory-development'
+    db: 'mysql://localhost/armory-development',
+    secret: 'this is dev secret'
   },
 
   test: {
@@ -18,7 +19,8 @@ var config = {
       name: 'armory'
     },
     port: process.env.PORT || 3000,
-    db: 'mysql://localhost/armory-test'
+    db: 'mysql://localhost/armory-test',
+    secret: 'this is test secret'
   },
 
   production: {
@@ -27,7 +29,8 @@ var config = {
       name: 'armory'
     },
     port: process.env.PORT || 3000,
-    db: 'mysql://localhost/armory-production'
+    db: 'mysql://localhost/armory-production',
+    secret: 'this is prod secret'
   }
 };
 

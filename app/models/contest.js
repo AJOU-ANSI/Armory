@@ -17,8 +17,6 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: false,
       get() {
-        console.log(this.getDataValue('start'));
-
         return this.getDataValue('start').getTime();
       }
     },

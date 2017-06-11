@@ -20,8 +20,10 @@ gulp.task('develop', function () {
   livereload.listen();
   nodemon({
     script: 'app.js',
-    ext: 'js coffee ejs',
-    ignore: 'armory-client/*',
+    ext: 'js',
+    watch: [
+      'app/**'
+    ],
     stdout: false
   }).on('readable', function () {
     this.stdout.on('data', function (chunk) {
