@@ -21,12 +21,16 @@ export class Header extends Component {
     <% } %>
     */
 
+    console.log(this.props.match);
+
+    const {match: {url}} = this.props;
+
     const menus = [
-      {to: "/", title: "메인"},
-      {to: "/ranking", title: "랭킹"},
-      {to: "/problems", title: "문제"},
-      {to: "/status", title: "제출내역"},
-      {to: "/qna", title: "질문하기"}
+      {to: `${url}`, title: "메인"},
+      {to: `${url}/ranking`, title: "랭킹"},
+      {to: `${url}/problems`, title: "문제"},
+      {to: `${url}/status`, title: "제출내역"},
+      {to: `${url}/qna`, title: "질문하기"}
     ];
 
     return (
@@ -35,7 +39,7 @@ export class Header extends Component {
           <div className="row">
             <div className="col-md-3">
               <div className="logo">
-                <Link className="logo-link" to="/">
+                <Link className="logo-link" to={`${url}`}>
                   <img src={blackLogo} className="logo-image" alt="shake logo" />
                 </Link>
               </div>
@@ -47,7 +51,7 @@ export class Header extends Component {
                   {
                     menus.map((menu, idx) => (
                       <li className="menu-item" key={idx}>
-                        <NavLink activeClassName="active" exact={menu.to === '/'} to={menu.to}>
+                        <NavLink activeClassName="active" exact={menu.to === url} to={menu.to}>
                           {menu.title}
                         </NavLink>
                       </li>

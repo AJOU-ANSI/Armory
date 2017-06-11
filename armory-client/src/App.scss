@@ -7,7 +7,6 @@ body {
 }
 
 .App {
-  padding-top: 90px;
 }
 
 .font-weight-lighter {
@@ -93,9 +92,17 @@ body {
 
 .paper {
   @include box_shadow(1);
-  transition: box_shadow .3s ease;
+  transition: all .3s ease;
 
   &:hover {
     @include box_shadow(2);
+  }
+}
+
+.scalable {
+  transition: all .3s ease;
+
+  &:hover {
+    transform: scale(1.01, 1);
   }
 }

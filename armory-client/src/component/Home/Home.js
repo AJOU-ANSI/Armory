@@ -86,7 +86,7 @@ export class Home extends Component {
     const statusList = [
       {label: '시작 시간', value: moment(start).format(timeFormat)},
       {label: '종료 시간', value: moment(end).format(timeFormat)},
-      {label: '남은 시간', value: `${remainHour}:${remainMin}:${remainSec}`},
+      {label: '종료까지<br/>남은 시간', value: `${remainHour}:${remainMin}:${remainSec}`},
       {label: '푼 문제', value: '0개'}
     ];
 
