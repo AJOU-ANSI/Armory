@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 import './ProblemItem.css';
 
-export const ProblemItem = ({problem, className}) => {
+export const ProblemItem = ({problem, className, match}) => {
   const {result} = problem;
 
   let btnClass, btnLabel;
@@ -29,7 +29,7 @@ export const ProblemItem = ({problem, className}) => {
           </h5>
 
           <span className="d-flex">
-                <Link to={`/problems/${problem.code}`} className={classnames('btn btn-custom', btnClass)}>
+                <Link to={`${match.url}/${problem.code}`} className={classnames('btn btn-custom', btnClass)}>
                   {btnLabel}
                 </Link>
               </span>

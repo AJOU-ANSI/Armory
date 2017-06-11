@@ -13,7 +13,7 @@ import NotFound from '../NotFound/NotFound';
 
 export class Contest extends Component {
   render() {
-    const {match: {url, params: {contestName}}} = this.props;
+    const {match: {path, params: {contestName}}} = this.props;
 
     console.log(contestName);
 
@@ -24,9 +24,9 @@ export class Contest extends Component {
 
           <div>
             <Switch>
-              <Route exact path={`${url}`} component={Home} />
-              <Route exact path={`${url}/problems`} component={ProblemList} />
-              <Route exact path={`${url}/problems/:problemCode`} component={ProblemDetail} />
+              <Route exact path={`${path}`} component={Home} />
+              <Route exact path={`${path}/problems`} component={ProblemList} />
+              <Route exact path={`${path}/problems/:problemCode`} component={ProblemDetail} />
 
               <Route component={NotFound} />
             </Switch>

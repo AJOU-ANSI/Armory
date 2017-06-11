@@ -34,6 +34,8 @@ export class ProblemList extends Component {
         </div>
         <% } %>
      */
+    const {match} = this.props;
+
     return (
       <div className="page">
         <div className="page-title">
@@ -52,7 +54,7 @@ export class ProblemList extends Component {
             <div className="row">
               {
                 problems.map((problem, index) => (
-                  <ProblemItem problem={problem} key={index} className="col-10 offset-1 mb-2" />
+                  <ProblemItem match={match} problem={problem} key={index} className="col-10 offset-1 mb-2" />
                 ))
               }
             </div>

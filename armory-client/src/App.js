@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 
 import './App.css';
 
@@ -13,8 +13,10 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Switch>
-            <Route exact path="/contests" component={ContestList} />
-            <Route exact path="/:contestName" component={Contest} />
+            <Redirect exact from="/" to="/contests" />
+            <Route path="/contests" component={ContestList} />
+            <Route path="/:contestName" component={Contest} />
+
             <Route component={NotFound} />
           </Switch>
         </div>
