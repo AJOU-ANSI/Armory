@@ -3,7 +3,7 @@ const
 
 module.exports = function (sequelize, DataTypes) {
 
-  var Contest = sequelize.define('Contest', {
+  const Contest = sequelize.define('Contest', {
     name: {
       type: DataTypes.STRING,
       unique: true
@@ -32,8 +32,8 @@ module.exports = function (sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function (models) {
-        // example on how to add relations
-        // Article.hasMany(models.Comments);
+        Contest.hasMany(models.User);
+        models.User.belongsTo(Contest);
       }
     }
   });

@@ -1,4 +1,4 @@
-.flex-align-items-center, .Header .menu-toggle, .Header .logo-link, .Header .menu-item > a {
+.flex-align-items-center, .Header .menu-toggle, .Header .logo-link, .Header .menu-item a {
   display: flex;
   align-items: center; }
 
@@ -31,16 +31,18 @@
     @media (max-width: 767px) {
       .Header .menu-item {
         height: 45px !important; } }
-    .Header .menu-item > a {
+    .Header .menu-item a {
       font-size: 15px;
       font-weight: 200;
       color: #222;
       border-top: 2px solid transparent;
       border-bottom: 2px solid transparent; }
-      .Header .menu-item > a:focus {
+      .Header .menu-item a:focus {
         text-decoration: none; }
-      .Header .menu-item > a:hover, .Header .menu-item > a.active {
+      .Header .menu-item a:hover, .Header .menu-item a.active {
         text-decoration: none;
         color: #F75B3C;
         border-top: 2px solid transparent;
         border-bottom: 2px solid #F75B3C; }
+    .Header .menu-item .user-info {
+      height: 100%; }

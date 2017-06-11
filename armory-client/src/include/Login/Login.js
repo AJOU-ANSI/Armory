@@ -6,7 +6,10 @@ export class Login extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('hi');
+    const userId = this.refs.userId.value;
+    const userPwd = this.refs.userPwd.value;
+
+    this.props.onLogin(userId, userPwd);
   }
 
   toggle = () => {
@@ -25,12 +28,12 @@ export class Login extends Component {
         <form onSubmit={this.handleSubmit}>
           <ModalBody>
             <div className="form-group">
-              <label htmlFor="inputId">ID</label>
-              <input type="text" className="form-control" name="user_id" id="user_id" placeholder="ID 입력" />
+              <label htmlFor="userId">ID</label>
+              <input ref="userId" type="text" className="form-control" id="userId" placeholder="ID 입력" />
             </div>
             <div className="form-group">
-              <label htmlFor="inputPassword">비밀번호</label>
-              <input type="password" className="form-control" name="user_pw" id="user_pw" placeholder="비밀번호 입력" />
+              <label htmlFor="userPwd">비밀번호</label>
+              <input ref="userPwd" type="password" className="form-control" id="userPwd" placeholder="비밀번호 입력" />
             </div>
           </ModalBody>
 

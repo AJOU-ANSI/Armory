@@ -52,7 +52,7 @@ $menu-font-size: 15px;
 
     height: $header-height;
 
-    & > a {
+    a {
       font-size: $menu-font-size;
       font-weight: 200;
       color: #222;
@@ -73,6 +73,10 @@ $menu-font-size: 15px;
         border-top: 2px solid transparent;
         border-bottom: 2px solid #F75B3C;
       }
+    }
+
+    .user-info {
+      height: 100%;
     }
   }
 }

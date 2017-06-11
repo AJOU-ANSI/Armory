@@ -4,30 +4,71 @@ import blackLogo from '../../image/black-logo.png';
 import {NavLink, Link} from 'react-router-dom';
 
 import './Header.css';
+import {connect} from "react-redux";
+import {Dropdown, DropdownItem, DropdownMenu} from "reactstrap";
+import {fetchLogout} from "../../actions/auth";
+import {withRouter} from "react-router";
 
 export class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      menuOpen: false
+    };
+  }
+
   handleClickLogin = (e) => {
     e.preventDefault();
 
     this.props.onClickLogin();
   }
 
+  handleLogout = () => {
+    const {fetchLogout, history, match: {params: {contestName}}} = this.props;
+
+    fetchLogout(contestName)
+      .then(() => {
+        history.push(`/${contestName}`);
+      });
+  }
+
+  handleToggleMenu = (e) => {
+    if (e) e.preventDefault();
+
+    this.setState({
+      menuOpen: !this.state.menuOpen
+    });
+  }
+
+  renderLogin = (user) => {
+    if (user === null) {
+      return <li className="menu-item"> 로딩중 </li>;
+    }
+    else if (user.isAuth) {
+      return (
+        <li className="menu-item">
+          <Dropdown isOpen={this.state.menuOpen} toggle={this.handleToggleMenu}>
+            <a className="user-info" href="" onClick={this.handleToggleMenu}> {user.strId}님 </a>
+
+            <DropdownMenu right>
+              <DropdownItem onClick={this.handleLogout}> 로그아웃 </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </li>
+      );
+    }
+    else {
+      return (
+        <li className="menu-item">
+          <a href="" onClick={this.handleClickLogin}> 로그인 </a>
+        </li>
+      )
+    }
+  }
+
   render() {
-    /*
-
-    <% if( typeof user_id == 'undefined' ) { %>
-    <li><a data-toggle="modal" data-target="#modalLogin">계정 인증</a></li>
-    <% } else { %>
-    <li className="dropdown"><a href=""><%=user_id%>님</a>
-    <ul className="dropdown-menu">
-    <li><a href="/logout">로그아웃</a>
-    </li>
-    </ul>
-    </li>
-    <% } %>
-    */
-
-    const {match: {url}} = this.props;
+    const {match: {url}, user} = this.props;
 
     const menus = [
       {to: `${url}`, title: "메인"},
@@ -62,9 +103,7 @@ export class Header extends Component {
                     ))
                   }
 
-                  <li className="menu-item">
-                    <a href="" onClick={this.handleClickLogin}> 로그인 </a>
-                  </li>
+                  {this.renderLogin(user)}
                 </ul>
               </div>
             </div>
@@ -77,4 +116,9 @@ export class Header extends Component {
   }
 }
 
-export default Header;
+const stateToProps = ({user}) => ({user});
+const actionToProps = {
+  fetchLogout
+};
+
+export default withRouter(connect(stateToProps, actionToProps)(Header));

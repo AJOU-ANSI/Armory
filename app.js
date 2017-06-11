@@ -21,7 +21,7 @@ db.sequelize
       end.setMinutes(0);
       end.setSeconds(0);
 
-      await db.Contest.findOrCreate({where: {name: 'shake17'}, defaults: {
+      const [contest, created] = await db.Contest.findOrCreate({where: {name: 'shake17'}, defaults: {
         name: 'shake17',
         start,
         end
@@ -31,7 +31,17 @@ db.sequelize
         name: 'shake17test',
         start,
         end
-      }})
+      }});
+
+      const [user] = await db.User.findOrCreate({where: {strId: 'test01'}, defaults: {
+        strId: 'test01',
+        password: 'q1w2e3r4!',
+      }});
+
+      if (created) {
+        await user.setContest(contest);
+      }
+
     }()
   })
   .then(function () {

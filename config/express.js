@@ -1,31 +1,108 @@
-var express = require('express');
-var glob = require('glob');
-
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var compress = require('compression');
-var methodOverride = require('method-override');
+const
+  express = require('express'),
+  glob = require('glob'),
+  logger = require('morgan'),
+  cookieParser = require('cookie-parser'),
+  bodyParser = require('body-parser'),
+  methodOverride = require('method-override'),
+  session = require('express-session'),
+  passport= require('passport'),
+  LocalStrategy = require('passport-local').Strategy,
+  db = require('../app/models');
 
 module.exports = function(app, config) {
-  var env = process.env.NODE_ENV || 'development';
+  const env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
-  app.locals.ENV_DEVELOPMENT = env == 'development';
+  app.locals.ENV_DEVELOPMENT = env === 'development';
 
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'ejs');
 
-  // app.use(favicon(config.root + '/public/img/favicon.ico'));
+  app.set('x-powered-by', false);
+
   app.use(logger('dev'));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
     extended: true
   }));
   app.use(cookieParser());
-  app.use(compress());
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
+
+  /** -------------- session config ----------------- **/
+  const sess = {
+    secret: config.secret,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {},
+    // store: new MongoStore({
+    //   mongooseConnection: mongoose.connection
+    // })
+  };
+
+  // if (env === 'production') {
+  //   app.set('trust proxy', 1); // trust first proxy
+  //   sess.cookie.secure = true; // serve secure cookies
+  // }
+
+  app.use(session(sess));
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  passport.use(new LocalStrategy(
+    {
+      usernameField : 'userId',
+      passwordField : 'userPwd',
+      passReqToCallback: true
+    },
+    function(req, userId, userPwd, done) {
+      const {contestName} = req.params;
+
+      db.Contest.findOne({where: {name: contestName}})
+        .then(contest => {
+          if (contest === null) {
+            throw new Error('No such contest');
+          }
+
+          return contest.getUsers({where: {strId: userId}});
+        })
+        .then(users => {
+          const user = users[0];
+
+          if (!user) {
+            throw new Error('No such user');
+          }
+
+          const valid = user.validatePassword(userPwd);
+
+          if (!valid) {
+            throw new Error('No valid password');
+          }
+
+          return done(null, user);
+        })
+        .catch(err => {
+          console.error(err);
+          return done(err);
+        });
+    }
+  ));
+
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+
+  passport.deserializeUser(function(id, done) {
+    db.User.findOne({where: {id}})
+      .then(user => {
+        done(null, user);
+      })
+      .catch(err => {
+        console.error(err);
+        done(err);
+      })
+  });
+  /** -------------- session end ------------------ **/
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach(function (controller) {

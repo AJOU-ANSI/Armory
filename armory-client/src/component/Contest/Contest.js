@@ -13,6 +13,7 @@ import NotFound from '../NotFound/NotFound';
 import {connect} from 'react-redux';
 import {fetchGetContestByName} from '../../actions/contest';
 import Login from '../../include/Login/Login';
+import {fetchLoggedIn, fetchLogin} from "../../actions/auth";
 
 export class Contest extends Component {
   constructor(props) {
@@ -24,7 +25,14 @@ export class Contest extends Component {
   }
 
   componentWillMount() {
-    const {match: {params: {contestName}}, fetchGetContestByName, contestMap: {[contestName]: contest}} = this.props;
+    const {
+      match: {params: {contestName}},
+      fetchGetContestByName,
+      fetchLoggedIn,
+      contestMap: {[contestName]: contest}
+    } = this.props;
+
+    fetchLoggedIn(contestName);
 
     if (!contest) {
       fetchGetContestByName(contestName);
@@ -37,6 +45,17 @@ export class Contest extends Component {
     });
   }
 
+  handleLogin = (userId, userPwd) => {
+    const {match: {params: {contestName}}, fetchLogin} = this.props;
+
+    fetchLogin(contestName, {userId, userPwd})
+      .then(action => {
+        if (!action.error) {
+          this.toggleLoginModal();
+        }
+      });
+  }
+
   toggleLoginModal = () => {
     this.setState({
       loginModal: !this.state.loginModal
@@ -44,7 +63,7 @@ export class Contest extends Component {
   }
 
   render() {
-    const {match: {path, params: {contestName}}, contestMap: {[contestName]: contest}} = this.props;
+    const {match: {url, params: {contestName}}, contestMap: {[contestName]: contest}} = this.props;
     const {loginModal} = this.state;
 
     if (!contest) {
@@ -56,32 +75,32 @@ export class Contest extends Component {
     }
 
     return (
-      <BrowserRouter>
-        <div className="Contest">
-          <Header match={this.props.match} onClickLogin={this.handleClickLogin} />
+      <div className="Contest">
+        <Header match={this.props.match} onClickLogin={this.handleClickLogin} />
 
-          <Login modalOpen={loginModal} onToggle={this.toggleLoginModal} />
+        <Login modalOpen={loginModal} onToggle={this.toggleLoginModal} onLogin={this.handleLogin} />
 
-          <div>
-            <Switch>
-              <Route exact path={`${path}`} render={() => <Home contest={contest} />} />
-              <Route exact path={`${path}/problems`} component={ProblemList} />
-              <Route exact path={`${path}/problems/:problemCode`} component={ProblemDetail} />
+        <div>
+          <Switch>
+            <Route exact path={`${url}`} render={() => <Home contest={contest} />} />
+            <Route exact path={`${url}/problems`} component={ProblemList} />
+            <Route path={`${url}/problems/:problemCode`} component={ProblemDetail} />
 
-              <Route component={NotFound} />
-            </Switch>
-          </div>
-
-          <Footer />
+            <Route component={NotFound} />
+          </Switch>
         </div>
-      </BrowserRouter>
+
+        <Footer />
+      </div>
     )
   }
 }
 
 const stateToProps = ({contestMap}) => ({contestMap});
 const actionToProps = {
-  fetchGetContestByName
+  fetchGetContestByName,
+  fetchLogin,
+  fetchLoggedIn
 };
 
 export default connect(stateToProps, actionToProps)(Contest);
