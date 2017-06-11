@@ -1,27 +1,33 @@
 import React, {Component} from 'react';
 import Helmet from 'react-helmet';
+import {connect} from 'react-redux';
 
 import './ContestList.css';
-import {Link} from 'react-router-dom';
+
+import {fetchGetContestList} from '../../actions/contest';
+import ContestItem from './ContestItem';
 
 export class ContestList extends Component {
+  componentWillMount() {
+    const {contestList, fetchGetContestList} = this.props;
+
+    if (contestList === null) {
+      fetchGetContestList();
+    }
+  }
+
+  renderContestList = (contestList) => {
+    if (contestList === null) {
+      return <div> 로딩 중... </div>
+    }
+
+    return contestList.map(contest => (
+      <ContestItem contest={contest} key={contest.id} />
+    ));
+  }
+
   render () {
-    const contests = [
-      {name: 'shake17', id: 1},
-      {name: 'shake17test1', id: 2}
-    ];
-
-    const ContestItem = ({contest}) => (
-      <div className="card paper mb-2">
-        <div className="card-block d-flex justify-content-between align-items-center">
-          <strong> {contest.name} </strong>
-
-          <Link className="btn btn-custom btn-success" to={`/${contest.name}`}>
-            입장하기
-          </Link>
-        </div>
-      </div>
-    );
+    const {contestList} = this.props;
 
     return (
       <div className="ContestList">
@@ -37,11 +43,7 @@ export class ContestList extends Component {
               </div>
 
               <div className="mt-5">
-                {
-                  contests.map(contest => (
-                    <ContestItem contest={contest} key={contest.id} />
-                  ))
-                }
+                {this.renderContestList(contestList)}
               </div>
             </div>
           </div>
@@ -51,4 +53,9 @@ export class ContestList extends Component {
   }
 }
 
-export default ContestList;
+const stateToProps = ({contestList}) => ({contestList});
+const actionToProps = {
+  fetchGetContestList
+};
+
+export default connect(stateToProps, actionToProps)(ContestList);

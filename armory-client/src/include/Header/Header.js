@@ -21,8 +21,6 @@ export class Header extends Component {
     <% } %>
     */
 
-    console.log(this.props.match);
-
     const {match: {url}} = this.props;
 
     const menus = [

@@ -29,10 +29,10 @@ export const ProblemItem = ({problem, className, match}) => {
           </h5>
 
           <span className="d-flex">
-                <Link to={`${match.url}/${problem.code}`} className={classnames('btn btn-custom', btnClass)}>
-                  {btnLabel}
-                </Link>
-              </span>
+            <Link to={`${match.url}/${problem.code}`} className={classnames('btn btn-custom', btnClass)}>
+              {btnLabel}
+            </Link>
+          </span>
         </div>
       </div>
     </div>

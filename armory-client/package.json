@@ -5,11 +5,17 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "moment": "^2.18.1",
+    "moment-duration-format": "^1.3.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-helmet": "^5.1.3",
+    "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.6.0",
+    "redux-actions": "^2.0.3",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "flow-bin": "^0.47.0",
@@ -26,5 +32,6 @@
     "start": "run-p watch-css start-js",
     "build": "yarn build-css && react-scripts build",
     "flow": "flow"
-  }
+  },
+  "proxy": "http://localhost:8000"
 }

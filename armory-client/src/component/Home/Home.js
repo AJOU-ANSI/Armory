@@ -17,36 +17,26 @@ import judgeEnv from '../../data/judge_env.json';
 
 import './Home.css';
 
+import 'moment-duration-format';
+
 export class Home extends Component {
   constructor(props) {
     super(props);
 
-    const start = new Date();
-    start.setHours(start.getHours()-2);
-    start.setMinutes(0);
-    start.setSeconds(0);
-
-    const end = new Date();
-    end.setHours(end.getHours()+3);
-    end.setMinutes(0);
-    end.setSeconds(0);
-
     this.state = {
-      start,
-      end,
       remainTime: 0
     };
   }
 
   componentDidMount() {
-    const {start, end} = this.state;
+    const {contest: {start, end}} = this.props;
 
     this.timer = setInterval(() => {
-      const now = new Date();
+      const now = (new Date()).getTime();
       let remainTime;
 
       if( start < now && now < end ) {
-        remainTime = end.getTime() - now.getTime();
+        remainTime = end - now;
 
       }
       else {
@@ -61,32 +51,18 @@ export class Home extends Component {
     clearInterval(this.timer);
   }
 
-  addStartZeroIfSmall(value) {
-    if( value < 10 ) return '0' + value;
-    return value + '';
-  }
-
   render() {
     const timeFormat = 'HH:mm:ss';
     const dateFormat = 'YYYY년 MM월 DD일';
 
-    const {start, end, remainTime} = this.state;
-
-    let remainHour = '00', remainMin = '00', remainSec = '00';
-
-    if( remainTime !== 0 ) {
-      const floorTime = Math.floor(remainTime/1000);
-
-      remainSec = this.addStartZeroIfSmall(floorTime%60);
-      remainMin = this.addStartZeroIfSmall(Math.floor(floorTime/60)%60);
-      remainHour = this.addStartZeroIfSmall(Math.floor(floorTime/3600));
-    }
+    const {remainTime} = this.state;
+    const {contest: {start, end}} = this.props;
 
     const descList = [contestRule, contestStyle, answerJudge, rankJudge];
     const statusList = [
       {label: '시작 시간', value: moment(start).format(timeFormat)},
       {label: '종료 시간', value: moment(end).format(timeFormat)},
-      {label: '종료까지<br/>남은 시간', value: `${remainHour}:${remainMin}:${remainSec}`},
+      {label: '종료까지<br/>남은 시간', value: `${moment.duration(remainTime).format(timeFormat)}`},
       {label: '푼 문제', value: '0개'}
     ];
 

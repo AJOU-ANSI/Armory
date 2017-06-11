@@ -32,6 +32,12 @@ module.exports = function(app, config) {
     require(controller)(app);
   });
 
+  app.use('/api', function (req, res) {
+    if (!res.headerSent) {
+      res.status(404).send({message: 'Not Found'});
+    }
+  });
+
   app.use(function (req, res) {
     res.sendFile(config.root + '/public/index.html');
   });
