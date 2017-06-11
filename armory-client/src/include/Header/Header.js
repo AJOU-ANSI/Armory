@@ -6,6 +6,12 @@ import {NavLink, Link} from 'react-router-dom';
 import './Header.css';
 
 export class Header extends Component {
+  handleClickLogin = (e) => {
+    e.preventDefault();
+
+    this.props.onClickLogin();
+  }
+
   render() {
     /*
 
@@ -55,6 +61,10 @@ export class Header extends Component {
                       </li>
                     ))
                   }
+
+                  <li className="menu-item">
+                    <a href="" onClick={this.handleClickLogin}> 로그인 </a>
+                  </li>
                 </ul>
               </div>
             </div>

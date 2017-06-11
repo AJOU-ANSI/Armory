@@ -37,6 +37,8 @@
       color: #222;
       border-top: 2px solid transparent;
       border-bottom: 2px solid transparent; }
+      .Header .menu-item > a:focus {
+        text-decoration: none; }
       .Header .menu-item > a:hover, .Header .menu-item > a.active {
         text-decoration: none;
         color: #F75B3C;

@@ -12,8 +12,17 @@ import './Contest.css';
 import NotFound from '../NotFound/NotFound';
 import {connect} from 'react-redux';
 import {fetchGetContestByName} from '../../actions/contest';
+import Login from '../../include/Login/Login';
 
 export class Contest extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loginModal: false
+    };
+  }
+
   componentWillMount() {
     const {match: {params: {contestName}}, fetchGetContestByName, contestMap: {[contestName]: contest}} = this.props;
 
@@ -22,10 +31,21 @@ export class Contest extends Component {
     }
   }
 
+  handleClickLogin = () => {
+    this.setState({
+      loginModal: true
+    });
+  }
+
+  toggleLoginModal = () => {
+    this.setState({
+      loginModal: !this.state.loginModal
+    });
+  }
+
   render() {
     const {match: {path, params: {contestName}}, contestMap: {[contestName]: contest}} = this.props;
-
-    console.log(contest);
+    const {loginModal} = this.state;
 
     if (!contest) {
       return (<div> 로딩 중... </div>);
@@ -38,7 +58,9 @@ export class Contest extends Component {
     return (
       <BrowserRouter>
         <div className="Contest">
-          <Header match={this.props.match} />
+          <Header match={this.props.match} onClickLogin={this.handleClickLogin} />
+
+          <Login modalOpen={loginModal} onToggle={this.toggleLoginModal} />
 
           <div>
             <Switch>

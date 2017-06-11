@@ -60,6 +60,10 @@ $menu-font-size: 15px;
       border-top: 2px solid transparent;
       border-bottom: 2px solid transparent;
 
+      &:focus {
+        text-decoration: none;
+      }
+
       @extend .flex-align-items-center;
 
       &:hover, &.active {
