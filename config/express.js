@@ -115,6 +115,12 @@ module.exports = function(app, config) {
     }
   });
 
+  app.use('/auth', function (req, res) {
+    if (!res.headerSent) {
+      res.status(404).send({message: 'Not Found'});
+    }
+  });
+
   app.use(function (req, res) {
     res.sendFile(config.root + '/public/index.html');
   });
@@ -128,21 +134,19 @@ module.exports = function(app, config) {
   if(app.get('env') === 'development'){
     app.use(function (err, req, res, next) {
       res.status(err.status || 500);
-      res.render('error', {
-        message: err.message,
-        error: err,
-        title: 'error'
+
+      res.send({
+        message: err.message
       });
     });
   }
 
   app.use(function (err, req, res, next) {
     res.status(err.status || 500);
-      res.render('error', {
-        message: err.message,
-        error: {},
-        title: 'error'
-      });
+
+    res.send({
+      message: err.message
+    });
   });
 
   return app;

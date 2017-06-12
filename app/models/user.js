@@ -14,7 +14,8 @@ module.exports = function (sequelize, DataTypes) {
     },
     strId: {
       type: DataTypes.STRING(30)
-    }
+    },
+    groupName: DataTypes.STRING
   }, {
     classMethods: {
       associate: function (models) {

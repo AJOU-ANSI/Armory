@@ -11,5 +11,6 @@ obj.selectAllContests = async () => {
 };
 
 obj.selectContestByName = async (contestName) => {
-  return db.Contest.findOne({name: contestName});
+  console.log(contestName);
+  return db.Contest.findOne({where: {name: contestName}});
 }

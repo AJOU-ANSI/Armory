@@ -10,7 +10,8 @@ obj.selectAllContestsMw = async (req, res, next) => {
   try {
     req.contestList = await obj.contestSvc.selectAllContests();
   }
-  catch (err) {
+  catch (err) /* istanbul ignore next */ {
+    console.error(err);
     e = err;
   }
 
@@ -23,7 +24,8 @@ obj.selectContestByNameParamMw = async (req, res, next) => {
   try {
     req.contest = await obj.contestSvc.selectContestByName(req.params.contestName);
   }
-  catch (err) {
+  catch (err) /* istanbul ignore next */ {
+    console.error(err);
     e = err;
   }
 

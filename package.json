@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "cross-env NODE_ENV=development node --inspect app.js",
     "gulp:dev": "cross-env NODE_ENV=development gulp",
-    "test": "cross-env NODE_ENV=test mocha test",
+    "test": "cross-env NODE_ENV=test mocha -r test/test_helper.js --recursive test",
     "test:chrome": "cross-env NODE_ENV=test mocha --inspect-brk test",
     "test:coverage": "nyc --reporter=lcov yarn test",
     "test:unit": "mocha test/middleware test/models test/routes",
@@ -36,6 +36,8 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-arrays": "^1.0.0",
+    "chai-deep-match": "^1.0.2",
     "cross-env": "^5.0.1",
     "debug": "^2.2.0",
     "gulp": "^3.9.0",
