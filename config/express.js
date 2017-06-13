@@ -27,6 +27,7 @@ module.exports = function(app, config, {memoryStore}) {
   }));
   app.use(cookieParser());
   app.use(express.static(config.root + '/public'));
+  app.use('/admin', express.static(config.root + '/admin_public/'));
   app.use(methodOverride());
 
   /** -------------- session config ----------------- **/
@@ -146,6 +147,10 @@ module.exports = function(app, config, {memoryStore}) {
     if (!res.headerSent) {
       res.status(404).send({message: 'Not Found'});
     }
+  });
+
+  app.use('/admin', function (req, res) {
+    res.sendFile(config.root + '/admin_public/index.html');
   });
 
   app.use(function (req, res) {

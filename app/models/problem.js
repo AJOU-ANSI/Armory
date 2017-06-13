@@ -5,23 +5,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    desc: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    inputDesc: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    outputDesc: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    inputSample: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    outputSample: {
+    description: {
       type: DataTypes.STRING,
       allowNull: false
     }
