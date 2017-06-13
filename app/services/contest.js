@@ -4,10 +4,10 @@ const obj = {
 
 module.exports = obj;
 
-obj.selectAllContests = async () => {
+obj.selectAllContests = () => {
   return obj.db.Contest.findAll();
 };
 
-obj.selectContestByName = async (contestName) => {
+obj.selectContestByName = (contestName) => {
   return obj.db.Contest.findOne({where: {name: contestName}});
 };

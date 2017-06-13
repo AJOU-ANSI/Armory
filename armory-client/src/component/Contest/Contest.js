@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Route, Switch, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import Home from '../Home/Home';
 import ProblemList from '../ProblemList/ProblemList';
@@ -8,12 +9,14 @@ import ProblemDetail from '../ProblemDetail/ProblemDetail';
 import Footer from '../../include/Footer/Footer';
 import Header from '../../include/Header/Header';
 
-import './Contest.css';
 import NotFound from '../NotFound/NotFound';
-import {connect} from 'react-redux';
-import {fetchGetContestByName} from '../../actions/contest';
 import Login from '../../include/Login/Login';
-import {fetchLoggedIn, fetchLogin} from "../../actions/auth";
+
+import './Contest.css';
+
+import {fetchGetContestByName} from '../../actions/contest';
+import {fetchLoggedIn, fetchLogin, fetchLogout} from '../../actions/auth';
+import {fetchConnectWebSocket} from '../../actions/socket';
 
 export class Contest extends Component {
   constructor(props) {
@@ -22,6 +25,16 @@ export class Contest extends Component {
     this.state = {
       loginModal: false
     };
+
+    this.Socket = null;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const {fetchConnectWebSocket} = nextProps;
+
+    if (this.props.user !== nextProps.user && nextProps.user.isAuth) {
+      fetchConnectWebSocket();
+    }
   }
 
   componentWillMount() {
@@ -49,10 +62,21 @@ export class Contest extends Component {
     const {match: {params: {contestName}}, fetchLogin} = this.props;
 
     fetchLogin(contestName, {userId, userPwd})
-      .then(action => {
-        if (!action.error) {
+      .then((action) => {
+        if(!action.error) {
           this.toggleLoginModal();
         }
+      });
+  }
+
+  handleLogout = () => {
+    const {fetchLogout, history, match: {params: {contestName}}} = this.props;
+
+    this.Socket.emit('logout');
+
+    fetchLogout(contestName)
+      .then(() => {
+        history.push(`/${contestName}`);
       });
   }
 
@@ -76,7 +100,11 @@ export class Contest extends Component {
 
     return (
       <div className="Contest">
-        <Header match={this.props.match} onClickLogin={this.handleClickLogin} />
+        <Header
+          match={this.props.match}
+          onClickLogin={this.handleClickLogin}
+          onLogout={this.handleLogout}
+        />
 
         <Login modalOpen={loginModal} onToggle={this.toggleLoginModal} onLogin={this.handleLogin} />
 
@@ -96,11 +124,13 @@ export class Contest extends Component {
   }
 }
 
-const stateToProps = ({contestMap}) => ({contestMap});
+const stateToProps = ({contestMap, user}) => ({contestMap, user});
 const actionToProps = {
   fetchGetContestByName,
   fetchLogin,
-  fetchLoggedIn
+  fetchLoggedIn,
+  fetchLogout,
+  fetchConnectWebSocket
 };
 
-export default connect(stateToProps, actionToProps)(Contest);
+export default withRouter(connect(stateToProps, actionToProps)(Contest));

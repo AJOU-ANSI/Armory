@@ -6,8 +6,6 @@ import {NavLink, Link} from 'react-router-dom';
 import './Header.css';
 import {connect} from "react-redux";
 import {Dropdown, DropdownItem, DropdownMenu} from "reactstrap";
-import {fetchLogout} from "../../actions/auth";
-import {withRouter} from "react-router";
 
 export class Header extends Component {
   constructor(props) {
@@ -25,12 +23,7 @@ export class Header extends Component {
   }
 
   handleLogout = () => {
-    const {fetchLogout, history, match: {params: {contestName}}} = this.props;
-
-    fetchLogout(contestName)
-      .then(() => {
-        history.push(`/${contestName}`);
-      });
+    this.props.onLogout();
   }
 
   handleToggleMenu = (e) => {
@@ -70,6 +63,8 @@ export class Header extends Component {
   render() {
     const {match: {url}, user} = this.props;
 
+    console.log(user);
+    
     const menus = [
       {to: `${url}`, title: "메인"},
       {to: `${url}/ranking`, title: "랭킹"},
@@ -117,8 +112,5 @@ export class Header extends Component {
 }
 
 const stateToProps = ({user}) => ({user});
-const actionToProps = {
-  fetchLogout
-};
 
-export default withRouter(connect(stateToProps, actionToProps)(Header));
+export default connect(stateToProps)(Header);

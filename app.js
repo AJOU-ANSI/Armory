@@ -1,58 +1,29 @@
-
-
 var express = require('express'),
   config = require('./config/config'),
-  db = require('./app/models');
+  db = require('./app/models'),
+  websocket = require('./app/websocket');
 
-var app = express();
+const app = express();
+const session = require('express-session');
 
-module.exports = require('./config/express')(app, config);
+const memoryStore = new session.MemoryStore();
+
+require('./config/express')(app, config, {memoryStore});
+module.exports = app;
+app.memoryStore = memoryStore;
 
 db.sequelize
   .sync()
   .then(function () {
-    if (process.env.NODE_ENV !== 'test') {
-      return async function () {
-        const start = new Date(), end = new Date();
-        start.setHours(start.getHours()-2);
-        start.setMinutes(0);
-        start.setSeconds(0);
+    let server;
 
-        end.setHours(end.getHours()+3);
-        end.setMinutes(0);
-        end.setSeconds(0);
-
-        const [contest, created] = await db.Contest.findOrCreate({where: {name: 'shake17'}, defaults: {
-          name: 'shake17',
-          start,
-          end
-        }});
-
-        await db.Contest.findOrCreate({where: {name: 'shake17test'}, defaults: {
-          name: 'shake17test',
-          start,
-          end
-        }});
-
-        const [user] = await db.User.findOrCreate({where: {strId: 'test01'}, defaults: {
-          strId: 'test01',
-          password: 'q1w2e3r4!',
-        }});
-
-        if (created) {
-          await user.setContest(contest);
-        }
-
-      }();
-    }
-
-    return true;
-  })
-  .then(function () {
+    /* istanbul ignore if */
     if (!module.parent) {
-      app.listen(config.port, function () {
+      server = app.listen(config.port, function () {
         console.log('Express server listening on port ' + config.port);
       });
+
+      websocket.init(memoryStore, server);
     }
   }).catch(function (e) {
     throw new Error(e);

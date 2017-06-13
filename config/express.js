@@ -10,7 +10,7 @@ const
   LocalStrategy = require('passport-local').Strategy,
   db = require('../app/models');
 
-module.exports = function(app, config) {
+module.exports = function(app, config, {memoryStore}) {
   const env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
   app.locals.ENV_DEVELOPMENT = env === 'development';
@@ -34,7 +34,10 @@ module.exports = function(app, config) {
     secret: config.secret,
     resave: false,
     saveUninitialized: false,
-    cookie: {},
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 7
+    },
+    store: memoryStore
     // store: new MongoStore({
     //   mongooseConnection: mongoose.connection
     // })
@@ -103,6 +106,30 @@ module.exports = function(app, config) {
       })
   });
   /** -------------- session end ------------------ **/
+
+
+  /** -------------- websocket.io start -------------- **/
+  // const server = require('http').Server(app);
+  // const io = require('websocket.io')(server);
+
+  // io.use(passportSocketIo.authorize({
+  //   cookieParser: cookieParser,       // the same middleware you registrer in express
+  //   key:          'express.sid',       // the name of the cookie where express/connect stores its session_id
+  //   secret:       config.secret,    // the session_secret to parse the cookie
+  //   store:        memoryStore
+  // }));
+
+  // io.set('origins', 'http://localhost:3000');
+  // //
+  // io.on('connection', function(websocket) {
+  //   console.log(websocket.request.user);
+  //
+  //   setInterval(function () {
+  //     console.log('hi');
+  //     websocket.emit('news', {hello: 'hi'});
+  //   }, 5000);
+  // });
+  /** -------------- websocket.io end -------------- **/
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach(function (controller) {

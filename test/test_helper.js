@@ -31,5 +31,6 @@ global.getContestTime = function (offset, isUTC) {
 
 global.urls = {
   contest: '/api/contests',
-  login: (contestName) => (`/auth/${contestName}/login`)
+  login: (contestName) => (`/auth/${contestName}/login`),
+  loggedin: (contestName) => (`/auth/${contestName}/loggedin`)
 };

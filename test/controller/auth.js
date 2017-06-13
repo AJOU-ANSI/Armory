@@ -61,8 +61,6 @@ describe('auth controller', function () {
           .post(urls.login(contestInfo.name + '2'))
           .send({userId: userInfo.strId, userPwd: userInfo.password})
           .expect(401);
-
-        console.log(resp);
       });
     })
   });
