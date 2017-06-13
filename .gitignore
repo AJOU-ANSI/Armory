@@ -138,3 +138,4 @@ config.js
 public/
 
 !armory-client/public
+!armory-admin/public
