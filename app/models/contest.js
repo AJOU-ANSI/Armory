@@ -32,6 +32,9 @@ module.exports = function (sequelize, DataTypes) {
       associate: function (models) {
         Contest.hasMany(models.User);
         models.User.belongsTo(Contest);
+
+        Contest.hasMany(models.Problem);
+        models.Problem.belongsTo(Contest);
       }
     }
   });

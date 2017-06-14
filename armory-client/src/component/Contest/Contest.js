@@ -17,6 +17,7 @@ import './Contest.css';
 import {fetchGetContestByName} from '../../actions/contest';
 import {fetchLoggedIn, fetchLogin, fetchLogout} from '../../actions/auth';
 import {fetchConnectWebSocket} from '../../actions/socket';
+import AdminHome from '../AdminHome/AdminHome';
 
 export class Contest extends Component {
   constructor(props) {
@@ -72,8 +73,6 @@ export class Contest extends Component {
   handleLogout = () => {
     const {fetchLogout, history, match: {params: {contestName}}} = this.props;
 
-    this.Socket.emit('logout');
-
     fetchLogout(contestName)
       .then(() => {
         history.push(`/${contestName}`);
@@ -87,7 +86,7 @@ export class Contest extends Component {
   }
 
   render() {
-    const {match: {url, params: {contestName}}, contestMap: {[contestName]: contest}} = this.props;
+    const {match: {url, path, params: {contestName}}, contestMap: {[contestName]: contest}} = this.props;
     const {loginModal} = this.state;
 
     if (!contest) {
@@ -110,10 +109,12 @@ export class Contest extends Component {
 
         <div>
           <Switch>
-            <Route exact path={`${url}`} render={() => <Home contest={contest} />} />
-            <Route exact path={`${url}/problems`} component={ProblemList} />
-            <Route path={`${url}/problems/:problemCode`} component={ProblemDetail} />
+            <Route exact path={`${path}`} render={() => <Home contest={contest} />} />
+            <Route exact path={`${path}/problems`} component={ProblemList} />
+            <Route path={`${path}/problems/:problemCode`} component={ProblemDetail} />
 
+            <Route path={`${path}/admin`} component={AdminHome} />
+            
             <Route component={NotFound} />
           </Switch>
         </div>

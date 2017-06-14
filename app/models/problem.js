@@ -6,14 +6,16 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     },
     description: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    code: {
       type: DataTypes.STRING,
       allowNull: false
     }
   }, {
     classMethods: {
       associate: function (models) {
-        // Contest.hasMany(models.User);
-        // models.User.belongsTo(Contest);
       }
     }
   });

@@ -14,7 +14,11 @@ module.exports = function (sequelize, DataTypes) {
     strId: {
       type: DataTypes.STRING(30)
     },
-    groupName: DataTypes.STRING
+    groupName: DataTypes.STRING,
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   }, {
     classMethods: {
       associate: function (models) {

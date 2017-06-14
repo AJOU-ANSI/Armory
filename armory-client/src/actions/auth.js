@@ -85,7 +85,11 @@ export const fetchLoggedIn = (contestName) => {
 };
 
 export const fetchLogout = (contestName) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const {socket} = getState();
+
+    if (socket) socket.emit('logout');
+
     const resp = await fetch(logoutUrl(contestName), {method: 'POST', credentials: 'include'});
 
     if(!resp.ok) {

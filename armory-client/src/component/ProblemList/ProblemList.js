@@ -3,9 +3,17 @@ import React, {Component} from 'react';
 import './ProblemList.css';
 
 import ProblemItem from './ProblemItem';
-import problems from '../../data/problems.json';
+// import problems from '../../data/problems.json';
+import {connect} from 'react-redux';
+import {fetchGetProblemList} from '../../actions/problem';
 
 export class ProblemList extends Component {
+  componentWillMount() {
+    const {match: {params: {contestName}}} = this.props;
+
+    this.props.fetchGetProblemList(contestName);
+  }
+
   render() {
     /*
     <% for(var i = 0 ; i < problems.length; i++ ) {  %>
@@ -34,7 +42,7 @@ export class ProblemList extends Component {
         </div>
         <% } %>
      */
-    const {match} = this.props;
+    const {match, problemList} = this.props;
 
     return (
       <div className="page">
@@ -53,7 +61,7 @@ export class ProblemList extends Component {
           <div className="container">
             <div className="row">
               {
-                problems.map((problem, index) => (
+                problemList && problemList.map((problem, index) => (
                   <ProblemItem match={match} problem={problem} key={index} className="col-10 offset-1 mb-2" />
                 ))
               }
@@ -65,4 +73,9 @@ export class ProblemList extends Component {
   }
 }
 
-export default ProblemList;
+const stateToProps = ({problemList}) => ({problemList});
+const actionToProps = {
+  fetchGetProblemList
+};
+
+export default connect(stateToProps, actionToProps)(ProblemList);

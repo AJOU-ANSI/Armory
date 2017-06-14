@@ -35,6 +35,10 @@ exports.init = function (memoryStore, server) {
     socket.on('greeting', function (greeting) {
       console.log(greeting);
     });
+
+    setInterval(function () {
+      socket.emit('greeting_response', 'annyeong');
+    }, 10000);
   });
 
   io.on('error', function(err) {

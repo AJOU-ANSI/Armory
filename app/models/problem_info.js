@@ -8,6 +8,10 @@ module.exports = function (sequelize, DataTypes) {
     memory_limit: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    spj: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   }, {
     classMethods: {

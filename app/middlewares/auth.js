@@ -1,3 +1,5 @@
+const UnauthorizedError = require('../errors/unauthorized');
+
 const obj = {
   passport: require('passport')
 };
@@ -25,23 +27,35 @@ const obj = {
 //   return next(e);
 // };
 
-// obj.checkLoggedInMiddleware = function (req, res, next) {
-//   if(req.isAuthenticated()) {
-//     return next();
-//   }
-//
-//   else {
-//     let err = new UnauthorizedError('로그인이 필요합니다.');
-//
-//     if( req.baseUrl + req.path === '/auth/loggedin' ) {
-//       err.status = 200;
-//     }
-//
-//     return next(err);
-//   }
-// };
+obj.checkLoggedInMw = function (req, res, next) {
+  if(req.isAuthenticated()) {
+    return next();
+  }
 
-obj.loginMiddleware = function (req, res, next) {
+  else {
+    let err = new UnauthorizedError('로그인이 필요합니다.');
+
+    if( req.baseUrl + req.path === '/auth/loggedin' ) {
+      err.status = 200;
+    }
+
+    return next(err);
+  }
+};
+
+obj.checkAdminMw = function (req, res, next) {
+  if(req.isAuthenticated() && req.user.isAdmin) {
+    return next();
+  }
+
+  else {
+    let err = new UnauthorizedError('어드민 로그인이 필요합니다.');
+
+    return next(err);
+  }
+};
+
+obj.loginMw = function (req, res, next) {
   obj.passport.authenticate('local', function(err, user) {
     if (!user) {
       let e = new Error('로그인에 실패했습니다.');

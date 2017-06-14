@@ -6,29 +6,29 @@ import './ProblemDetail.css';
 import problemA from '../../data/problem_detail_a.json';
 import problemB from '../../data/problem_detail_b.json';
 import problemC from '../../data/problem_detail_c.json';
+import {fetchGetProblemByCode} from '../../actions/problem';
+import {connect} from 'react-redux';
+import ProblemView from './ProblemView';
+import ProblemInfoView from './ProblemInfoView';
 
 export class ProblemDetail extends Component {
-  render() {
-    const {match: {params: {problemCode}}} = this.props;
+  componentWillMount() {
+    const {match: {params: {contestName, problemCode}}, fetchGetProblemByCode} = this.props;
 
-    const problemMap = {
-      'A': problemA,
-      'B': problemB,
-      'C': problemC
-    };
+    fetchGetProblemByCode(contestName, problemCode);
+  }
+
+  render() {
+    const {match: {params: {problemCode}}, problemMap} = this.props;
 
     const problem = problemMap[problemCode];
 
-    const ProblemSection = ({label, value, sample}) => (
-      <div className="mb-5">
-        <h5 className="mb-3"> <strong> {label} </strong> </h5>
-        <p dangerouslySetInnerHTML={{__html: value}} className={classnames(sample && 'sample')} />
-      </div>
-    );
+    if (!problem) return null;
 
-    const labels = ['문제 설명', '입력', '출력', '예제 입력', '예제 출력'];
-    const keys = ['description', 'input', 'output', 'sample_input', 'sample_output'];
-    const samples = [false, false, false, true, true];
+    const problemInfo = {
+      memoryLimit: problem.ProblemInfo.memory_limit,
+      timeLimit: problem.ProblemInfo.time_limit
+    };
 
     return (
       <div className="ProblemDetail page page-grey">
@@ -46,44 +46,17 @@ export class ProblemDetail extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-9 flex-last flex-md-start">
-                <div className="card problem-card paper">
-                  <div className="card-header font-weight-bold">
-                    <h3> {problem.title} </h3>
-                  </div>
-
-                  <div className="card-block">
-                    {
-                      labels.map((label, index) => (
-                        <ProblemSection
-                          key={index}
-                          label={label}
-                          value={problem[keys[index]]}
-                          sample={samples[index]} />
-                      ))
-                    }
-                  </div>
-                </div>
+                <ProblemView problem={problem} className="paper" />
               </div>
 
               <div className="col-md-3 mt-3 mt-md-0 flex-first flex-md-last">
                 <div className="mb-3">
                   <h5 className="font-weight-light mb-3"> 문제 정보 </h5>
 
-                  <div className="card problem-info-card paper">
-                    <ul className="list-group list-group-flush">
-                      <li className="list-group-item d-block">
-                        시간 제한
-                        <strong className="float-right"> {problem.time_limit} </strong>
-                      </li>
-
-                      <li className="list-group-item d-block">
-                        메모리 제한
-                        <strong className="float-right"> {problem.memory_limit} </strong>
-                      </li>
-                    </ul>
-                  </div>
+                  <ProblemInfoView problem={problemInfo} className="paper"/>
                 </div>
 
+                { /*
                 <div className="mb-3">
                   <h5 className="font-weight-light mb-3"> 다른 문제 </h5>
 
@@ -103,6 +76,7 @@ export class ProblemDetail extends Component {
                     </ul>
                   </div>
                 </div>
+                */ }
 
                 <div className="mb-3">
                   <button className="btn btn-custom btn-success w-100 py-3">
@@ -122,4 +96,9 @@ export class ProblemDetail extends Component {
   }
 }
 
-export default ProblemDetail;
+const stateToProps = ({problemMap}) => ({problemMap});
+const actionToProps = {
+  fetchGetProblemByCode
+};
+
+export default connect(stateToProps, actionToProps)(ProblemDetail);
