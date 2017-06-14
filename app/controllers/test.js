@@ -43,10 +43,18 @@ router.get('/init_db', async function (req, res) {
     users.push(user);
   }
 
+  const [admin] = await db.User.findOrCreate({where: {strId: 'admin01'}, defaults: {
+    strId: 'admin01',
+    password: 'q1w2e3r4!',
+    isAdmin: true
+  }});
+
   if (created) {
     for(let i = 0; i < 9; i++) {
       await users[i].setContest(contest);
     }
+
+    await admin.setContest(contest);
   }
 
   res.send({});

@@ -63,8 +63,6 @@ export class Header extends Component {
   render() {
     const {match: {url}, user} = this.props;
 
-    console.log(user);
-    
     const menus = [
       {to: `${url}`, title: "메인"},
       {to: `${url}/ranking`, title: "랭킹"},
@@ -72,6 +70,12 @@ export class Header extends Component {
       {to: `${url}/status`, title: "제출내역"},
       {to: `${url}/qna`, title: "질문하기"}
     ];
+
+    if (user && user.isAdmin) {
+      menus.push(
+        {to: `${url}/admin`, title: "관리자"}
+      );
+    }
 
     return (
       <header className="Header fixed-top">

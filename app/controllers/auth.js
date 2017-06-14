@@ -1,5 +1,5 @@
 const express = require('express'),
-  router = express.Router();
+  router = express.Router({mergeParams: true});
   authMws = require('../middlewares/auth');
   userMws = require('../middlewares/user');
 
@@ -18,15 +18,15 @@ const autoLogin = true;
 // } = userMiddleware;
 
 module.exports = function (app) {
-  app.use('/auth', router);
+  app.use('/auth/:contestName', router);
 };
 
-router.post('/:contestName/login',
-  authMws.loginMiddleware,
+router.post('/login',
+  authMws.loginMw,
   userMws.sendUserFromReqMw
 );
 
-router.post('/:contestName/logout',
+router.post('/logout',
   (req, res) => {
     req.logout();
     res.send({});
@@ -76,7 +76,7 @@ router.post('/:contestName/logout',
 //   );
 // }
 // else {
-  router.get('/:contestName/loggedin',
+  router.get('/loggedin',
     userMws.checkUserWithContestNameParamMw,
     userMws.sendUserFromReqMw
   );

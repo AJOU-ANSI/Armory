@@ -1,0 +1,25 @@
+.ProblemView {
+  border: 0; }
+  .ProblemView .card-header {
+    background-color: #296CCE;
+    color: #fff;
+    padding: 30px 60px;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+  .ProblemView .card-block {
+    padding: 60px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px; }
+  .ProblemView .content table {
+    margin-bottom: 20px; }
+    .ProblemView .content table td, .ProblemView .content table th {
+      border-left: 2px solid black;
+      min-width: 200px;
+      vertical-align: top; }
+      .ProblemView .content table td:last-child, .ProblemView .content table th:last-child {
+        border-right: 2px solid black; }
+    .ProblemView .content table tr {
+      border-top: 2px solid black; }
+      .ProblemView .content table tr:last-child {
+        border-bottom: 2px solid black; }

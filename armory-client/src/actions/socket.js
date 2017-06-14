@@ -2,11 +2,30 @@ import {createAction} from 'redux-actions';
 import io from 'socket.io-client';
 
 export const connectWebSocket = createAction('CONNECT_WEBSOCKET');
+export const closeWebSocket = createAction('CLOSE_WEBSOCKET');
 
-function init(socket) {
+export const fetchCloseWebSocket = () => {
+  return closeWebSocket();
+};
+
+function init(socket, dispatch) {
+  console.log('connect init');
+
   setInterval(function () {
     socket.emit('greeting', 'hello');
   }, 10000);
+
+  socket.on('connect', function () {
+    console.log('connected!!!');
+  })
+  socket.on('greeting_response', function (message) {
+    console.log(message);
+  });
+
+  socket.on('disconnect', function () {
+    console.log('disconnected!!!');
+    dispatch(fetchCloseWebSocket());
+  });
 }
 
 export const fetchConnectWebSocket = () => {
@@ -25,7 +44,7 @@ export const fetchConnectWebSocket = () => {
         });
       });
 
-      init(socket);
+      init(socket, dispatch);
 
       return dispatch(connectWebSocket(socket));
     }

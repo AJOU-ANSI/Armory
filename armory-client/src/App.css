@@ -64,3 +64,6 @@ body {
   transition: all .3s ease; }
   .scalable:hover {
     transform: scale(1.01, 1); }
+
+.b-0 {
+  border: 0; }

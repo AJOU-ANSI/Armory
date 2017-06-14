@@ -27,7 +27,6 @@ module.exports = function(app, config, {memoryStore}) {
   }));
   app.use(cookieParser());
   app.use(express.static(config.root + '/public'));
-  app.use('/admin', express.static(config.root + '/admin_public/'));
   app.use(methodOverride());
 
   /** -------------- session config ----------------- **/
@@ -149,10 +148,6 @@ module.exports = function(app, config, {memoryStore}) {
     }
   });
 
-  app.use('/admin', function (req, res) {
-    res.sendFile(config.root + '/admin_public/index.html');
-  });
-
   app.use(function (req, res) {
     res.sendFile(config.root + '/public/index.html');
   });
@@ -165,8 +160,9 @@ module.exports = function(app, config, {memoryStore}) {
 
   if(app.get('env') === 'development'){
     app.use(function (err, req, res, next) {
-      res.status(err.status || 500);
+      console.log(err);
 
+      res.status(err.status || 500);
       res.send({
         message: err.message
       });
