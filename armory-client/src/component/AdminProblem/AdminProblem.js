@@ -30,7 +30,7 @@ export class AdminProblem extends Component {
   handleSave = (problemId, problemInfo) => {
     console.log(problemId, problemInfo);
 
-    const {match: {params: {contestName}}, fetchSaveProblem} = this.props;
+    const {match: {params: {contestName}}, fetchSaveProblem, fetchGetProblemList} = this.props;
 
     let promise;
 
