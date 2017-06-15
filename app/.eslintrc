@@ -1,0 +1,18 @@
+{
+  "plugins": ["node"],
+  "extends": ["eslint:recommended", "plugin:node/recommended"],
+  "rules": {
+    "node/exports-style": [
+      "error",
+      "module.exports"
+    ],
+    "no-console": [
+      "warn",
+      {"allow": ["error", "info"]}
+    ]
+  },
+  "globals": {
+    "requireFrom": true,
+    "config": true
+  }
+}

@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import classnames from 'classnames';
 import Remarkable from 'remarkable';
+import remarkableKatex from 'remarkable-katex';
 
 import './ProblemView.css';
 
 const md = new Remarkable({
   html: true
 });
+
+md.use(remarkableKatex);
 
 export class ProblemView extends Component {
   render () {

@@ -47,3 +47,26 @@ obj.sendContestMw = async (req, res) => {
     }
   })
 };
+
+obj.checkContestOpenedOrAdminMw = async (req, res, next) => {
+  const {contest, user} = req;
+  const now = (new Date()).getTime();
+
+  if (user.isAdmin) return next();
+
+  let e;
+
+  try {
+    if (contest.start > now ) { // contest not opened
+      const error = new Error('대회가 아직 열리지 않았습니다.');
+      error.status = 400;
+
+      throw error;
+    }
+  }
+  catch(err) {
+    e = err;
+  }
+
+  return next(e);
+}

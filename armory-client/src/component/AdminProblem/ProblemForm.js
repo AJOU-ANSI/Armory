@@ -15,7 +15,7 @@ export class ProblemForm extends Component {
   }
 
   componentDidMount() {
-    this.handlePreview();
+    // this.handlePreview();
   }
 
   handleClosePreview = () => {
@@ -54,9 +54,6 @@ export class ProblemForm extends Component {
 
   render () {
     const problem = this.props.problem || {
-      title: '끝말잇기',
-      code: 'A',
-      description: desc,
       memoryLimit: 128,
       timeLimit: 1
     };

@@ -12,6 +12,7 @@ module.exports = (app) => {
 router.get('/',
   authMws.checkLoggedInMw,
   contestMws.selectContestByNameParamMw,
+  contestMws.checkContestOpenedOrAdminMw,
   problemMws.selectProblemListByContestMw,
   problemMws.sendProblemListMw
 );
@@ -19,6 +20,7 @@ router.get('/',
 router.get('/:problemCode',
   authMws.checkLoggedInMw,
   contestMws.selectContestByNameParamMw,
+  contestMws.checkContestOpenedOrAdminMw,
   problemMws.selectProblemByContestAndProblemCodeParamMw,
   problemMws.sendProblemMw
 );

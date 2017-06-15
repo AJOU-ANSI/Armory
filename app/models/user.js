@@ -1,6 +1,6 @@
 const
   crypto      = require('crypto'),
-  secret      = require('../../config/config').secret;
+  secret      = config.secret;
 
 module.exports = function (sequelize, DataTypes) {
   const User = sequelize.define('User', {
@@ -21,10 +21,6 @@ module.exports = function (sequelize, DataTypes) {
     }
   }, {
     classMethods: {
-      associate: function (models) {
-        // example on how to add relations
-        // Article.hasMany(models.Comments);
-      },
     },
     instanceMethods: {
       validatePassword: function (source) {

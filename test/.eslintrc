@@ -1,0 +1,35 @@
+{
+  "plugins": ["node", "mocha"],
+  "extends": ["eslint:recommended", "plugin:node/recommended"],
+  "env": {
+    "mocha": true,
+    "node": true
+  },
+  "rules": {
+    "node/exports-style": [
+      "error",
+      "module.exports"
+    ],
+    "no-console": "off",
+    "node/no-unpublished-require": ["error", {
+      "allowModules": [
+        "mocha",
+        "chai",
+        "chai-arrays",
+        "chai-as-promised",
+        "chai-deep-match",
+        "chai-subset",
+        "sinon",
+        "sinon-chai",
+        "supertest"
+      ]
+    }]
+  },
+  "globals": {
+    "requireFrom": true,
+    "config": true,
+    "expect": true,
+    "sinon": true,
+    "getContestTime": true
+  }
+}

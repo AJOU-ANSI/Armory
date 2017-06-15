@@ -1,5 +1,5 @@
 const
-  db = require('../../app/models'),
+  // db = require('../../app/models'),
   request = require('supertest');
 
 describe('auth controller', function () {
@@ -14,36 +14,22 @@ describe('auth controller', function () {
   });
 
   context('if user and contest are created,', function () {
-    let userInfo, user, contestInfo, contest;
+    let userInfo, contestInfo;
 
     beforeEach(async function () {
-      userInfo = {
-        strId: 'test01',
-        password: 'q1w2e3r4!',
-        groupName: '아주대학교'
-      };
+      userInfo = Object.assign({}, global.defaultUserInfo);
+      contestInfo = Object.assign({}, global.defaultContestInfo);
 
-      contestInfo = {
-        name: 'shake17',
-        start: global.getContestTime(-2, false),
-        end: global.getContestTime(3, false)
-      };
-
-
-      user = await db.User.create(userInfo);
-      contest = await db.Contest.create(contestInfo);
-
-      await user.setContest(contest);
-
-      expect(user).to.have.property('strId', userInfo.strId);
+      await global.prepareUserAndContest(agent);
     });
 
     context('when user tries to log in,', function () {
       it('should save user session and return user info.', async function () {
-        const resp = await agent
-          .post(urls.login(contestInfo.name))
-          .send({userId: userInfo.strId, userPwd: userInfo.password})
-          .expect(200);
+        const resp = await global.loginHelper(agent, {
+          userId: userInfo.strId,
+          userPwd: userInfo.password,
+          contestName: contestInfo.name
+        }, 200);
 
         const {body: {result: {user: newUser}}} = resp;
 
@@ -57,10 +43,53 @@ describe('auth controller', function () {
 
     context('when user tries to log in with invalid contest name,', function () {
       it('should return error message.', async function () {
-        const resp = await agent
-          .post(urls.login(contestInfo.name + '2'))
-          .send({userId: userInfo.strId, userPwd: userInfo.password})
-          .expect(401);
+        const resp = await global.loginHelper(agent, {
+          userId: userInfo.strId,
+          userPwd: userInfo.password,
+          contestName: contestInfo.name + '2'
+        }, 401);
+
+        expect(resp.body.message).to.equal('존재하지 않는 대회입니다.');
+      });
+    });
+
+    context('when user tries to log in contest with invalid user name,', function () {
+      it('should return error message.', async function () {
+        const resp = await global.loginHelper(agent, {
+          userId: userInfo.strId + '2',
+          userPwd: userInfo.password,
+          contestName: contestInfo.name
+        }, 401);
+
+        expect(resp.body.message).to.equal('아이디 혹은 비밀번호가 잘못되었습니다.');
+      });
+    });
+
+    context('when user tries to log in contest with invalid user password,', function () {
+      it('should return error message.', async function () {
+        const resp = await global.loginHelper(agent, {
+          userId: userInfo.strId,
+          userPwd: userInfo.password + '2',
+          contestName: contestInfo.name
+        }, 401);
+
+        expect(resp.body.message).to.equal('아이디 혹은 비밀번호가 잘못되었습니다.');
+      });
+    });
+
+    context('when user tries to log out,', function () {
+      it('should log out the user and remove the session.', async function () {
+        await global.loginHelper(agent, {
+          userId: userInfo.strId,
+          userPwd: userInfo.password,
+          contestName: contestInfo.name
+        });
+
+        await global.logoutHelper(agent, {contestName: contestInfo.name});
+
+        const resp = await global.checkLoggedInHelper(agent, {contestName: contestInfo.name});
+
+        expect(resp.body.message).to.equal('로그인이 필요합니다.');
       });
     })
   });

@@ -18,8 +18,8 @@ describe('With contest controller', function () {
 
     beforeEach(async function () {
       contestListInfo = [
-        {name: 'shake17', start: global.getContestTime(-2, false), end: global.getContestTime(3, false)},
-        {name: 'shake17prac', start: global.getContestTime(3, false), end: global.getContestTime(8, false)}
+        {name: 'shake17', start: getContestTime(-2, false), end: getContestTime(3, false)},
+        {name: 'shake17prac', start: getContestTime(3, false), end: getContestTime(8, false)}
       ];
 
       contestList = await db.Contest.bulkCreate(contestListInfo);
@@ -30,7 +30,7 @@ describe('With contest controller', function () {
     context('when user requests contest list,', function () {
       it('should return contest list.', async function () {
         const resp = await agent
-          .get(urls.contest)
+          .get(global.urls.contest)
           .expect(200);
 
         const {body: {result: {contest_list: newContestList}}} = resp;
@@ -44,7 +44,7 @@ describe('With contest controller', function () {
         const contestName = contestListInfo[0].name;
 
         const resp = await agent
-          .get(`${urls.contest}/byName/${contestName}`)
+          .get(`${global.urls.contest}/byName/${contestName}`)
           .expect(200);
 
         const {body: {result: {contest}}} = resp;
@@ -61,7 +61,7 @@ describe('With contest controller', function () {
         const contestName = 'nosuchcontestname';
 
         const resp = await agent
-          .get(`${urls.contest}/byName/${contestName}`)
+          .get(`${global.urls.contest}/byName/${contestName}`)
           .expect(200);
 
         const {body: {result: {contest}}} = resp;

@@ -9,6 +9,7 @@ import ContestList from './component/ContestList/ContestList';
 
 class App extends Component {
   render() {
+
     return (
       <BrowserRouter>
         <div className="App">

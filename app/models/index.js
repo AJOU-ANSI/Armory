@@ -1,7 +1,6 @@
 var fs = require('fs'),
   path = require('path'),
   Sequelize = require('sequelize'),
-  config = require('../../config/config'),
   db = {};
 
 var sequelize = new Sequelize(process.env.JAWSDB_URL || config.db);

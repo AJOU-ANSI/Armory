@@ -1,10 +1,17 @@
 const
-  config = require('../../config/config'),
   passportSocketIo = require('passport.socketio');
 
 let io;
 
-exports.init = function (memoryStore, server) {
+const obj = {};
+
+module.exports = obj;
+
+function Log (msg) {
+  console.info(`[websocket] ${msg}`);
+}
+
+obj.init = function (memoryStore, server) {
   io = require('socket.io')(server);
 
   io.use(passportSocketIo.authorize({
@@ -16,24 +23,24 @@ exports.init = function (memoryStore, server) {
     const strId = socket.request.user.strId;
     const contestId = socket.request.user.ContestId;
 
-    console.log(`[user] ${strId}이 접속!`);
+    Log(`${strId}이 접속!`);
 
     socket.join(contestId, function () {
-      console.log(`[user] ${strId}가 ${contestId}번 방 접속!` )
+      Log(`${strId}가 ${contestId}번 방 접속!` )
     });
 
     socket.on('logout', function () {
-      console.log(`[user] ${strId}이 로그아웃!`);
+      Log(`${strId}이 로그아웃!`);
 
       socket.disconnect();
     });
 
     socket.on('disconnect', function () {
-      console.log(`[user] ${strId}가 접속종료!`);
+      Log(`${strId}가 접속종료!`);
     });
 
     socket.on('greeting', function (greeting) {
-      console.log(greeting);
+      Log(greeting);
     });
 
     setInterval(function () {
@@ -46,10 +53,10 @@ exports.init = function (memoryStore, server) {
   });
 };
 
-exports.sendNotification = function (message) {
+obj.sendNotification = function (message) {
   io.sockets.emit('notification', message);
 };
 
-exports.closeServer = function () {
+obj.closeServer = function () {
   io.close();
 };

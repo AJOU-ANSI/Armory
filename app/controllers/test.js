@@ -7,26 +7,23 @@ module.exports = function (app) {
   app.use('/api/test', router);
 };
 
+function getContestDate(offset) {
+  const date = new Date();
+
+  date.setHours(date.getHours() + offset);
+  date.setMinutes(0);
+  date.setSeconds(0);
+
+  return date;
+}
+
 router.get('/init_db', async function (req, res) {
-  const start = new Date(), end = new Date();
-  start.setHours(start.getHours()-2);
-  start.setMinutes(0);
-  start.setSeconds(0);
 
-  end.setHours(end.getHours()+3);
-  end.setMinutes(0);
-  end.setSeconds(0);
-
+  /** ------------------ contest 1 ----------------- **/
   const [contest, created] = await db.Contest.findOrCreate({where: {name: 'shake17'}, defaults: {
     name: 'shake17',
-    start,
-    end
-  }});
-
-  await db.Contest.findOrCreate({where: {name: 'shake17test'}, defaults: {
-    name: 'shake17test',
-    start,
-    end
+    start: getContestDate(-2),
+    end: getContestDate(3)
   }});
 
   const users = [];
@@ -55,6 +52,30 @@ router.get('/init_db', async function (req, res) {
     }
 
     await admin.setContest(contest);
+  }
+
+  /** ------------------- contest 2 ------------------- **/
+  const [contest2, created2] = await db.Contest.findOrCreate({where: {name: 'shake16'}, defaults: {
+    name: 'shake16not',
+    start: getContestDate(10),
+    end: getContestDate(15)
+  }});
+
+  const [admin2] = await db.User.findOrCreate({where: {strId: 'admin02'}, defaults: {
+    strId: 'admin02',
+    password: 'q1w2e3r4!',
+    isAdmin: true
+  }});
+
+
+  const [user2] = await db.User.findOrCreate({where: {'test20'}, defaults: {
+    strId: 'test20',
+    password: 'q1w2e3r4!',
+  }});
+
+  if (created2) {
+    await user2.setContent(contest2);
+    await admin2.setContest(contest2);
   }
 
   res.send({});

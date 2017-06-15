@@ -66,8 +66,6 @@ obj.sendProblemListMw = (req, res) => {
 obj.sendProblemMw = (req, res) => {
   const {problem} = req;
 
-  console.log(problem);
-
   res.send({
     result: {problem}
   });

@@ -64,7 +64,7 @@ module.exports = function(app, config, {memoryStore}) {
       db.Contest.findOne({where: {name: contestName}})
         .then(contest => {
           if (contest === null) {
-            throw new Error('No such contest');
+            throw new Error('존재하지 않는 대회입니다.');
           }
 
           return contest.getUsers({where: {strId: userId}});
@@ -73,13 +73,13 @@ module.exports = function(app, config, {memoryStore}) {
           const user = users[0];
 
           if (!user) {
-            throw new Error('No such user');
+            throw new Error('아이디 혹은 비밀번호가 잘못되었습니다.');
           }
 
           const valid = user.validatePassword(userPwd);
 
           if (!valid) {
-            throw new Error('No valid password');
+            throw new Error('아이디 혹은 비밀번호가 잘못되었습니다.');
           }
 
           return done(null, user);

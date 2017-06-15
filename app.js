@@ -1,5 +1,6 @@
-var express = require('express'),
-  config = require('./config/config'),
+global.config = require('./config/config');
+
+const express = require('express'),
   db = require('./app/models'),
   websocket = require('./app/websocket');
 
@@ -8,9 +9,9 @@ const session = require('express-session');
 
 const memoryStore = new session.MemoryStore();
 
-require('./config/express')(app, config, {memoryStore});
-module.exports = app;
 app.memoryStore = memoryStore;
+
+module.exports = require('./config/express')(app, global.config, {memoryStore});
 
 db.sequelize
   .sync()

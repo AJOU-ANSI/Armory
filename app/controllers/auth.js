@@ -1,21 +1,9 @@
 const express = require('express'),
-  router = express.Router({mergeParams: true});
-  authMws = require('../middlewares/auth');
+  router = express.Router({mergeParams: true}),
+  authMws = require('../middlewares/auth'),
   userMws = require('../middlewares/user');
 
-const autoLogin = true;
-
-// const {
-//   getIpAddressMiddleware,
-//   checkRecaptchaMiddleware,
-//   checkLoggedInMiddleware,
-//   loginMiddleware
-// } = authMiddleware;
-//
-// const {
-//   saveUserFromBodyMiddleware,
-//   sendUserFromReqMiddleware
-// } = userMiddleware;
+// const autoLogin = true;
 
 module.exports = function (app) {
   app.use('/auth/:contestName', router);
@@ -27,6 +15,8 @@ router.post('/login',
 );
 
 router.post('/logout',
+  authMws.checkLoggedInMw,
+  userMws.checkUserWithContestNameParamMw,
   (req, res) => {
     req.logout();
     res.send({});
@@ -77,6 +67,7 @@ router.post('/logout',
 // }
 // else {
   router.get('/loggedin',
+    authMws.checkLoggedInMw,
     userMws.checkUserWithContestNameParamMw,
     userMws.sendUserFromReqMw
   );

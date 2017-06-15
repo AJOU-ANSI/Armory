@@ -1,8 +1,7 @@
 const
-  db = require('../../app/models'),
+  // db = require('../../app/models'),
   request = require('supertest'),
   websocket = require('../../app/websocket'),
-  config = require('../../config/config');
   io = require('socket.io-client');
 
 describe('Notification websocket', function () {
@@ -28,61 +27,19 @@ describe('Notification websocket', function () {
     let userInfo, contestInfo;
 
     beforeEach(async function () {
-      userInfo = {
-        strId: 'test01',
-        password: 'q1w2e3r4!'
-      };
+      userInfo = Object.assign({}, global.defaultUserInfo);
+      contestInfo = Object.assign({}, global.defaultContestInfo);
 
-      contestInfo = {
-        name: 'shake17',
-        start: global.getContestTime(-2, false),
-        end: global.getContestTime(3, false)
-      };
-
-
-      let user = await db.User.create(userInfo);
-      let contest = await db.Contest.create(contestInfo);
-
-      await user.setContest(contest);
-
-      expect(user).to.have.property('strId', userInfo.strId);
-    });
-
-    it('should connect websocket if user is logined.', async function () {
-      let resp = await agent
-        .post(global.urls.login(contestInfo.name))
-        .send({
-          userId: userInfo.strId,
-          userPwd: userInfo.password
-        })
-        .expect(200);
-
-      const socket = io('http://localhost:' + config.port, {
-        transportOptions: {
-          polling: {
-            extraHeaders: {
-              'Cookie': resp.headers['set-cookie']
-            }
-          }
-        }
-      });
-
-      return new Promise(resolve => {
-        socket.on('connect', function () {
-          resolve();
-        });
-      });
+      await global.prepareUserAndContest(agent);
     });
 
     context('if send a notification,', function () {
       it('should receive message in client listener.', async function () {
-        let resp = await agent
-          .post(global.urls.login(contestInfo.name))
-          .send({
-            userId: userInfo.strId,
-            userPwd: userInfo.password
-          })
-          .expect(200);
+        let resp = await global.loginHelper(agent, {
+          contestName: contestInfo.name,
+          userId: userInfo.strId,
+          userPwd: userInfo.password
+        });
 
         const socket = io('http://localhost:' + config.port, {
           transportOptions: {
