@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './ProblemForm.css';
 
-import desc from './desc';
 import ProblemPreview from './ProblemPreview';
 
 export class ProblemForm extends Component {
@@ -122,7 +121,7 @@ export class ProblemForm extends Component {
 
             <div className="form-group">
               <label> 문제 설명 </label>
-              <textarea className="form-control" defaultValue={desc} rows={10} ref="problemDesc" />
+              <textarea className="form-control" defaultValue={problem.description} rows={10} ref="problemDesc" />
               <p className="form-text text-muted">
                 마크다운 에디터로 작성한 후 내용을 복붙해주세요.
               </p>

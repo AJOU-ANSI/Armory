@@ -67,8 +67,7 @@ router.get('/init_db', async function (req, res) {
     isAdmin: true
   }});
 
-
-  const [user2] = await db.User.findOrCreate({where: {'test20'}, defaults: {
+  const [user2] = await db.User.findOrCreate({where: {strId: 'test20'}, defaults: {
     strId: 'test20',
     password: 'q1w2e3r4!',
   }});
