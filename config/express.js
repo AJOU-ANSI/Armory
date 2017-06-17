@@ -61,7 +61,7 @@ module.exports = function(app, config, {memoryStore}) {
     function(req, userId, userPwd, done) {
       const {contestName} = req.params;
 
-      db.Contest.findOne({where: {name: contestName}})
+      return db.Contest.findOne({where: {name: contestName}})
         .then(contest => {
           if (contest === null) {
             throw new Error('존재하지 않는 대회입니다.');

@@ -40,7 +40,7 @@ obj.init = function (memoryStore, server) {
     });
 
     socket.on('greeting', function (greeting) {
-      Log(greeting);
+      // Log(greeting);
     });
 
     setInterval(function () {

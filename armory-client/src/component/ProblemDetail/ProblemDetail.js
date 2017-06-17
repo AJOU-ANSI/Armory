@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
-import classnames from 'classnames';
 
 import './ProblemDetail.css';
 
-import problemA from '../../data/problem_detail_a.json';
-import problemB from '../../data/problem_detail_b.json';
-import problemC from '../../data/problem_detail_c.json';
 import {fetchGetProblemByCode} from '../../actions/problem';
 import {connect} from 'react-redux';
 import ProblemView from './ProblemView';

@@ -1,16 +1,24 @@
 import React, {Component} from 'react';
 
 import './ProblemTable.css';
+import {ProblemTableRow} from './ProblemTableRow';
 
 export class ProblemTable extends Component {
+  handleSelectTarget = (problem) => {
+    this.props.onSelectTarget(problem);
+  }
+
   render () {
-    const {problemList} = this.props;
+    const {problemList, target, contestName} = this.props;
 
     return (
       <div>
+        <h3> 문제 목록 </h3>
+
         <table className="table">
           <thead>
             <tr>
+              <th> 선택 </th>
               <th> 번호 </th>
               <th> 제목 </th>
               <th> 메모리 제한 </th>
@@ -23,12 +31,13 @@ export class ProblemTable extends Component {
           <tbody>
           {
             problemList && problemList.map(problem => (
-              <tr key={problem.id}>
-                <th> {problem.code} </th>
-                <th> {problem.title} </th>
-                <th> {problem.ProblemInfo.memory_limit}MB </th>
-                <th> {problem.ProblemInfo.time_limit}초 </th>
-              </tr>
+              <ProblemTableRow
+                dataFormVersion={this.props.dataFormVersion}
+                onSelectTarget={this.handleSelectTarget}
+                key={problem.id}
+                problem={problem}
+                target={target}
+                contestName={contestName} />
             ))
           }
 

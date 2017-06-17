@@ -9,7 +9,7 @@ export const logout = createAction('LOGOUT');
 
 // const signupUrl = '/auth/signup';
 const loginUrl = (contestName) => (`/auth/${contestName}/login`);
-const loggedInUrl = (contestName) => (`/auth/${contestName}/loggedIn`);
+const loggedInUrl = (contestName) => (`/auth/${contestName}/loggedin`);
 const logoutUrl = (contestName) => (`/auth/${contestName}/logout`);
 
 // export const fetchSignup = (data: SignupUser) => {

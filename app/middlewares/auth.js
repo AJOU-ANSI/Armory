@@ -12,11 +12,11 @@ obj.checkLoggedInMw = function (req, res, next) {
   else {
     let err = new UnauthorizedError('로그인이 필요합니다.');
 
-    const {contestName} = req.params;
+    // const {contestName} = req.params;
 
-    if( req.baseUrl + req.path === `/auth/${contestName}/loggedin` ) {
-      err.status = 200;
-    }
+    // if( req.baseUrl + req.path === `/auth/${contestName}/loggedin` ) {
+    //   err.status = 200;
+    // }
 
     return next(err);
   }

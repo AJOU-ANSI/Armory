@@ -4,7 +4,9 @@ const obj = {
 
 module.exports = obj;
 
-obj.selectAllContestsMw = async (req, res, next) => {
+const aWrap = fn => (...args) => fn(...args).catch(args[args.length - 1])
+
+obj.selectAllContestsMw = aWrap(async (req, res, next) => {
   let e;
 
   try {
@@ -16,9 +18,9 @@ obj.selectAllContestsMw = async (req, res, next) => {
   }
 
   return next(e);
-};
+});
 
-obj.selectContestByNameParamMw = async (req, res, next) => {
+obj.selectContestByNameParamMw = aWrap(async (req, res, next) => {
   let e;
 
   try {
@@ -30,25 +32,25 @@ obj.selectContestByNameParamMw = async (req, res, next) => {
   }
 
   return next(e);
-};
+});
 
-obj.sendContestsMw = async (req, res) => {
-  return res.send({
+obj.sendContestsMw = (req, res) => {
+  res.send({
     result: {
       contest_list: req.contestList
     }
   });
 };
 
-obj.sendContestMw = async (req, res) => {
-  return res.send({
+obj.sendContestMw = (req, res) => {
+  res.send({
     result: {
       contest: req.contest
     }
   })
 };
 
-obj.checkContestOpenedOrAdminMw = async (req, res, next) => {
+obj.checkContestOpenedOrAdminMw = aWrap(async (req, res, next) => {
   const {contest, user} = req;
   const now = (new Date()).getTime();
 
@@ -69,4 +71,4 @@ obj.checkContestOpenedOrAdminMw = async (req, res, next) => {
   }
 
   return next(e);
-}
+});

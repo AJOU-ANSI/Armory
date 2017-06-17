@@ -67,3 +67,12 @@ body {
 
 .b-0 {
   border: 0; }
+
+.table-custom th, .table-custom td {
+  padding: 20px; }
+
+.table-custom th {
+  border-bottom: 1px solid #eee; }
+
+.table-custom td {
+  vertical-align: top; }

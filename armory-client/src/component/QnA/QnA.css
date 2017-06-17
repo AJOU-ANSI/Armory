@@ -1,0 +1,12 @@
+.QnA .table-qna .question, .QnA .table-qna .answer {
+  max-width: 350px; }
+
+.QnA .table-qna .code, .QnA .table-qna .index {
+  min-width: 80px; }
+
+.QnA .table-announcement .index {
+  min-width: 80px; }
+
+.QnA th {
+  font-weight: 500;
+  font-size: 14px; }

@@ -27,7 +27,7 @@ export default handleActions({
   },
   [loggedIn]: function(state, action) {
     if( action.error ) {
-      return state;
+      return {};
     }
 
     if( !action.payload ) {

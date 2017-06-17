@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './ProblemForm.css';
 
-import ProblemPreview from './ProblemPreview';
+import ProblemPreview from '../preview/ProblemPreview';
 
 export class ProblemForm extends Component {
   constructor(props) {

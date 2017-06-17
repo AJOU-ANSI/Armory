@@ -110,3 +110,17 @@ body {
 .b-0 {
   border: 0;
 }
+
+.table-custom {
+  th, td {
+    padding: 20px;
+  }
+
+  th {
+    border-bottom: 1px solid #eee;
+  }
+
+  td {
+    vertical-align: top;
+  }
+}

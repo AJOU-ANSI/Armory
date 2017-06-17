@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 import Home from '../Home/Home';
 import ProblemList from '../ProblemList/ProblemList';
 import ProblemDetail from '../ProblemDetail/ProblemDetail';
+import QnA from '../QnA/QnA';
+import AdminHome from '../AdminHome/AdminHome';
 
 import Footer from '../../include/Footer/Footer';
 import Header from '../../include/Header/Header';
@@ -17,7 +19,6 @@ import './Contest.css';
 import {fetchGetContestByName} from '../../actions/contest';
 import {fetchLoggedIn, fetchLogin, fetchLogout} from '../../actions/auth';
 import {fetchConnectWebSocket} from '../../actions/socket';
-import AdminHome from '../AdminHome/AdminHome';
 
 export class Contest extends Component {
   constructor(props) {
@@ -26,8 +27,6 @@ export class Contest extends Component {
     this.state = {
       loginModal: false
     };
-
-    this.Socket = null;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -86,7 +85,7 @@ export class Contest extends Component {
   }
 
   render() {
-    const {match: {url, path, params: {contestName}}, contestMap: {[contestName]: contest}} = this.props;
+    const {match: {path, params: {contestName}}, contestMap: {[contestName]: contest}} = this.props;
     const {loginModal} = this.state;
 
     if (!contest) {
@@ -112,9 +111,10 @@ export class Contest extends Component {
             <Route exact path={`${path}`} render={() => <Home contest={contest} />} />
             <Route exact path={`${path}/problems`} component={ProblemList} />
             <Route path={`${path}/problems/:problemCode`} component={ProblemDetail} />
+            <Route path={`${path}/qna`} component={QnA} />
 
             <Route path={`${path}/admin`} component={AdminHome} />
-            
+
             <Route component={NotFound} />
           </Switch>
         </div>

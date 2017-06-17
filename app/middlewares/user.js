@@ -6,6 +6,8 @@ const obj = {
   // userSvc: requireFrom('services/user')
 };
 
+const aWrap = fn => (...args) => fn(...args).catch(args[args.length - 1])
+
 // obj.saveUserFromBodyMiddleware = async function (req, res, next) {
 //   const {email, pwd, pwdCfm, name} = req.body;
 //
@@ -47,7 +49,7 @@ obj.sendUserFromReqMw = function (req, res) {
   });
 };
 
-obj.checkUserWithContestNameParamMw = async (req, res, next) => {
+obj.checkUserWithContestNameParamMw = aWrap(async (req, res, next) => {
   const {contestName} = req.params;
   let e;
 
@@ -63,6 +65,6 @@ obj.checkUserWithContestNameParamMw = async (req, res, next) => {
   }
 
   return next(e);
-}
+});
 
 module.exports = obj;

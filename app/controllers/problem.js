@@ -1,9 +1,19 @@
 const
+  path = require('path'),
+  fs = require('fs'),
   express = require('express'),
   router = express.Router({mergeParams: true}),
   authMws = require('../middlewares/auth'),
   problemMws = require('../middlewares/problem'),
-  contestMws = require('../middlewares/contest');
+  contestMws = require('../middlewares/contest'),
+  multer = require('multer'),
+  unzip = require('extract-zip'),
+  rimraf = require('rimraf'),
+  ncp = require('ncp').ncp,
+  glob = require('glob');
+
+const filePath = path.join(__dirname, '../../');
+const upload = multer({dest: path.resolve(filePath, 'temp')});
 
 module.exports = (app) => {
   app.use('/api/:contestName/problems', router);
@@ -23,6 +33,72 @@ router.get('/:problemCode',
   contestMws.checkContestOpenedOrAdminMw,
   problemMws.selectProblemByContestAndProblemCodeParamMw,
   problemMws.sendProblemMw
+);
+
+router.get('/:problemCode/data',
+  authMws.checkAdminMw,
+  (req, res, next) => {
+    const {contestName, problemCode} = req.params;
+
+    const dataPath = path.resolve(filePath, 'data', contestName, problemCode);
+
+    let problemData = null;
+
+    if (fs.existsSync(dataPath)) {
+      const dataFiles = glob.sync(path.resolve(dataPath, '*'));
+
+      problemData = dataFiles.map(dataFile => path.basename(dataFile));
+    }
+
+    req.problem_data = problemData;
+
+    next();
+  },
+  problemMws.sendProblemDataMw
+);
+
+router.post('/:problemCode/data',
+  authMws.checkAdminMw,
+  upload.single('data'),
+  (req, res) => {
+    const {contestName, problemCode} = req.params;
+    const {file} = req;
+
+    const contestPath = path.resolve(filePath, 'data', contestName);
+
+    if (!fs.existsSync(contestPath)){
+      fs.mkdirSync(contestPath);
+    }
+
+    const dataPath = path.resolve(contestPath, problemCode);
+
+    rimraf.sync(dataPath);
+    fs.mkdirSync(dataPath);
+
+    function getDirectories (srcpath) {
+      return fs.readdirSync(srcpath)
+        .filter(file => fs.lstatSync(path.join(srcpath, file)).isDirectory())
+    }
+
+    unzip(file.path, {dir: dataPath}, function (err) {
+      const unzippedPath = path.resolve(dataPath, getDirectories(dataPath)[0]);
+
+      if (err) {
+        throw err;
+      }
+
+      ncp(unzippedPath, dataPath, function (err) {
+        if (err) {
+          throw err;
+        }
+
+        rimraf.sync(unzippedPath);
+        rimraf.sync(file.path);
+
+        res.send({message: 'ok'});
+      });
+    });
+  }
 );
 
 router.post('/',

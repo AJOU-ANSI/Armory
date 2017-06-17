@@ -27,4 +27,4 @@ obj.selectProblemByContestAndCode = async (contest, problemCode) => {
   const contestList = await contest.getProblems({where: {code: problemCode}, include: obj.db.ProblemInfo});
 
   return contestList[0];
-}
+};

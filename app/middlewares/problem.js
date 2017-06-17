@@ -4,7 +4,9 @@ const obj = {
 
 module.exports = obj;
 
-obj.selectProblemListByContestMw = async (req, res, next) => {
+const aWrap = fn => (...args) => fn(...args).catch(args[args.length - 1])
+
+obj.selectProblemListByContestMw = aWrap(async (req, res, next) => {
   const {contest} = req;
 
   let e;
@@ -17,9 +19,9 @@ obj.selectProblemListByContestMw = async (req, res, next) => {
   }
 
   return next(e);
-};
+});
 
-obj.selectProblemByContestAndProblemCodeParamMw = async (req, res, next) => {
+obj.selectProblemByContestAndProblemCodeParamMw = aWrap(async (req, res, next) => {
   const {contest, params: {problemCode}} = req;
 
   let e;
@@ -32,9 +34,9 @@ obj.selectProblemByContestAndProblemCodeParamMw = async (req, res, next) => {
   }
 
   return next(e);
-};
+});
 
-obj.saveProblemFromBodyWithContestMw = async (req, res, next) => {
+obj.saveProblemFromBodyWithContestMw = aWrap(async (req, res, next) => {
   const {contest, body: problemInfo} = req;
 
   let e;
@@ -51,7 +53,7 @@ obj.saveProblemFromBodyWithContestMw = async (req, res, next) => {
   }
 
   return next(e);
-};
+});
 
 obj.sendProblemListMw = (req, res) => {
   const {problem_list} = req;
@@ -68,5 +70,15 @@ obj.sendProblemMw = (req, res) => {
 
   res.send({
     result: {problem}
+  });
+};
+
+obj.sendProblemDataMw = (req, res) => {
+  const {problem_data} = req;
+
+  res.send({
+    result: {
+      problem_data
+    }
   });
 };
