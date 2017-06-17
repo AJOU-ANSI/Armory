@@ -21,9 +21,9 @@ router.get('/init_db', async function (req, res) {
 
   /** ------------------ contest 1 ----------------- **/
   const [contest, created] = await db.Contest.findOrCreate({where: {name: 'shake17'}, defaults: {
-    name: 'shake17',
-    start: getContestDate(-2),
-    end: getContestDate(3)
+    name: 'shake16closed',
+    start: getContestDate(-7),
+    end: getContestDate(-2)
   }});
 
   const users = [];
@@ -56,7 +56,7 @@ router.get('/init_db', async function (req, res) {
 
   /** ------------------- contest 2 ------------------- **/
   const [contest2, created2] = await db.Contest.findOrCreate({where: {name: 'shake16'}, defaults: {
-    name: 'shake16not',
+    name: 'shake16',
     start: getContestDate(10),
     end: getContestDate(15)
   }});
@@ -73,7 +73,7 @@ router.get('/init_db', async function (req, res) {
   }});
 
   if (created2) {
-    await user2.setContent(contest2);
+    await user2.setContest(contest2);
     await admin2.setContest(contest2);
   }
 
