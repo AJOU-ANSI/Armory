@@ -31,7 +31,7 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
     code: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     result: {
