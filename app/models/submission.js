@@ -49,7 +49,7 @@ module.exports = function (sequelize, DataTypes) {
     time_usage: {
       type: DataTypes.INTEGER
     },
-    compile_message: {
+    result_message: {
       type: DataTypes.TEXT
     }
 
