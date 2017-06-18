@@ -77,5 +77,29 @@ router.get('/init_db', async function (req, res) {
     await admin2.setContest(contest2);
   }
 
+  /** --------------- contest 3 --------------------- **/
+
+  const [contest3, created3] = await db.Contest.findOrCreate({where: {name: 'shake16open'}, defaults: {
+    name: 'shake16open',
+    start: getContestDate(-2),
+    end: getContestDate(3)
+  }});
+
+  const [admin3] = await db.User.findOrCreate({where: {strId: 'admin03'}, defaults: {
+    strId: 'admin03',
+    password: 'q1w2e3r4!',
+    isAdmin: true
+  }});
+
+  const [user3] = await db.User.findOrCreate({where: {strId: 'test30'}, defaults: {
+    strId: 'test30',
+    password: 'q1w2e3r4!',
+  }});
+
+  if (created3) {
+    await user3.setContest(contest3);
+    await admin3.setContest(contest3);
+  }
+
   res.send({});
 });

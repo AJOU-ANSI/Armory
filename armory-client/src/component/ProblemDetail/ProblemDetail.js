@@ -1,17 +1,79 @@
 import React, {Component} from 'react';
+import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+import {connect} from 'react-redux';
+import CodeMirror from 'react-codemirror';
 
+import 'codemirror/mode/clike/clike';
 import './ProblemDetail.css';
 
 import {fetchGetProblemByCode} from '../../actions/problem';
-import {connect} from 'react-redux';
 import ProblemView from './ProblemView';
 import ProblemInfoView from './ProblemInfoView';
 
 export class ProblemDetail extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      submitOpen: false,
+      code: '// Code',
+      language: 'text/x-csrc'
+    };
+  }
+
   componentWillMount() {
     const {match: {params: {contestName, problemCode}}, fetchGetProblemByCode} = this.props;
 
     fetchGetProblemByCode(contestName, problemCode);
+  }
+
+  handleChangeCode = (newCode) => {
+    this.setState({
+      code: newCode
+    });
+  }
+
+  handleChangeLanguage = (event) => {
+    const newLanguage = event.target.value;
+
+    this.setState({
+      language: newLanguage
+    });
+  }
+
+  handleClickSubmit = () => {
+    this.setState({
+      submitOpen: true
+    });
+  }
+
+  handleSave = () => {
+    const {code, language} = this.state;
+    const {match: {params: {problemCode, contestName}}} = this.props;
+
+    fetch(`/api/${contestName}/submissions/${problemCode}`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({language, code}),
+      credentials: 'include'
+    })
+      .then(resp => {
+        if (!resp.ok) {
+          throw new Error('Not ok.');
+        }
+      })
+      .then(() => {
+        this.toggleSubmit();
+      });
+  }
+
+  toggleSubmit = () => {
+    this.setState({
+      submitOpen: !this.state.submitOpen
+    });
   }
 
   render() {
@@ -28,6 +90,39 @@ export class ProblemDetail extends Component {
 
     return (
       <div className="ProblemDetail page page-grey">
+        <Modal isOpen={this.state.submitOpen} toggle={this.toggleSubmit} size="lg">
+          <ModalHeader toggle={this.toggleSubmit}> 문제 제출 </ModalHeader>
+
+          <ModalBody>
+            <form>
+              <div className="form-group">
+                <label> 언어 </label>
+                <select className="form-control" onChange={this.handleChangeLanguage} value={this.state.language}>
+                  <option value={'text/x-csrc'}> C </option>
+                  <option value={'text/x-c++src'}> C++ </option>
+                  <option value={'text/x-java'}> Java </option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label> 코드 </label>
+
+                <CodeMirror
+                  value={this.state.code}
+                  onChange={this.handleChangeCode}
+                  options={{lineNumbers: true, mode: 'text/x-java', theme: 'monokai'}}
+                />
+              </div>
+            </form>
+          </ModalBody>
+
+          <ModalFooter>
+            <button className="btn btn-success" onClick={this.handleSave}>
+              제출
+            </button>
+          </ModalFooter>
+        </Modal>
+
         <div className="page-title">
           <div className="container">
             <div className="row">
@@ -75,7 +170,7 @@ export class ProblemDetail extends Component {
                 */ }
 
                 <div className="mb-3">
-                  <button className="btn btn-custom btn-success w-100 py-3">
+                  <button className="btn btn-custom btn-success w-100 py-3" onClick={this.handleClickSubmit}>
                     제출하기
                   </button>
 

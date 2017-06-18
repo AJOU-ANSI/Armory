@@ -22,10 +22,9 @@ export class AdminProblem extends Component {
 
     fetchGetProblemList(contestName)
       .then(({payload: problemList}) => {
-
-      this.handleSelectTarget(problemList[0]);
-      this.handleClickData();
-    })
+      // this.handleSelectTarget(problemList[0]);
+      // this.handleClickData();
+      })
   }
 
   handleClickAdd = () => {
