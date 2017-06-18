@@ -26,7 +26,7 @@ router.post('/logout',
 if (process.env.NODE_ENV === 'development') {
   router.get('/loggedin',
     (req, res, next) => {
-      req.body = {userId: 'admin01', userPwd: 'q1w2e3r4!'};
+      req.body = {userId: 'admin03', userPwd: 'q1w2e3r4!'};
 
       next();
     },

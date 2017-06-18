@@ -37,11 +37,11 @@ router.get('/:problemCode',
 
 router.get('/:problemCode/data',
   authMws.checkAdminMw,
+  contestMws.selectContestByNameParamMw,
+  problemMws.selectProblemByContestAndProblemCodeParamMw,
   (req, res, next) => {
-    const {contestName, problemCode} = req.params;
-
-    const dataPath = path.resolve(filePath, 'data', contestName, problemCode);
-
+    const {problem} = req;
+    const dataPath = path.resolve(filePath, 'data', problem.id+'');
     let problemData = null;
 
     if (fs.existsSync(dataPath)) {
@@ -59,18 +59,20 @@ router.get('/:problemCode/data',
 
 router.post('/:problemCode/data',
   authMws.checkAdminMw,
+  contestMws.selectContestByNameParamMw,
+  problemMws.selectProblemByContestAndProblemCodeParamMw,
   upload.single('data'),
   (req, res) => {
-    const {contestName, problemCode} = req.params;
-    const {file} = req;
+    // const {contestName, problemCode} = req.params;
+    const {file, problem} = req;
 
-    const contestPath = path.resolve(filePath, 'data', contestName);
+    // const contestPath = path.resolve(filePath, 'data', contestName);
+    //
+    // if (!fs.existsSync(contestPath)){
+    //   fs.mkdirSync(contestPath);
+    // }
 
-    if (!fs.existsSync(contestPath)){
-      fs.mkdirSync(contestPath);
-    }
-
-    const dataPath = path.resolve(contestPath, problemCode);
+    const dataPath = path.resolve(filePath, 'data', problem.id+'');
 
     rimraf.sync(dataPath);
     fs.mkdirSync(dataPath);
