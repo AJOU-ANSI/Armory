@@ -1,3 +1,24 @@
+/**
+ *
+ enum JudgeResult {
+    // Waiting
+    kPending,
+    kPendingRejudge,
+    // Judging
+    kCompiling,
+    kRunning,
+    // Judge results
+    kAccepted,
+    kPresentationError,
+    kWrongAnswer,
+    kTimeLimitExceed,
+    kMemoryLimitExceed,
+    kOutputLimitExceed,
+    kRuntimeError,
+    kCompileError,
+    kCompileSuccess
+};
+ */
 module.exports = function (sequelize, DataTypes) {
 
   const Submission = sequelize.define('Submission', {
@@ -12,7 +33,26 @@ module.exports = function (sequelize, DataTypes) {
     code: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    result: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+      validate: {
+        max: 12,
+        min: 0
+      }
+    },
+    memory_usage: {
+      type: DataTypes.INTEGER
+    },
+    time_usage: {
+      type: DataTypes.INTEGER
+    },
+    compile_message: {
+      type: DataTypes.TEXT
     }
+
   }, {
     classMethods: {
       associate: function (models) {
