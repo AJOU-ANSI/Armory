@@ -26,11 +26,11 @@ export class QnA extends Component {
               <div className="card paper">
                 <table className="table-custom table-announcement">
                   <thead>
-                  <tr>
-                    <th>번호</th>
-                    <th>공지시간</th>
-                    <th>내용</th>
-                  </tr>
+                    <tr>
+                      <th>번호</th>
+                      <th>공지시간</th>
+                      <th>내용</th>
+                    </tr>
                   </thead>
 
                   <tbody>

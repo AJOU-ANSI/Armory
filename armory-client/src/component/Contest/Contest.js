@@ -3,9 +3,12 @@ import {Route, Switch, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import Home from '../Home/Home';
+
 import ProblemList from '../ProblemList/ProblemList';
 import ProblemDetail from '../ProblemDetail/ProblemDetail';
 import QnA from '../QnA/QnA';
+import Status from '../Status/Status';
+
 import AdminHome from '../AdminHome/AdminHome';
 
 import Footer from '../../include/Footer/Footer';
@@ -111,7 +114,9 @@ export class Contest extends Component {
             <Route exact path={`${path}`} render={() => <Home contest={contest} />} />
             <Route exact path={`${path}/problems`} component={ProblemList} />
             <Route path={`${path}/problems/:problemCode`} component={ProblemDetail} />
+
             <Route path={`${path}/qna`} component={QnA} />
+            <Route path={`${path}/status`} render={() => <Status contest={contest} />} />
 
             <Route path={`${path}/admin`} component={AdminHome} />
 

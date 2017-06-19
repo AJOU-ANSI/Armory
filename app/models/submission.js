@@ -51,8 +51,10 @@ module.exports = function (sequelize, DataTypes) {
     },
     result_message: {
       type: DataTypes.TEXT
+    },
+    problem_code: {
+      type: DataTypes.STRING
     }
-
   }, {
     classMethods: {
       associate: function (models) {

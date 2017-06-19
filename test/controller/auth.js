@@ -87,7 +87,7 @@ describe('auth controller', function () {
 
         await global.logoutHelper(agent, {contestName: contestInfo.name});
 
-        const resp = await global.checkLoggedInHelper(agent, {contestName: contestInfo.name});
+        const resp = await global.checkLoggedInHelper(agent, {contestName: contestInfo.name}, 401);
 
         expect(resp.body.message).to.equal('로그인이 필요합니다.');
       });

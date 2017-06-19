@@ -4,9 +4,7 @@ const obj = {
 
 module.exports = obj;
 
-const aWrap = fn => (...args) => fn(...args).catch(args[args.length - 1])
-
-obj.selectAllContestsMw = aWrap(async (req, res, next) => {
+obj.selectAllContestsMw = async (req, res, next) => {
   let e;
 
   try {
@@ -18,9 +16,9 @@ obj.selectAllContestsMw = aWrap(async (req, res, next) => {
   }
 
   return next(e);
-});
+};
 
-obj.selectContestByNameParamMw = aWrap(async (req, res, next) => {
+obj.selectContestByNameParamMw = async (req, res, next) => {
   let e;
 
   try {
@@ -32,7 +30,7 @@ obj.selectContestByNameParamMw = aWrap(async (req, res, next) => {
   }
 
   return next(e);
-});
+};
 
 obj.sendContestsMw = (req, res) => {
   res.send({
@@ -50,7 +48,7 @@ obj.sendContestMw = (req, res) => {
   })
 };
 
-obj.checkContestOpenedOrAdminMw = aWrap(async (req, res, next) => {
+obj.checkContestOpenedOrAdminMw = async (req, res, next) => {
   const {contest, user} = req;
   const now = (new Date()).getTime();
 
@@ -71,4 +69,4 @@ obj.checkContestOpenedOrAdminMw = aWrap(async (req, res, next) => {
   }
 
   return next(e);
-});
+};

@@ -83,7 +83,7 @@ describe('Problem controller', function () {
       await global.insertProblemListToContest(agent, contestInfo, problemListInfo);
     });
 
-    context.only('when user is loggedin and requests problemList', function () {
+    context('when user is loggedin and requests problemList', function () {
       beforeEach(async function () {
         await global.loginHelper(agent, {
           userId: userInfo.strId,
@@ -126,7 +126,7 @@ describe('Problem controller', function () {
       await global.insertProblemListToContest(agent, contestInfo, problemListInfo);
     });
 
-    context.only('when admin is loggedin and requests problemList', function () {
+    context('when admin is loggedin and requests problemList', function () {
       beforeEach(async function () {
         await global.loginHelper(agent, {
           userId: userInfo.strId,

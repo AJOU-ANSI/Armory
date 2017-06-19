@@ -4,9 +4,7 @@ const obj = {
 
 module.exports = obj;
 
-const aWrap = fn => (...args) => fn(...args).catch(args[args.length - 1])
-
-obj.selectProblemListByContestMw = aWrap(async (req, res, next) => {
+obj.selectProblemListByContestMw = async (req, res, next) => {
   const {contest} = req;
 
   let e;
@@ -19,9 +17,9 @@ obj.selectProblemListByContestMw = aWrap(async (req, res, next) => {
   }
 
   return next(e);
-});
+};
 
-obj.selectProblemByContestAndProblemCodeParamMw = aWrap(async (req, res, next) => {
+obj.selectProblemByContestAndProblemCodeParamMw = async (req, res, next) => {
   const {contest, params: {problemCode}} = req;
 
   let e;
@@ -34,26 +32,22 @@ obj.selectProblemByContestAndProblemCodeParamMw = aWrap(async (req, res, next) =
   }
 
   return next(e);
-});
+};
 
-obj.saveProblemFromBodyWithContestMw = aWrap(async (req, res, next) => {
+obj.saveProblemFromBodyWithContestMw = async (req, res, next) => {
   const {contest, body: problemInfo} = req;
 
   let e;
 
   try {
-    const problem = await obj.problemSvc.saveProblem(problemInfo);
-
-    await problem.setContest(contest);
-
-    req.problem = problem;
+    req.problem = await obj.problemSvc.saveProblemWithContest(problemInfo, contest);
   }
   catch (err) {
     e = err;
   }
 
   return next(e);
-});
+};
 
 obj.sendProblemListMw = (req, res) => {
   const {problem_list} = req;

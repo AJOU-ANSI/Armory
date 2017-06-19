@@ -34,7 +34,7 @@ describe('Notification websocket', function () {
     });
 
     it('should connect websocket if user is logined.', async function () {
-      let resp = global.loginHelper(agent, {
+      let resp = await global.loginHelper(agent, {
         contestName: contestInfo.name,
         userId: userInfo.strId,
         userPwd: userInfo.password

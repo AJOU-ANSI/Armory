@@ -16,13 +16,11 @@ router.post('/:problemCode',
   contestMws.checkContestOpenedOrAdminMw,
   problemMws.selectProblemByContestAndProblemCodeParamMw,
   submissionMws.saveSubmissionWithContestAndProblemMw,
-  function (req, res) {
-    const {submission} = req;
+  submissionMws.sendSubmissionMw
+);
 
-    res.send({
-      result: {
-        submission
-      }
-    })
-  }
+router.get('/',
+  authMws.checkLoggedInMw,
+  submissionMws.selectSubmissionListByUserMw,
+  submissionMws.sendSubmissionListMw
 );

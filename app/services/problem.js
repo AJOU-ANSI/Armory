@@ -4,7 +4,7 @@ const obj = {
 
 module.exports = obj;
 
-obj.saveProblem = (problemInfo) => {
+obj.saveProblemWithContest = (problemInfo, contest) => {
   return obj.db.Problem.create({
     title: problemInfo.title,
     code: problemInfo.code,
@@ -13,7 +13,8 @@ obj.saveProblem = (problemInfo) => {
       time_limit: problemInfo.timeLimit,
       memory_limit: problemInfo.memoryLimit,
       spj: problemInfo.spj
-    }
+    },
+    ContestId: contest.id
   }, {
     include: [obj.db.ProblemInfo]
   });

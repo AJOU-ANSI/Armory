@@ -39,9 +39,9 @@ obj.init = function (memoryStore, server) {
       Log(`${strId}가 접속종료!`);
     });
 
-    socket.on('greeting', function (greeting) {
+    // socket.on('greeting', function (greeting) {
       // Log(greeting);
-    });
+    // });
 
     setInterval(function () {
       socket.emit('greeting_response', 'annyeong');

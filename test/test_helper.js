@@ -14,6 +14,8 @@ chai.use(chaiArrays);
 global.expect = chai.expect;
 
 global.setup = async function () {
+  this.timeout(5000);
+
   await db.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
   await db.sequelize.sync({force: true});
   await db.sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
@@ -38,7 +40,8 @@ global.urls = {
   login: (contestName) => (`/auth/${contestName}/login`),
   loggedin: (contestName) => (`/auth/${contestName}/loggedin`),
   logout: (contestName) => (`/auth/${contestName}/logout`),
-  problem: (contestName) => (`/api/${contestName}/problems`)
+  problem: (contestName) => (`/api/${contestName}/problems`),
+  submission: (contestName) => (`/api/${contestName}/submissions`)
 };
 
 global.loginHelper = (agent, {userId, userPwd, contestName}, status = 200) => {
@@ -91,12 +94,14 @@ global.prepareUserAndContest = async (
   await user.setContest(contest);
 
   expect(user).to.have.property('strId', userInfo.strId);
+
+  return [user, contest];
 }
 
 global.insertProblemListToContest = async (
     agent,
-    contestInfo = defaultContestInfo,
-    problemListInfo = defaultProblemListInfo
+    contestInfo = global.defaultContestInfo,
+    problemListInfo = global.defaultProblemListInfo
   ) => {
 
   const contest = await db.Contest.findOne({where: {name: contestInfo.name}});
@@ -109,13 +114,11 @@ global.insertProblemListToContest = async (
       ProblemInfo: {
         memory_limit: pInfo.memory_limit,
         time_limit: pInfo.time_limit
-      }
+      },
+      ContestId: contest.id
     }, {
       include: [db.ProblemInfo]
     })
-      .then(problem => {
-        return problem.setContest(contest);
-      })
   }));
 
   return problemList;

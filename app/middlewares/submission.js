@@ -19,12 +19,12 @@ obj.saveSubmissionWithContestAndProblemMw = async function (req, res, next) {
   try {
     const submission = await obj.db.Submission.create({
       language: languageValue,
-      code
+      code,
+      ProblemId: problem.id,
+      UserId: user.id,
+      ContestId: contest.id,
+      problem_code: problem.code
     });
-
-    await submission.setProblem(problem);
-    await submission.setUser(user);
-    await submission.setContest(contest);
 
     req.submission = submission;
 
@@ -33,4 +33,38 @@ obj.saveSubmissionWithContestAndProblemMw = async function (req, res, next) {
   catch(e) {
     return next(e);
   }
+};
+
+obj.selectSubmissionListByUserMw = async function (req, res, next) {
+  const {user} = req;
+
+  try {
+    req.submission_list = await user.getSubmissions();
+
+    return next();
+  }
+  catch(e) {
+    return next(e);
+  }
+
+};
+
+obj.sendSubmissionMw = function (req, res) {
+  const {submission} = req;
+
+  res.send({
+    result: {
+      submission
+    }
+  });
+};
+
+obj.sendSubmissionListMw = function (req, res) {
+  const {submission_list} = req;
+
+  res.send({
+    result: {
+      submission_list
+    }
+  })
 };
