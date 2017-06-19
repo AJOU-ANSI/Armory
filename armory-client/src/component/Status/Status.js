@@ -39,7 +39,58 @@ export class Status extends Component {
   }
 
   render() {
-    const {submissionList = []} = this.state;
+    // const {submissionList} = this.state;
+
+    const createDate = function(offset) { // second
+      const now = (new Date()).getTime();
+
+      const date = new Date(now - offset*1000);
+
+      return date;
+    }
+
+
+    const submissionList = [
+      {
+        language: 0,
+        code: '//This is compile error',
+        result: 11,
+        result_message: 'You have compile error in line 0',
+        problem_code: 'A',
+        memory_usage: 0,
+        time_usage: 0,
+        createdAt: createDate(10),
+        id: 1
+      },
+      {
+        language: 0,
+        code: '//This is wrong',
+        result: 6,
+        memory_usage: 10000,
+        time_usage: 100,
+        problem_code: 'A',
+        createdAt: createDate(8),
+        id: 2
+      },
+      {
+        language: 0,
+        code: '//This is right',
+        result: 4,
+        memory_usage: 10000,
+        time_usage: 100,
+        problem_code: 'A',
+        createdAt: createDate(6),
+        id: 3
+      },
+      {
+        language: 0,
+        code: '//This is pending',
+        result: 0,
+        problem_code: 'B',
+        createdAt: createDate(4),
+        id: 4
+      }
+    ];
 
     const now = (new Date()).getTime();
 
@@ -92,33 +143,39 @@ export class Status extends Component {
                 <tbody>
                 {
                   submissionList && (
-                    submissionList.map(submission => {
-                      const submissionDuration = now - (new Date(submission.createdAt)).getTime();
-                      let timeFormat = 'HH시간 mm분 전';
+                    submissionList
+                      .sort((a, b) => {
+                        if (a.createdAt > b.createdAt) return -1;
+                        else if (a.createdAt === b.createdAt) return 0;
+                        return 1;
+                      })
+                      .map(submission => {
+                        const submissionDuration = now - (new Date(submission.createdAt)).getTime();
+                        let timeFormat = 'HH시간 mm분 전';
 
-                      if (submissionDuration < 60000) { // 제출 후 1분이 안되었을때
-                        timeFormat = 's초 전'
-                      }
+                        if (submissionDuration < 60000) { // 제출 후 1분이 안되었을때
+                          timeFormat = 's초 전'
+                        }
 
-                      const isAccepted = (submission.result === 4);
-                      const isWrong = (submission.result > 5);
+                        const isAccepted = (submission.result === 4);
+                        const isWrong = (submission.result > 5);
 
-                      return (
-                        <tr key={submission.id}>
-                          <td> {submission.id} </td>
-                          <td> {submission.problem_code} </td>
-                          <td>
-                            <span className={classnames(isAccepted && 'text-success', isWrong && 'text-danger')}>
-                              {checkResult(submission.result)}
-                            </span>
-                            </td>
-                          <td> {submission.result !== 0 && `${submission.memory_usage}KB`} </td>
-                          <td> {submission.result !== 0 && `${submission.time_usage}ms`} </td>
-                          <td> {languageList[submission.language]} </td>
-                          <td> {moment.duration(submissionDuration).format(timeFormat)} </td>
-                        </tr>
-                      );
-                    })
+                        return (
+                          <tr key={submission.id}>
+                            <td> {submission.id} </td>
+                            <td> {submission.problem_code} </td>
+                            <td>
+                              <span className={classnames(isAccepted && 'text-success', isWrong && 'text-danger')}>
+                                {checkResult(submission.result)}
+                              </span>
+                              </td>
+                            <td> {submission.result !== 0 && `${submission.memory_usage}KB`} </td>
+                            <td> {submission.result !== 0 && `${submission.time_usage}ms`} </td>
+                            <td> {languageList[submission.language]} </td>
+                            <td> {moment.duration(submissionDuration).format(timeFormat)} </td>
+                          </tr>
+                        );
+                      })
                   )
                 }
                 </tbody>
