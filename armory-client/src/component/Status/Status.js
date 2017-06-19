@@ -39,58 +39,7 @@ export class Status extends Component {
   }
 
   render() {
-    // const {submissionList} = this.state;
-
-    const createDate = function(offset) { // second
-      const now = (new Date()).getTime();
-
-      const date = new Date(now - offset*1000);
-
-      return date;
-    }
-
-
-    const submissionList = [
-      {
-        language: 0,
-        code: '//This is compile error',
-        result: 11,
-        result_message: 'You have compile error in line 0',
-        problem_code: 'A',
-        memory_usage: 0,
-        time_usage: 0,
-        createdAt: createDate(10),
-        id: 1
-      },
-      {
-        language: 0,
-        code: '//This is wrong',
-        result: 6,
-        memory_usage: 10000,
-        time_usage: 100,
-        problem_code: 'A',
-        createdAt: createDate(8),
-        id: 2
-      },
-      {
-        language: 0,
-        code: '//This is right',
-        result: 4,
-        memory_usage: 10000,
-        time_usage: 100,
-        problem_code: 'A',
-        createdAt: createDate(6),
-        id: 3
-      },
-      {
-        language: 0,
-        code: '//This is pending',
-        result: 0,
-        problem_code: 'B',
-        createdAt: createDate(4),
-        id: 4
-      }
-    ];
+    const {submissionList} = this.state;
 
     const now = (new Date()).getTime();
 
