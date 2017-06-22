@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {Link, Redirect, Route, Switch} from 'react-router-dom';
-import AdminProblem from '../AdminProblem/AdminProblem';
 import {connect} from 'react-redux';
+
+import AdminProblem from '../AdminProblem/AdminProblem';
+import AdminUser from '../AdminUser/AdminUser';
 
 export class AdminHome extends Component {
   render () {
@@ -17,7 +19,7 @@ export class AdminHome extends Component {
       <div className="AdminHome my-5">
         <div className="container">
           <div>
-            <h2> Admin Page </h2> <Link to={`${path}`}> 홈으로 </Link>
+            <h2> Admin Page </h2> <Link to={`${url}`}> 홈으로 </Link>
           </div>
 
           <Switch>
@@ -30,11 +32,16 @@ export class AdminHome extends Component {
                   <li className="list-group-item">
                     <Link to={`${url}/contest`}> 콘테스트 편집 </Link>
                   </li>
+
+                  <li className="list-group-item">
+                    <Link to={`${url}/users`}> 유저 관리 </Link>
+                  </li>
                 </ul>
               </div>
             )} />
 
             <Route path={`${path}/problems`} component={AdminProblem} />
+            <Route path={`${path}/users`} component={AdminUser} />
           </Switch>
         </div>
       </div>

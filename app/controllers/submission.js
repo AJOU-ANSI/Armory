@@ -24,3 +24,4 @@ router.get('/',
   submissionMws.selectSubmissionListByUserMw,
   submissionMws.sendSubmissionListMw
 );
+

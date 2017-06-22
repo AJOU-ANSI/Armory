@@ -18,9 +18,17 @@ module.exports = function (sequelize, DataTypes) {
     isAdmin: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
+    },
+    name: {
+      type: DataTypes.STRING
     }
   }, {
-    classMethods: {
+  indexes: [
+    {
+      unique: true, fields: ['strId', 'ContestId']
+    }
+  ],
+  classMethods: {
     },
     instanceMethods: {
       validatePassword: function (source) {

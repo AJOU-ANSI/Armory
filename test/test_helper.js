@@ -41,7 +41,8 @@ global.urls = {
   loggedin: (contestName) => (`/auth/${contestName}/loggedin`),
   logout: (contestName) => (`/auth/${contestName}/logout`),
   problem: (contestName) => (`/api/${contestName}/problems`),
-  submission: (contestName) => (`/api/${contestName}/submissions`)
+  submission: (contestName) => (`/api/${contestName}/submissions`),
+  user: (contestName) => (`/api/${contestName}/users`)
 };
 
 global.loginHelper = (agent, {userId, userPwd, contestName}, status = 200) => {
@@ -73,6 +74,12 @@ global.defaultUserInfo = {
   strId: 'test01',
   password: 'q1w2e3r4!',
   groupName: '아주대학교'
+};
+
+global.defaultAdminInfo = {
+  strId: 'admin01',
+  password: 'q1w2e3r4!',
+  isAdmin: true
 };
 
 global.defaultProblemListInfo = [
