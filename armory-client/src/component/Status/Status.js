@@ -40,9 +40,8 @@ export class Status extends Component {
   }
 
   render() {
-    const {submissionList, contest} = this.state;
-    //
-    // const {contest} = this.props;
+    const {submissionList} = this.state;
+    const {contest} = this.props;
     //
     // const createDate = function(offset) { // second
     //   const now = (new Date()).getTime();
