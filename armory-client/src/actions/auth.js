@@ -1,6 +1,7 @@
 // @flow
 
 import {createAction} from 'redux-actions';
+import {toastr} from 'react-redux-toastr';
 
 // export const signup = createAction('SIGNUP');
 export const login = createAction('LOGIN');
@@ -49,7 +50,7 @@ export const fetchLogin = (contestName, data) => {
 
     if(!resp.ok) {
       let body;
-      
+
       try {
         body = await resp.json();
       }
@@ -59,10 +60,14 @@ export const fetchLogin = (contestName, data) => {
         body = {message};
       }
 
+      toastr.warning("시스템 메세지",  body.message);
+
       return dispatch(login(new Error(body.message)));
     }
 
     const body = await resp.json();
+
+    toastr.success("시스템 메세지", "로그인이 완료되었습니다.");
 
     return dispatch(login(body.result.user));
   };
@@ -97,6 +102,8 @@ export const fetchLogout = (contestName) => {
 
       return dispatch(loggedIn(new Error(body.message)));
     }
+
+    toastr.success('시스템 메세지', '로그아웃이 완료되었습니다.');
 
     return dispatch(logout({}));
   }

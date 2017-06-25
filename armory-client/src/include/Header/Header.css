@@ -57,5 +57,8 @@
     .Header .helper-wrapper .time-basis {
       letter-spacing: 2px; }
     .Header .helper-wrapper .time-value {
-      width: 130px;
-      display: inline-block; }
+      width: 150px;
+      display: inline-block;
+      text-decoration: underline; }
+    .Header .helper-wrapper .solved-value {
+      text-decoration: underline; }

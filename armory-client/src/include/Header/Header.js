@@ -145,11 +145,11 @@ export class Header extends Component {
               <div>
               {remainTime && (
                 <div>
-                  <span className="font-weight-bold text-logo time-basis">
+                  <span className="text-logo time-basis">
                     {remainTime < 0 ? '대회까지 ' : '종료까지 '}
                   </span>
                   남은 시간:&nbsp;
-                  <span className="text-logo time-value">
+                  <span className="text-logo time-value font-weight-bold">
                     {`${moment.duration(remainTime > 0 ? remainTime : -remainTime).format(timeFormat)}`}
                   </span>
                 </div>
@@ -157,9 +157,9 @@ export class Header extends Component {
               </div>
 
               <div className="ml-4">
-                <span className="text-logo font-weight-bold time-basis">맞은</span> 문제:&nbsp;
-                <span className="text-logo">
-                  {0}
+                <span className="text-logo time-basis">맞은</span> 문제:&nbsp;
+                <span className="text-logo solved-value font-weight-bold">
+                  {0}개
                 </span>
               </div>
 

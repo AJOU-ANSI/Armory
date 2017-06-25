@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
-import moment from 'moment';
 
 import RuleDesc from './RuleDesc';
-import StatusHeading from './StatusHeading';
-
-import whiteLogo from '../../image/white-logo.png';
-import bgMainColored from '../../image/bg-main-colored.png';
 
 import contestRule from '../../data/contest_rule.json';
 import contestStyle from '../../data/contest_style.json';
@@ -16,8 +11,6 @@ import judgeResult from '../../data/judge_result.json';
 import judgeEnv from '../../data/judge_env.json';
 
 import './Home.css';
-
-import 'moment-duration-format';
 
 export class Home extends Component {
   render() {

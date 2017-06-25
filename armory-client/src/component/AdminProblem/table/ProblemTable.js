@@ -13,8 +13,6 @@ export class ProblemTable extends Component {
 
     return (
       <div>
-        <h3> 문제 목록 </h3>
-
         <table className="table">
           <thead>
             <tr>

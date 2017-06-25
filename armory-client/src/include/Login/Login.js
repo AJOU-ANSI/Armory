@@ -21,7 +21,7 @@ export class Login extends Component {
 
     return (
       <Modal isOpen={modalOpen} toggle={this.toggle} className={classnames(className)}>
-        <ModalHeader toggle={this.toggle}>
+        <ModalHeader toggle={this.toggle} className="text-logo">
           계정 인증
         </ModalHeader>
 
@@ -38,7 +38,7 @@ export class Login extends Component {
           </ModalBody>
 
           <ModalFooter>
-            <button type="submit" className="btn btn-custom btn-black">로그인</button>
+            <button type="submit" className="btn btn-custom bg-logo text-white">로그인</button>
           </ModalFooter>
         </form>
       </Modal>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Route, Switch, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
+import ReduxToastr from "react-redux-toastr";
 
 import Home from '../Home/Home';
 
@@ -101,6 +102,15 @@ export class Contest extends Component {
 
     return (
       <div className="Contest">
+        <ReduxToastr
+          timeOut={4000}
+          newestOnTop={false}
+          preventDuplicates
+          position="bottom-right"
+          transitionIn="fadeIn"
+          transitionOut="fadeOut"
+          progressBar/>
+
         <Header
           contest={contest}
           match={this.props.match}

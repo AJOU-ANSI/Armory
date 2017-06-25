@@ -98,15 +98,14 @@ export class AdminProblem extends Component {
           </button>
         </div>
 
+        <h4> 문제 목록 </h4>
         <div className="card paper b-0">
-          <div className="card-block">
-            <ProblemTable
-              dataFormVersion={this.state.dataFormVersion}
-              contestName={contestName}
-              problemList={problemList}
-              onSelectTarget={this.handleSelectTarget}
-              target={target} />
-          </div>
+          <ProblemTable
+            dataFormVersion={this.state.dataFormVersion}
+            contestName={contestName}
+            problemList={problemList}
+            onSelectTarget={this.handleSelectTarget}
+            target={target} />
         </div>
 
         {

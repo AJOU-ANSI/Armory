@@ -1,4 +1,6 @@
 import {combineReducers} from 'redux';
+import {reducer as toastrReducer} from 'react-redux-toastr';
+
 import {contestList, contestMap} from './contest';
 import auth from "./auth";
 import {socket} from './socket';
@@ -10,5 +12,6 @@ export default combineReducers({
   user: auth,
   socket,
   problemList,
-  problemMap
+  problemMap,
+  toastr: toastrReducer
 })

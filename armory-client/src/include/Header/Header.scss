@@ -102,9 +102,13 @@ $helper-height: 50px;
     }
 
     .time-value {
-      width: 130px;
+      width: 150px;
       display: inline-block;
+      text-decoration: underline;
     }
 
+    .solved-value {
+      text-decoration: underline;
+    }
   }
 }

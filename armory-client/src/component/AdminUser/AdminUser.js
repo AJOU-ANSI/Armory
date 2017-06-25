@@ -70,58 +70,53 @@ export class AdminUser extends Component {
     const {userList} = this.state;
 
     return (
-      <div>
-        <div className="container">
+      <div className="page">
+        <h5> 유저 추가 </h5>
 
-          <div className="card paper">
-            <div className="card-block">
-              <form onSubmit={this.handleSubmit}>
-                <h5> 유저 추가 </h5>
+        <div className="card paper">
+          <div className="card-block">
+            <form onSubmit={this.handleSubmit}>
 
-                <div className="form-group">
-                  <input type="file" className="form-control-file" ref="data" />
-                  <small className="form-text text-muted">
-                    유저 목록이 들어있는 csv를 업로드해주세요.
-                  </small>
-                </div>
 
-                <div>
-                  <button className="btn btn-info ml-1" type="submit"> 저장 </button>
-                </div>
-              </form>
-            </div>
+              <div className="form-group">
+                <input type="file" className="form-control-file" ref="data" />
+                <small className="form-text text-muted">
+                  유저 목록이 들어있는 csv를 업로드해주세요.
+                </small>
+              </div>
+
+              <div>
+                <button className="btn btn-info ml-1" type="submit"> 저장 </button>
+              </div>
+            </form>
           </div>
+        </div>
 
-          <div className="card paper">
-            <div className="card-header">
-              <h4> 유저 목록 </h4>
-            </div>
+        <h5 className="mt-3"> 유저 목록 </h5>
 
-            <div className="card-body">
-              <table className="table table-custom">
-                <thead>
-                  <tr>
-                    <th> 아이디 </th>
-                    <th> 이름 </th>
-                    <th> 소속 </th>
+        <div className="card paper">
+          <table className="table table-custom">
+            <thead>
+              <tr>
+                <th> 아이디 </th>
+                <th> 이름 </th>
+                <th> 소속 </th>
+              </tr>
+            </thead>
+            <tbody>
+            {
+              userList && (
+                userList.sort((a, b) => a.strId > b.strId ? 1 : (a.strId === b.strId ? 0 : -1)).map(user => (
+                  <tr key={user.id}>
+                    <td> {user.strId} </td>
+                    <td> {user.name} </td>
+                    <td> {user.groupName} </td>
                   </tr>
-                </thead>
-                <tbody>
-                {
-                  userList && (
-                    userList.sort((a, b) => a.strId > b.strId ? 1 : (a.strId === b.strId ? 0 : -1)).map(user => (
-                      <tr key={user.id}>
-                        <td> {user.strId} </td>
-                        <td> {user.name} </td>
-                        <td> {user.groupName} </td>
-                      </tr>
-                    ))
-                  )
-                }
-                </tbody>
-              </table>
-            </div>
-          </div>
+                ))
+              )
+            }
+            </tbody>
+          </table>
         </div>
       </div>
     )

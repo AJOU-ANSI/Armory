@@ -1,18 +1,49 @@
 const
   express = require('express'),
-  router = express.Router(),
-  websocket = require('../websocket');
+  router = express.Router({mergeParams: true}),
+  websocket = require('../websocket'),
+  db = require('../models'),
+  authMws = require('../middlewares/auth'),
+  contestMws = require('../middlewares/contest');
 
 module.exports = function (app) {
-  app.use('/api/notifications', router);
+  app.use('/api/:contestName/notifications', router);
 };
 
 router.post('/',
-  function (req, res) {
-    const {message} = req.body;
+  authMws.checkAdminMw,
+  contestMws.selectContestByNameParamMw,
+  async function (req, res, next) {
+    const {content} = req.body;
+    const {contest} = req;
 
-    websocket.sendNotification(message);
+    try {
+      const noti = await db.Notification.create({
+        content,
+        ContestId: contest.id
+      });
 
-    res.send({});
+      websocket.sendNotification(noti.content);
+
+      return res.send({});
+    }
+    catch(e) {
+      return next(e);
+    }
+  }
+);
+
+router.get('/',
+  contestMws.selectContestByNameParamMw,
+  async function (req, res) {
+    const {contest} = req;
+
+    const notiList = await contest.getNotifications();
+
+    res.send({
+      result: {
+        notiList: notiList
+      }
+    })
   }
 );
