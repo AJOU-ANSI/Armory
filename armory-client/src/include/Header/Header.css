@@ -12,10 +12,10 @@
   .Header .menu-toggle > .ti-menu {
     cursor: pointer; }
   .Header .logo-link {
-    height: 90px; }
+    height: 60px; }
     @media (max-width: 767px) {
       .Header .logo-link {
-        height: 45px !important; } }
+        height: -30px !important; } }
   .Header .logo-image {
     height: 24px; }
   .Header .menu-list {
@@ -27,10 +27,10 @@
     display: flex;
     padding: 0 5px;
     margin: 0 8px;
-    height: 90px; }
+    height: 60px; }
     @media (max-width: 767px) {
       .Header .menu-item {
-        height: 45px !important; } }
+        height: 30px !important; } }
     .Header .menu-item a {
       font-size: 15px;
       font-weight: 200;
@@ -46,3 +46,16 @@
         border-bottom: 2px solid #F75B3C; }
     .Header .menu-item .user-info {
       height: 100%; }
+  .Header .helper-wrapper {
+    background: rgba(0, 0, 0, 0.03);
+    height: 50px;
+    display: flex;
+    align-items: center; }
+    .Header .helper-wrapper .helper {
+      font-weight: 300;
+      display: flex; }
+    .Header .helper-wrapper .time-basis {
+      letter-spacing: 2px; }
+    .Header .helper-wrapper .time-value {
+      width: 130px;
+      display: inline-block; }

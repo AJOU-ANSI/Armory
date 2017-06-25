@@ -3,7 +3,7 @@ const express = require('express'),
   authMws = require('../middlewares/auth'),
   userMws = require('../middlewares/user');
 
-// const autoLogin = true;
+const autoLogin = false;
 
 module.exports = function (app) {
   app.use('/auth/:contestName', router);
@@ -23,7 +23,7 @@ router.post('/logout',
   }
 );
 
-if (process.env.NODE_ENV === 'development') {
+if (autoLogin && process.env.NODE_ENV === 'development') {
   router.get('/loggedin',
     (req, res, next) => {
       req.body = {userId: 'admin03', userPwd: 'q1w2e3r4!'};

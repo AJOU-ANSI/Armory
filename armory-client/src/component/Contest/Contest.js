@@ -102,6 +102,7 @@ export class Contest extends Component {
     return (
       <div className="Contest">
         <Header
+          contest={contest}
           match={this.props.match}
           onClickLogin={this.handleClickLogin}
           onLogout={this.handleLogout}

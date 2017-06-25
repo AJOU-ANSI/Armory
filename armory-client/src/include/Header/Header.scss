@@ -1,11 +1,14 @@
 @import "../../shadow.scss";
 @import "../../grid.scss";
+@import "../../theme.scss";
 
-$header-height: 90px;
-$header-fold-height: 45px;
+$header-height: 110px;
+$header-fold-height: 80px;
 
 $logo-height: 24px;
 $menu-font-size: 15px;
+
+$helper-height: 50px;
 
 .Header {
   @include box_shadow(1);
@@ -21,10 +24,10 @@ $menu-font-size: 15px;
 
   .logo-link {
     @media (max-width: 767px) {
-      height: $header-fold-height !important;
+      height: $header-fold-height - $header-height !important;
     }
 
-    height: $header-height;
+    height: $header-height - $helper-height;
     @extend .flex-align-items-center;
   }
 
@@ -47,10 +50,10 @@ $menu-font-size: 15px;
     margin: 0 8px;
 
     @media (max-width: 767px) {
-      height: $header-fold-height !important;
+      height: $header-fold-height - $helper-height !important;
     }
 
-    height: $header-height;
+    height: $header-height - $helper-height;
 
     a {
       font-size: $menu-font-size;
@@ -78,5 +81,30 @@ $menu-font-size: 15px;
     .user-info {
       height: 100%;
     }
+  }
+
+  .helper-wrapper {
+    background: rgba(0, 0, 0, .03);
+    height: $helper-height;
+
+    display: flex;
+
+    align-items: center;
+
+    .helper {
+      font-weight: 300;
+
+      display: flex;
+    }
+
+    .time-basis {
+      letter-spacing: 2px;
+    }
+
+    .time-value {
+      width: 130px;
+      display: inline-block;
+    }
+
   }
 }

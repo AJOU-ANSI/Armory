@@ -20,55 +20,12 @@ import './Home.css';
 import 'moment-duration-format';
 
 export class Home extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      remainTime: 0
-    };
-  }
-
-  componentDidMount() {
-    const {contest: {start, end}} = this.props;
-
-    this.timer = setInterval(() => {
-      const now = (new Date()).getTime();
-      let remainTime;
-
-      if( start < now && now < end ) {
-        remainTime = end - now;
-
-      }
-      else {
-        remainTime = 0;
-      }
-
-      this.setState({remainTime});
-    }, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timer);
-  }
-
   render() {
-    const timeFormat = 'HH:mm:ss';
-    const dateFormat = 'YYYY년 MM월 DD일';
-
-    const {remainTime} = this.state;
-    const {contest: {start, end}} = this.props;
-
     const descList = [contestRule, contestStyle, answerJudge, rankJudge];
-    const statusList = [
-      {label: '시작 시간', value: moment(start).format(timeFormat)},
-      {label: '종료 시간', value: moment(end).format(timeFormat)},
-      {label: '종료까지<br/>남은 시간', value: `${moment.duration(remainTime).format(timeFormat)}`},
-      {label: '푼 문제', value: '0개'}
-    ];
 
     return (
       <div className="Home">
-        <section className="background-image contest-status" style={{backgroundImage: `url(${bgMainColored})`}}>
+        {/*<section className="background-image contest-status" style={{backgroundImage: `url(${bgMainColored})`}}>
           <div className="container-wrapper">
             <div className="container text-white">
               <img src={whiteLogo} style={{height: 32}} alt="logo" />
@@ -91,15 +48,14 @@ export class Home extends Component {
               </div>
             </div>
           </div>
-        </section>
-
-        <div className="rules">
+        </section>*/}
+        <div className="page">
           <div className="container">
-            <h1 className="font-weight-light mb-5">대회 규정</h1>
+            <div className="page-title">
+              <h1 className="font-weight-light mb-5">대회 규정</h1>
 
-            <div className="lead mb-5">
-              <div className="mb-0"> <strong>shake!</strong>는 4개 대학교에 재학중인 학부생에 한해 참가할 수 있습니다. </div>
-              <div> 휴학생 및 전국 대학생 프로그래밍 경시대회 입상자는 참가할 수 없습니다. </div>
+              <p className="mb-0"> <strong>shake!</strong>는 4개 대학교에 재학중인 학부생에 한해 참가할 수 있습니다. </p>
+              <p> 휴학생 및 전국 대학생 프로그래밍 경시대회 입상자는 참가할 수 없습니다. </p>
             </div>
 
             {descList.map((desc, index) => (
@@ -107,8 +63,10 @@ export class Home extends Component {
             ))}
 
             <div className="row">
-              <div className="col-sm-5">
-                <h4 className="font-weight-light"> 채점 환경 </h4>
+              <div className="col-sm-5 page py-0">
+                <div className="page-sub-title">
+                  <h3 className="font-weight-light"> 채점 환경 </h3>
+                </div>
                 {
                   judgeEnv.map((env, index) => (
                     <div key={index}>
@@ -124,8 +82,10 @@ export class Home extends Component {
                 }
               </div>
 
-              <div className="col-sm-7">
-                <h4 className="font-weight-light">채점 결과</h4>
+              <div className="col-sm-7 page py-0">
+                <div className="page-sub-title">
+                  <h3 className="font-weight-light">채점 결과</h3>
+                </div>
                 {
                   judgeResult.map((result, index) => (
                     <p key={index} className="mb-0">

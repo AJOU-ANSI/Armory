@@ -48,8 +48,8 @@ export const fetchLogin = (contestName, data) => {
     });
 
     if(!resp.ok) {
-      let body = await resp.json();
-
+      let body;
+      
       try {
         body = await resp.json();
       }

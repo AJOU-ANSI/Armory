@@ -12,10 +12,6 @@
     font-weight: bold;
     font-size: 24px; }
 
-.rules {
-  padding-top: 95px;
-  padding-bottom: 95px; }
-
 .background-image {
   background-size: cover !important;
   transition: all .1s ease;

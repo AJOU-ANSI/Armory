@@ -41,18 +41,26 @@ body {
   .page.page-grey {
     background-color: #eeedee;
     color: #212121; }
+  .page-title h1, .page-sub-title h1 {
+    letter-spacing: .5em;
+    font-size: 35px;
+    line-height: 1.8;
+    text-transform: uppercase;
+    margin-bottom: 0; }
+  .page-title h3, .page-sub-title h3 {
+    letter-spacing: .3em;
+    font-size: 28px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    margin-bottom: 0; }
+  .page-title p, .page-sub-title p {
+    letter-spacing: 1px;
+    font-weight: 300;
+    font-size: 15px; }
   .page-title {
     margin-bottom: 50px; }
-    .page-title h1 {
-      letter-spacing: .5em;
-      font-size: 30px;
-      line-height: 1.8;
-      text-transform: uppercase;
-      margin-bottom: 0; }
-    .page-title p {
-      letter-spacing: 1px;
-      font-weight: 300;
-      font-size: 13px; }
+  .page-sub-title {
+    margin-bottom: 25px; }
 
 .paper, .btn-custom {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -76,3 +84,9 @@ body {
 
 .table-custom td {
   vertical-align: top; }
+
+.text-logo {
+  color: #ff4e4b; }
+
+.bg-logo {
+  background-color: #ff4e4b; }

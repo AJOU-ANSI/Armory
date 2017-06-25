@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import moment from 'moment';
 
 import blackLogo from '../../image/black-logo.png';
 import {NavLink, Link} from 'react-router-dom';
@@ -12,8 +13,35 @@ export class Header extends Component {
     super(props);
 
     this.state = {
-      menuOpen: false
+      menuOpen: false,
+      remainTime: null
     };
+  }
+
+  componentDidMount() {
+    const {contest: {start, end}} = this.props;
+
+    this.timer = setInterval(() => {
+      const now = (new Date()).getTime();
+      let remainTime;
+
+      if (start < now && now < end) {
+        remainTime = end - now;
+
+      }
+      else if (now < start) {
+        remainTime = now - start;
+      }
+      else {
+        remainTime = null;
+      }
+
+      this.setState({remainTime});
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   handleClickLogin = (e) => {
@@ -62,6 +90,9 @@ export class Header extends Component {
 
   render() {
     const {match: {url}, user} = this.props;
+    const {remainTime} = this.state;
+
+    const timeFormat = 'HH시간 mm분 ss초';
 
     const menus = [
       {to: `${url}`, title: "메인"},
@@ -107,9 +138,34 @@ export class Header extends Component {
               </div>
             </div>
           </div>
-
         </div>
+        <div className="helper-wrapper">
+          <div className="container">
+            <div className="helper">
+              <div>
+              {remainTime && (
+                <div>
+                  <span className="font-weight-bold text-logo time-basis">
+                    {remainTime < 0 ? '대회까지 ' : '종료까지 '}
+                  </span>
+                  남은 시간:&nbsp;
+                  <span className="text-logo time-value">
+                    {`${moment.duration(remainTime > 0 ? remainTime : -remainTime).format(timeFormat)}`}
+                  </span>
+                </div>
+              )}
+              </div>
 
+              <div className="ml-4">
+                <span className="text-logo font-weight-bold time-basis">맞은</span> 문제:&nbsp;
+                <span className="text-logo">
+                  {0}
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </header>
     );
   }

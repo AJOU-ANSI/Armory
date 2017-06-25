@@ -1,4 +1,5 @@
 @import "./shadow.scss";
+@import "./theme.scss";
 
 body {
   font-family: "Noto Sans", sans-serif;
@@ -70,13 +71,20 @@ body {
     color: #212121;
   }
 
-  &-title {
-    margin-bottom: 50px;
-
-    & h1 {
+  &-title, &-sub-title {
+    h1 {
       letter-spacing: .5em;
-      font-size: 30px;
+      font-size: 35px;
       line-height: 1.8;
+      text-transform: uppercase;
+
+      margin-bottom: 0;
+    }
+
+    h3 {
+      letter-spacing: .3em;
+      font-size: 28px;
+      line-height: 1.5;
       text-transform: uppercase;
 
       margin-bottom: 0;
@@ -85,8 +93,16 @@ body {
     & p {
       letter-spacing: 1px;
       font-weight: 300;
-      font-size: 13px;
+      font-size: 15px;
     }
+  }
+
+  &-title {
+    margin-bottom: 50px;
+  }
+
+  &-sub-title {
+    margin-bottom: 25px;
   }
 }
 
@@ -123,4 +139,12 @@ body {
   td {
     vertical-align: top;
   }
+}
+
+.text-logo {
+  color: $logo-color;
+}
+
+.bg-logo {
+  background-color: $logo-color;
 }
