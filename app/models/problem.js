@@ -14,6 +14,11 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     }
   }, {
+    indexes: [
+      {
+        unique: true, fields: ['code', 'ContestId']
+      }
+    ],
     classMethods: {
       // associate: function (models) {
       // }
