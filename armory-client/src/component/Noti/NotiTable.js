@@ -14,7 +14,7 @@ export class NotiTable extends Component {
           <th>내용</th>
         </tr>
         </thead>
-        
+
         <tbody>
         {
           notiList.map((noti, index) => (
@@ -22,7 +22,7 @@ export class NotiTable extends Component {
               <td className="index"> {index} </td>
               <td>{moment(noti.createdAt).format('HH:mm:ss')}</td>
               <td>
-                <pre>{noti.content}</pre>
+                <pre style={{whiteSpace: 'pre-line'}}>{noti.content}</pre>
               </td>
             </tr>
           ))

@@ -2,6 +2,7 @@
 
 import {createAction} from 'redux-actions';
 import {toastr} from 'react-redux-toastr';
+import {fetchGetUserContestInfo} from './contest';
 
 // export const signup = createAction('SIGNUP');
 export const login = createAction('LOGIN');
@@ -69,6 +70,8 @@ export const fetchLogin = (contestName, data) => {
 
     toastr.success("시스템 메세지", "로그인이 완료되었습니다.");
 
+    dispatch(fetchGetUserContestInfo(contestName));
+
     return dispatch(login(body.result.user));
   };
 };
@@ -84,6 +87,8 @@ export const fetchLoggedIn = (contestName) => {
     }
 
     const body = await resp.json();
+
+    dispatch(fetchGetUserContestInfo(contestName));
 
     return dispatch(loggedIn(body.result.user));
   }

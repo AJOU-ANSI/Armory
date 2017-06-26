@@ -3,7 +3,7 @@ const express = require('express'),
   authMws = require('../middlewares/auth'),
   userMws = require('../middlewares/user');
 
-const autoLogin = true;
+const autoLogin = false;
 
 module.exports = function (app) {
   app.use('/auth/:contestName', router);

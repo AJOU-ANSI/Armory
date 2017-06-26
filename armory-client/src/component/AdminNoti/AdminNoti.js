@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import NotiTable from "../QnA/NotiTable";
+import NotiTable from "../Noti/NotiTable";
 
 export class AdminNoti extends Component {
   constructor(props) {

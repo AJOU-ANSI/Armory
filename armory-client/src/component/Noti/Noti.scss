@@ -1,11 +1,7 @@
-.QnA {
+.Noti {
   .table-qna {
     .question, .answer {
       max-width: 350px;
-
-      pre {
-        white-space: pre-line;
-      }
     }
 
     .code, .index {
@@ -14,8 +10,17 @@
 
   }
 
+  .table-announcement {
+    .index {
+      min-width: 80px;
+    }
+  }
+
   th {
     font-weight: 500;
     font-size: 14px;
   }
 }
+
+
+

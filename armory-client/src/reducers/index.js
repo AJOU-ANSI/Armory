@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import {reducer as toastrReducer} from 'react-redux-toastr';
 
-import {contestList, contestMap} from './contest';
+import {contestList, contestMap, userContestInfo} from './contest';
 import auth from "./auth";
 import {socket} from './socket';
 import {problemList, problemMap} from './problem';
@@ -13,5 +13,6 @@ export default combineReducers({
   socket,
   problemList,
   problemMap,
-  toastr: toastrReducer
+  toastr: toastrReducer,
+  userContestInfo
 })

@@ -7,7 +7,7 @@ import Home from '../Home/Home';
 
 import ProblemList from '../ProblemList/ProblemList';
 import ProblemDetail from '../ProblemDetail/ProblemDetail';
-import QnA from '../QnA/QnA';
+import Noti from '../Noti/Noti';
 import Status from '../Status/Status';
 
 import AdminHome from '../AdminHome/AdminHome';
@@ -23,6 +23,7 @@ import './Contest.css';
 import {fetchGetContestByName} from '../../actions/contest';
 import {fetchLoggedIn, fetchLogin, fetchLogout} from '../../actions/auth';
 import {fetchConnectWebSocket} from '../../actions/socket';
+import QnA from '../QnA/QnA';
 
 export class Contest extends Component {
   constructor(props) {
@@ -126,6 +127,7 @@ export class Contest extends Component {
             <Route exact path={`${path}/problems`} component={ProblemList} />
             <Route path={`${path}/problems/:problemCode`} component={ProblemDetail} />
 
+            <Route path={`${path}/noti`} component={Noti} />
             <Route path={`${path}/qna`} component={QnA} />
             <Route path={`${path}/status`} render={() => <Status contest={contest} />} />
 

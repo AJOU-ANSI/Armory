@@ -7,10 +7,18 @@ module.exports = obj;
 obj.selectProblemListByContestMw = async (req, res, next) => {
   const {contest} = req;
 
+  const {code} = req.query;
+
   let e;
 
   try {
-    req.problem_list = await obj.problemSvc.selectProblemListByContest(contest);
+    if (code) {
+      req.problem_list = await obj.problemSvc.selectProblemCodeListByContest(contest);
+    }
+    else {
+      req.problem_list = await obj.problemSvc.selectProblemListByContest(contest);
+    }
+
   }
   catch (err) {
     e = err;

@@ -1,5 +1,7 @@
 import {createAction} from 'redux-actions';
 import io from 'socket.io-client';
+import {toastr} from 'react-redux-toastr';
+import {getUserContestInfo} from './contest';
 
 export const connectWebSocket = createAction('CONNECT_WEBSOCKET');
 export const closeWebSocket = createAction('CLOSE_WEBSOCKET');
@@ -9,8 +11,6 @@ export const fetchCloseWebSocket = () => {
 };
 
 function init(socket, dispatch) {
-  console.log('connect init');
-
   setInterval(function () {
     socket.emit('greeting', 'hello');
   }, 10000);
@@ -20,6 +20,20 @@ function init(socket, dispatch) {
   })
   socket.on('greeting_response', function (message) {
     console.log(message);
+  });
+
+  socket.on('notification', function (message) {
+    toastr.success('시스템 메세지', '새로운 공지가 등록되었습니다. 확인 부탁드립니다.');
+  });
+
+  socket.on('answered', function (message) {
+    toastr.success('시스템 메세지', '질문에 대한 답변이 등록되었습니다. 확인 부탁드립니다.');
+  });
+
+  socket.on('problemChecked', function ({acceptedCnt, rank}) {
+    dispatch(getUserContestInfo({acceptedCnt, rank}));
+
+    toastr.success('시스템 메세지', '문제 채점이 완료되었습니다. 확인 부탁드립니다.');
   });
 
   socket.on('disconnect', function () {

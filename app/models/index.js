@@ -3,7 +3,9 @@ var fs = require('fs'),
   Sequelize = require('sequelize'),
   db = {};
 
-var sequelize = new Sequelize(process.env.JAWSDB_URL || config.db);
+var sequelize = new Sequelize(process.env.JAWSDB_URL || config.db, {
+  logging: (process.env.NODE_ENV === 'production') ? false : console.log
+});
 
 fs.readdirSync(__dirname).filter(function (file) {
   return (file.indexOf('.') !== 0) && (file !== 'index.js');

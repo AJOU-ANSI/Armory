@@ -1,0 +1,12 @@
+.Noti .table-qna .question, .Noti .table-qna .answer {
+  max-width: 350px; }
+
+.Noti .table-qna .code, .Noti .table-qna .index {
+  min-width: 80px; }
+
+.Noti .table-announcement .index {
+  min-width: 80px; }
+
+.Noti th {
+  font-weight: 500;
+  font-size: 14px; }

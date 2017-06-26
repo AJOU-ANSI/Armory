@@ -89,17 +89,18 @@ export class Header extends Component {
   }
 
   render() {
-    const {match: {url}, user} = this.props;
+    const {match: {url}, user, userContestInfo} = this.props;
     const {remainTime} = this.state;
 
     const timeFormat = 'HH시간 mm분 ss초';
 
     const menus = [
       {to: `${url}`, title: "메인"},
-      {to: `${url}/ranking`, title: "랭킹"},
+      {to: `${url}/noti`, title: "공지"},
       {to: `${url}/problems`, title: "문제"},
       {to: `${url}/status`, title: "제출내역"},
-      {to: `${url}/qna`, title: "질문하기"}
+      {to: `${url}/qna`, title: "질문하기"},
+      {to: `${url}/ranking`, title: "랭킹"},
     ];
 
     if (user && user.isAdmin) {
@@ -159,7 +160,14 @@ export class Header extends Component {
               <div className="ml-4">
                 <span className="text-logo time-basis">맞은</span> 문제:&nbsp;
                 <span className="text-logo solved-value font-weight-bold">
-                  {0}개
+                  {userContestInfo.acceptedCnt}개
+                </span>
+              </div>
+
+              <div className="ml-4">
+                <span className="text-logo time-basis">랭크</span>:&nbsp;
+                <span className="text-logo solved-value font-weight-bold">
+                  {userContestInfo.rank}위
                 </span>
               </div>
 
@@ -171,6 +179,6 @@ export class Header extends Component {
   }
 }
 
-const stateToProps = ({user}) => ({user});
+const stateToProps = ({user, userContestInfo}) => ({user, userContestInfo});
 
 export default connect(stateToProps)(Header);

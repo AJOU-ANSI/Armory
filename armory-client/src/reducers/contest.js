@@ -1,5 +1,5 @@
 import {handleActions} from 'redux-actions';
-import {getContestByName, getContestList} from '../actions/contest';
+import {getContestByName, getContestList, getUserContestInfo} from '../actions/contest';
 
 export const contestList = handleActions({
   [getContestList]: function (state, action) {
@@ -22,5 +22,15 @@ export const contestMap = handleActions({
     return Object.assign({}, state, {
       [contestName]: contest !== null ? contest : {empty: true}
     });
+  }
+}, {});
+
+export const userContestInfo = handleActions({
+  [getUserContestInfo]: function (state, action) {
+    if (action.error) {
+      return state;
+    }
+    
+    return action.payload;
   }
 }, {});

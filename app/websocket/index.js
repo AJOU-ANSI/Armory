@@ -11,6 +11,27 @@ function Log (msg) {
   console.info(`[websocket] ${msg}`);
 }
 
+const userSocketMap = {};
+
+function addSocketToMap (userId, socketId) {
+  if (userSocketMap[userId]) {
+    userSocketMap[userId].push(socketId);
+  }
+  else {
+    userSocketMap[userId] = [socketId];
+  }
+}
+
+function removeSocketFromMap (userId, socketId) {
+  if (!userSocketMap[userId]) {
+    return;
+  }
+
+  const index = userSocketMap[userId].indexOf(socketId);
+
+  if (index !== -1) userSocketMap[userId].splice(index, 1);
+}
+
 obj.init = function (memoryStore, server) {
   io = require('socket.io')(server);
 
@@ -20,8 +41,9 @@ obj.init = function (memoryStore, server) {
   }));
 
   io.on('connection', function(socket) {
-    const strId = socket.request.user.strId;
-    const contestId = socket.request.user.ContestId;
+    const {strId, ContestId: contestId, id: userId} = socket.request.user;
+
+    addSocketToMap(userId, socket.id);
 
     Log(`${strId}이 접속!`);
 
@@ -36,12 +58,10 @@ obj.init = function (memoryStore, server) {
     });
 
     socket.on('disconnect', function () {
+      removeSocketFromMap(userId, socket.id);
+
       Log(`${strId}가 접속종료!`);
     });
-
-    // socket.on('greeting', function (greeting) {
-      // Log(greeting);
-    // });
 
     setInterval(function () {
       socket.emit('greeting_response', 'annyeong');
@@ -51,12 +71,33 @@ obj.init = function (memoryStore, server) {
   io.on('error', function(err) {
     console.error(err);
   });
+
+  setTimeout(function () {
+    obj.sendNotification(3, 'Hello World');
+
+  }, 5000);
 };
 
-obj.sendNotification = function (message) {
-  io.sockets.emit('notification', message);
+obj.sendNotification = function (contestId, message) {
+  io.to(contestId).emit('notification', message);
 };
 
 obj.closeServer = function () {
   io.close();
 };
+
+obj.sendQnaAnswered = function (userId) {
+  if (userSocketMap[userId]) {
+    userSocketMap[userId].forEach(socketId => {
+      io.sockets.connected[socketId].emit('answered', 'hello');
+    });
+  }
+};
+
+obj.sendProblemChecked = function (userId, {acceptedCnt, rank}) {
+  if (userSocketMap[userId]) {
+    userSocketMap[userId].forEach(socketId => {
+      io.sockets.connected[socketId].emit('problemChecked', {acceptedCnt, rank});
+    });
+  }
+}

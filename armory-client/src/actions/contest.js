@@ -3,7 +3,15 @@ import {createAction} from 'redux-actions';
 export const getContestList = createAction('GET_CONTEST_LIST');
 export const getContestByName = createAction('GET_CONTEST_BY_NAME');
 
+export const getUserContestInfo = createAction('GET_USER_CONTEST_INFO');
+
 const contestUrl = '/api/contests';
+
+export const fetchGetUserContestInfo = (contestName) => {
+  return async (dispatch) => {
+    return dispatch(getUserContestInfo({acceptedCnt: 0, rank: 1}));
+  }
+};
 
 export const fetchGetContestList = () => {
   return async (dispatch) => {

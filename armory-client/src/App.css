@@ -90,3 +90,6 @@ body {
 
 .bg-logo {
   background-color: #ff4e4b; }
+
+.btn {
+  cursor: pointer; }

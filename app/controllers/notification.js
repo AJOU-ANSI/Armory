@@ -23,7 +23,7 @@ router.post('/',
         ContestId: contest.id
       });
 
-      websocket.sendNotification(noti.content);
+      websocket.sendNotification(contest.id, noti.content);
 
       return res.send({});
     }

@@ -1,10 +1,9 @@
 .QnA .table-qna .question, .QnA .table-qna .answer {
   max-width: 350px; }
+  .QnA .table-qna .question pre, .QnA .table-qna .answer pre {
+    white-space: pre-line; }
 
 .QnA .table-qna .code, .QnA .table-qna .index {
-  min-width: 80px; }
-
-.QnA .table-announcement .index {
   min-width: 80px; }
 
 .QnA th {

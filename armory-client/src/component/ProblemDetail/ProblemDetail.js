@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 import {connect} from 'react-redux';
-import CodeMirror from 'react-codemirror';
+import {toastr} from 'react-redux-toastr';
 
 import 'codemirror/mode/clike/clike';
 import './ProblemDetail.css';
@@ -9,15 +8,15 @@ import './ProblemDetail.css';
 import {fetchGetProblemByCode} from '../../actions/problem';
 import ProblemView from './ProblemView';
 import ProblemInfoView from './ProblemInfoView';
+import {ProblemSubmitModal} from './ProblemSubmitModal';
+import {Link} from 'react-router-dom';
 
 export class ProblemDetail extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      submitOpen: false,
-      code: '// Code',
-      language: 'text/x-csrc'
+      submitOpen: false
     };
   }
 
@@ -27,28 +26,13 @@ export class ProblemDetail extends Component {
     fetchGetProblemByCode(contestName, problemCode);
   }
 
-  handleChangeCode = (newCode) => {
-    this.setState({
-      code: newCode
-    });
-  }
-
-  handleChangeLanguage = (event) => {
-    const newLanguage = event.target.value;
-
-    this.setState({
-      language: newLanguage
-    });
-  }
-
   handleClickSubmit = () => {
     this.setState({
       submitOpen: true
     });
   }
 
-  handleSave = () => {
-    const {code, language} = this.state;
+  handleSave = (code, language) => {
     const {match: {params: {problemCode, contestName}}} = this.props;
 
     fetch(`/api/${contestName}/submissions/${problemCode}`, {
@@ -64,8 +48,11 @@ export class ProblemDetail extends Component {
         if (!resp.ok) {
           throw new Error('Not ok.');
         }
+
+        return resp.json();
       })
       .then(() => {
+        toastr.success('시스템 메세지', '제출이 완료되었습니다.');
         this.toggleSubmit();
       });
   }
@@ -77,7 +64,7 @@ export class ProblemDetail extends Component {
   }
 
   render() {
-    const {match: {params: {problemCode}}, problemMap} = this.props;
+    const {match: {params: {problemCode, contestName}}, problemMap} = this.props;
 
     const problem = problemMap[problemCode];
 
@@ -90,38 +77,11 @@ export class ProblemDetail extends Component {
 
     return (
       <div className="ProblemDetail page page-grey">
-        <Modal isOpen={this.state.submitOpen} toggle={this.toggleSubmit} size="lg">
-          <ModalHeader toggle={this.toggleSubmit}> 문제 제출 </ModalHeader>
-
-          <ModalBody>
-            <form>
-              <div className="form-group">
-                <label> 언어 </label>
-                <select className="form-control" onChange={this.handleChangeLanguage} value={this.state.language}>
-                  <option value={'text/x-csrc'}> C </option>
-                  <option value={'text/x-c++src'}> C++ </option>
-                  <option value={'text/x-java'}> Java </option>
-                </select>
-              </div>
-
-              <div className="form-group">
-                <label> 코드 </label>
-
-                <CodeMirror
-                  value={this.state.code}
-                  onChange={this.handleChangeCode}
-                  options={{lineNumbers: true, mode: 'text/x-java', theme: 'monokai'}}
-                />
-              </div>
-            </form>
-          </ModalBody>
-
-          <ModalFooter>
-            <button className="btn btn-success" onClick={this.handleSave}>
-              제출
-            </button>
-          </ModalFooter>
-        </Modal>
+        <ProblemSubmitModal
+          toggle={this.toggleSubmit}
+          isOpen={this.state.submitOpen}
+          onSave={this.handleSave}
+        />
 
         <div className="page-title">
           <div className="container">
@@ -174,9 +134,12 @@ export class ProblemDetail extends Component {
                     제출하기
                   </button>
 
-                  <button className="btn btn-custom btn-info w-100 mt-2 py-3">
+                  <Link
+                    className="btn btn-custom btn-info w-100 mt-2 py-3"
+                    to={{pathname: `/${contestName}/qna`, state: {problemCode}}}
+                  >
                     질문하기
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

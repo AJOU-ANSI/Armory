@@ -4,11 +4,25 @@ const
   authMws = require('../middlewares/auth'),
   contestMws = require('../middlewares/contest'),
   problemMws = require('../middlewares/problem'),
-  submissionMws = require('../middlewares/submission');
+  submissionMws = require('../middlewares/submission'),
+  websocket = require('../websocket');
 
 module.exports = function (app) {
   app.use('/api/:contestName/submissions', router);
 };
+
+router.post('/checked',
+  contestMws.selectContestByNameParamMw,
+  async function (req, res) {
+    const checkedSubmissions = req.body;
+
+    checkedSubmissions.forEach(({userId, acceptedCnt, rank}) => {
+      websocket.sendProblemChecked(userId, {acceptedCnt, rank});
+    });
+
+    return res.send({});
+  }
+);
 
 router.post('/:problemCode',
   authMws.checkLoggedInMw,
@@ -24,4 +38,3 @@ router.get('/',
   submissionMws.selectSubmissionListByUserMw,
   submissionMws.sendSubmissionListMw
 );
-
