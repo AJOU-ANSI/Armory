@@ -4,7 +4,7 @@ const
   db = require('../models');
 
 module.exports = function (app) {
-  app.use('/api/admin', router);
+  app.use('/api2/admin', router);
 };
 
 router.post('/users', async function (req, res, next) {
