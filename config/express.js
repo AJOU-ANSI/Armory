@@ -51,10 +51,10 @@ module.exports = function(app, config, {memoryStore}) {
     // })
   };
 
-  // if (env === 'production') {
-  //   app.set('trust proxy', 1); // trust first proxy
-  //   sess.cookie.secure = true; // serve secure cookies
-  // }
+  if (env === 'production') {
+    app.set('trust proxy', 1); // trust first proxy
+    sess.cookie.secure = true; // serve secure cookies
+  }
 
   app.use(session(sess));
   app.use(passport.initialize());
