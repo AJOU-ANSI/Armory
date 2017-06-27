@@ -16,7 +16,7 @@ const
 const filePath = path.join(__dirname, '../../');
 const upload = multer({dest: path.resolve(filePath, 'temp')});
 
-mkdirp(path.resolve(filePath, 'temp');
+mkdirp(path.resolve(filePath, 'temp'));
 
 module.exports = (app) => {
   app.use('/api/:contestName/problems', router);
