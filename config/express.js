@@ -14,7 +14,7 @@ const
   client = redis.createClient({host: config.redisHost, port: config.redisPort});
 
 
-module.exports = function(app, config, {memoryStore}) {
+module.exports = function(app, config) {
   const env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
   app.locals.ENV_DEVELOPMENT = env === 'development';
@@ -42,8 +42,6 @@ module.exports = function(app, config, {memoryStore}) {
       maxAge: 1000 * 60 * 60 * 7
     },
     store: new RedisStore({
-      host: config.redisHost,
-      port: config.redisPort,
       client
     })
     // store: new MongoStore({

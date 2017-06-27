@@ -1,5 +1,9 @@
 const
-  passportSocketIo = require('passport.socketio');
+  passportSocketIo = require('passport.socketio'),
+  session = require('express-session'),
+  RedisStore = require('connect-redis')(session),
+  redis = require('redis'),
+  client = redis.createClient({host: config.redisHost, port: config.redisPort});
 
 let io;
 
@@ -32,12 +36,12 @@ function removeSocketFromMap (userId, socketId) {
   if (index !== -1) userSocketMap[userId].splice(index, 1);
 }
 
-obj.init = function (memoryStore, server) {
+obj.init = function (server) {
   io = require('socket.io')(server);
 
   io.use(passportSocketIo.authorize({
     secret:       config.secret,
-    store:        memoryStore
+    store:        new RedisStore({client})
   }));
 
   io.on('connection', function(socket) {

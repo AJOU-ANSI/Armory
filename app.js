@@ -7,11 +7,7 @@ const express = require('express'),
 const app = express();
 const session = require('express-session');
 
-const memoryStore = new session.MemoryStore();
-
-app.memoryStore = memoryStore;
-
-module.exports = require('./config/express')(app, global.config, {memoryStore});
+module.exports = require('./config/express')(app, global.config);
 
 db.sequelize
   .sync()
@@ -24,7 +20,7 @@ db.sequelize
         console.log('Express server listening on port ' + config.port);
       });
 
-      websocket.init(memoryStore, server);
+      websocket.init(server);
     }
   }).catch(function (e) {
     throw new Error(e);
