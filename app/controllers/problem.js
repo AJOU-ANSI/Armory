@@ -16,6 +16,8 @@ const
 const filePath = path.join(__dirname, '../../');
 const upload = multer({dest: path.resolve(filePath, 'temp')});
 
+mkdirp(path.resolve(filePath, 'temp');
+
 module.exports = (app) => {
   app.use('/api/:contestName/problems', router);
 };
@@ -71,15 +73,12 @@ router.post('/:problemCode/data',
     rimraf.sync(dataPath);
     mkdirp.sync(dataPath);
 
-    console.log('dataPath:', dataPath);
-
     function getDirectories (srcpath) {
       return fs.readdirSync(srcpath)
         .filter(file => fs.lstatSync(path.join(srcpath, file)).isDirectory())
     }
 
     unzip(file.path, {dir: dataPath}, function (err) {
-      console.log(getDirectories(dataPath));
       const unzippedPath = path.resolve(dataPath, getDirectories(dataPath)[0]);
 
       if (err) {
