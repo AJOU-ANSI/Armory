@@ -13,10 +13,12 @@ const
   glob = require('glob'),
   mkdirp = require('mkdirp');
 
-const filePath = path.join(__dirname, '../../');
-const upload = multer({dest: path.resolve(filePath, 'temp')});
 
-mkdirp(path.resolve(filePath, 'data/temp'));
+
+const filePath = path.join(__dirname, '../../');
+mkdirp(path.resolve(filePath, 'temp'));
+
+const upload = multer({dest: path.resolve(filePath, 'temp')});
 
 module.exports = (app) => {
   app.use('/api/:contestName/problems', router);
@@ -79,22 +81,32 @@ router.post('/:problemCode/data',
     }
 
     unzip(file.path, {dir: dataPath}, function (err) {
-      const unzippedPath = path.resolve(dataPath, getDirectories(dataPath)[0]);
-
       if (err) {
         throw err;
       }
 
-      ncp(unzippedPath, dataPath, function (err) {
-        if (err) {
-          throw err;
-        }
+      const unzippedDir = getDirectories(dataPath)[0];
 
-        rimraf.sync(unzippedPath);
+      if (unzippedDir) {
+        const unzippedPath = path.resolve(dataPath, getDirectories(dataPath)[0]);
+
+        ncp(unzippedPath, dataPath, function (err) {
+          if (err) {
+            throw err;
+          }
+
+          rimraf.sync(unzippedPath);
+          rimraf.sync(file.path);
+
+          res.send({message: 'ok'});
+        });
+      }
+      else {
         rimraf.sync(file.path);
 
         res.send({message: 'ok'});
-      });
+      }
+
     });
   }
 );
