@@ -10,7 +10,8 @@ const
   unzip = require('extract-zip'),
   rimraf = require('rimraf'),
   ncp = require('ncp').ncp,
-  glob = require('glob');
+  glob = require('glob'),
+  mkdirp = require('mkdirp');
 
 const filePath = path.join(__dirname, '../../');
 const upload = multer({dest: path.resolve(filePath, 'temp')});
@@ -63,21 +64,12 @@ router.post('/:problemCode/data',
   problemMws.selectProblemByContestAndProblemCodeParamMw,
   upload.single('data'),
   (req, res) => {
-    // const {contestName, problemCode} = req.params;
     const {file, problem} = req;
-
-    // const contestPath = path.resolve(filePath, 'data', contestName);
-    //
-    // if (!fs.existsSync(contestPath)){
-    //   fs.mkdirSync(contestPath);
-    // }
 
     const dataPath = path.resolve(filePath, 'data', problem.id+'');
 
-    console.log(dataPath);
-
     rimraf.sync(dataPath);
-    fs.mkdirSync(dataPath);
+    mkdirp.sync(dataPath);
 
     function getDirectories (srcpath) {
       return fs.readdirSync(srcpath)
