@@ -15,7 +15,7 @@ router.post('/checked',
   contestMws.selectContestByNameParamMw,
   async function (req, res) {
     console.log(req.body);
-    const checkedSubmissions = req.body;
+    const {result: checkedSubmissions} = req.body;
 
     checkedSubmissions.forEach(({userId, acceptedCnt, rank}) => {
       websocket.sendProblemChecked(userId, {acceptedCnt, rank});
