@@ -36,3 +36,20 @@ obj.selectProblemByContestAndCode = async (contest, problemCode) => {
 
   return contestList[0];
 };
+
+obj.updateProblemById = async (problemId, problemInfo) => {
+  let problem = await obj.db.Problem.findById(problemId, {include: [obj.db.ProblemInfo]});
+
+  problem = await problem.updateAttributes({
+    title: problemInfo.title,
+    code: problemInfo.code,
+    description: problemInfo.description
+  });
+
+  await problem.ProblemInfo.updateAttributes({
+    time_limit: problemInfo.timeLimit,
+    memory_limit: problemInfo.memoryLimit
+  });
+
+  return problem;
+}

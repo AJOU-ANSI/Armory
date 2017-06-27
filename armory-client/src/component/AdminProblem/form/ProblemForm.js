@@ -53,8 +53,10 @@ export class ProblemForm extends Component {
 
   render () {
     const problem = this.props.problem || {
-      memoryLimit: 128,
-      timeLimit: 1
+      ProblemInfo: {
+        memory_limit: 128,
+        time_limit: 1
+      }
     };
 
     return (
@@ -100,7 +102,7 @@ export class ProblemForm extends Component {
                   type="number"
                   ref="problemTimeLimit"
                   placeholder="시간 제한을 입력해주세요"
-                  defaultValue={problem.timeLimit} />
+                  defaultValue={problem.ProblemInfo.time_limit} />
                 <span className="input-group-addon">초</span>
               </div>
             </div>
@@ -114,7 +116,7 @@ export class ProblemForm extends Component {
                   type="number"
                   ref="problemMemoryLimit"
                   placeholder="메모리 제한을 입력해주세요"
-                  defaultValue={problem.memoryLimit} />
+                  defaultValue={problem.ProblemInfo.memory_limit} />
                 <span className="input-group-addon">MB</span>
               </div>
             </div>
@@ -134,6 +136,10 @@ export class ProblemForm extends Component {
 
               <button type="button" className="btn btn-info" onClick={this.handlePreview}>
                 미리보기
+              </button>
+
+              <button type="submit" className="btn btn-danger" onClick={this.props.onClose}>
+                취소
               </button>
             </div>
           </form>

@@ -58,6 +58,34 @@ export const fetchSaveProblem = (contestName, problemInfo) => {
   }
 };
 
+export const fetchUpdateProblem = (contestName, problemId, problemInfo) => {
+  return async (dispatch) => {
+    try {
+      const resp = await fetch(`/api/${contestName}/problems/${problemId}`, {
+        method: 'put',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(problemInfo),
+        credentials: 'include'
+      });
+
+      if (!resp.ok) {
+        throw new Error('Bad request');
+      }
+
+      const body = await resp.json();
+      const {result: {problem}} = body;
+
+      return dispatch(saveProblem(problem));
+    }
+    catch (e) {
+      return dispatch(saveProblem(e));
+    }
+  };
+}
+
 export const fetchGetProblemByCode = (contestName, problemCode) => {
   return async (dispatch) => {
     try {
@@ -65,14 +93,14 @@ export const fetchGetProblemByCode = (contestName, problemCode) => {
         method: 'GET',
         credentials: 'include'
       });
-      
+
       if (!resp.ok) {
         throw new Error('Bad request');
       }
-      
+
       const body = await resp.json();
       const {result: {problem}} = body;
-      
+
       return dispatch(getProblemByCode(problem));
     }
     catch (e) {

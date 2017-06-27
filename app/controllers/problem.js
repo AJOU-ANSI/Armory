@@ -117,3 +117,10 @@ router.post('/',
   problemMws.saveProblemFromBodyWithContestMw,
   problemMws.sendProblemMw
 );
+
+router.put('/:problemId',
+  authMws.checkAdminMw,
+  contestMws.selectContestByNameParamMw,
+  problemMws.updateProblemFromBodyWithContestMw,
+  problemMws.sendProblemMw
+);

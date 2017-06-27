@@ -57,6 +57,23 @@ obj.saveProblemFromBodyWithContestMw = async (req, res, next) => {
   return next(e);
 };
 
+obj.updateProblemFromBodyWithContestMw = async (req, res, next) => {
+  const {body: problemInfo} = req;
+  const {problemId} = req.params;
+
+  let e;
+
+  try {
+    req.problem = await obj.problemSvc.updateProblemById(problemId, problemInfo);
+  }
+  catch (err) {
+    e = err;
+  }
+
+  return next(e);
+};
+
+
 obj.sendProblemListMw = (req, res) => {
   const {problem_list} = req;
 

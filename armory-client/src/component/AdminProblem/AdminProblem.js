@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchGetProblemList, fetchSaveProblem} from '../../actions/problem';
+import {fetchGetProblemList, fetchSaveProblem, fetchUpdateProblem} from '../../actions/problem';
 import ProblemTable from './table/ProblemTable';
 import ProblemForm from './form/ProblemForm';
 import ProblemDataForm from './dataForm/ProblemDataForm';
@@ -42,6 +42,24 @@ export class AdminProblem extends Component {
     })
   }
 
+  handleClickModify = () => {
+    if (this.state.target === null) {
+      return;
+    }
+
+    this.setState({
+      formOpen: true,
+      dataFormOpen: false
+    });
+  }
+
+  handleClose = () => {
+    this.setState({
+      formOpen: false,
+      dataFormOpen: false
+    });
+  }
+
   handleSelectTarget = (problem) => {
     if (this.state.target === problem) {
       this.setState({
@@ -57,7 +75,7 @@ export class AdminProblem extends Component {
   }
 
   handleSave = (problemId, problemInfo) => {
-    const {match: {params: {contestName}}, fetchSaveProblem, fetchGetProblemList} = this.props;
+    const {match: {params: {contestName}}, fetchSaveProblem, fetchGetProblemList, fetchUpdateProblem} = this.props;
 
     let promise;
 
@@ -65,6 +83,9 @@ export class AdminProblem extends Component {
       promise = fetchSaveProblem(contestName, problemInfo);
     }
 
+    else {
+      promise = fetchUpdateProblem(contestName, problemId, problemInfo);
+    }
     promise
       .then(() => {
         this.setState({
@@ -93,6 +114,9 @@ export class AdminProblem extends Component {
           <button className="btn btn-success" onClick={this.handleClickAdd}>
             추가
           </button>
+          <button className="btn btn-warning ml-2" onClick={this.handleClickModify} disabled={target === null}>
+            수정
+          </button>
           <button className="btn btn-info ml-2" onClick={this.handleClickData} disabled={target === null}>
             데이터 관리
           </button>
@@ -110,7 +134,7 @@ export class AdminProblem extends Component {
 
         {
           this.state.formOpen && (
-            <ProblemForm problem={this.state.target} onSave={this.handleSave} />
+            <ProblemForm problem={this.state.target} onSave={this.handleSave} onClose={this.handleClose} />
           )
         }
 
@@ -134,7 +158,8 @@ export class AdminProblem extends Component {
 const stateToProps = ({problemList}) => ({problemList});
 const actionToProps = {
   fetchGetProblemList,
-  fetchSaveProblem
+  fetchSaveProblem,
+  fetchUpdateProblem
 };
 
 export default connect(stateToProps, actionToProps)(AdminProblem);
