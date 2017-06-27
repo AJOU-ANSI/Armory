@@ -8,7 +8,11 @@ const
   session = require('express-session'),
   passport= require('passport'),
   LocalStrategy = require('passport-local').Strategy,
-  db = require('../app/models');
+  db = require('../app/models'),
+  RedisStore = require('connect-redis')(session),
+  redis = require('redis'),
+  client = redis.createClient();
+
 
 module.exports = function(app, config, {memoryStore}) {
   const env = process.env.NODE_ENV || 'development';
@@ -37,7 +41,11 @@ module.exports = function(app, config, {memoryStore}) {
     cookie: {
       maxAge: 1000 * 60 * 60 * 7
     },
-    store: memoryStore
+    store: new RedisStore({
+      host: config.redisHost,
+      port: config.redisPort,
+      client
+    })
     // store: new MongoStore({
     //   mongooseConnection: mongoose.connection
     // })
