@@ -10,8 +10,7 @@ export class Footer extends Component {
           <div className="row">
             <div className="col-6">
               <h6 className="uppercase-text letter-spacing">About</h6>
-              <p>shake!는 경희대학교, 성균관대학교, 아주대학교, 한양대학교 ERICA 4개 대학교가 서로 교류를 통해 발전하고, 경쟁을 통해 새로운 인재를 발견하는 데에 목적을 두고
-                있습니다.</p>
+              <p>shake!는 경희대학교, 성균관대학교, 아주대학교, 인하대학교, 한국항공대학교, 한양대학교 ERICA 6개 대학교가 서로 교류를 통해 발전하고, 경쟁을 통해 새로운 인재를 발견하는 데에 목적을 두고 있습니다.</p>
             </div>
             <div className="col-2 offset-2">
               <h6 className="uppercase-text letter-spacing">Credits</h6>
@@ -34,8 +33,8 @@ export class Footer extends Component {
                 <br/>
                 <br/>
                 <strong>Develop/Design</strong>
-                <a href="https://fb.com/CodingMonster">
-                  <br/>코딩몬스터
+                <a href="http://ansi.kr">
+                  <br/>A.N.S.I.
                 </a>
               </p>
 

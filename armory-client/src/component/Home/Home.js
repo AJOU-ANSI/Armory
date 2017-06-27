@@ -47,7 +47,7 @@ export class Home extends Component {
             <div className="page-title">
               <h1 className="font-weight-light mb-5">대회 규정</h1>
 
-              <p className="mb-0"> <strong>shake!</strong>는 4개 대학교에 재학중인 학부생에 한해 참가할 수 있습니다. </p>
+              <p className="mb-0"> <strong>shake!</strong>는 6개 대학교에 재학중인 학부생에 한해 참가할 수 있습니다. </p>
               <p> 휴학생 및 전국 대학생 프로그래밍 경시대회 입상자는 참가할 수 없습니다. </p>
             </div>
 
