@@ -11,7 +11,7 @@ const
   db = require('../app/models'),
   RedisStore = require('connect-redis')(session),
   redis = require('redis'),
-  client = redis.createClient();
+  client = redis.createClient({host: config.redisHost, port: config.redisPort});
 
 
 module.exports = function(app, config, {memoryStore}) {
