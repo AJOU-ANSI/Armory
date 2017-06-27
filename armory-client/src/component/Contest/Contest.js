@@ -24,6 +24,7 @@ import {fetchGetContestByName} from '../../actions/contest';
 import {fetchLoggedIn, fetchLogin, fetchLogout} from '../../actions/auth';
 import {fetchConnectWebSocket} from '../../actions/socket';
 import QnA from '../QnA/QnA';
+import Rank from '../Rank/Rank';
 
 export class Contest extends Component {
   constructor(props) {
@@ -132,6 +133,7 @@ export class Contest extends Component {
             <Route path={`${path}/status`} render={() => <Status contest={contest} />} />
 
             <Route path={`${path}/admin`} component={AdminHome} />
+            <Route path={`${path}/rank`} component={Rank} />
 
             <Route component={NotFound} />
           </Switch>

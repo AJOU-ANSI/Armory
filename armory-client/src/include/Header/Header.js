@@ -8,6 +8,10 @@ import './Header.css';
 import {connect} from "react-redux";
 import {Dropdown, DropdownItem, DropdownMenu} from "reactstrap";
 
+function isEmpty (value) {
+  return value === null || value === undefined;
+}
+
 export class Header extends Component {
   constructor(props) {
     super(props);
@@ -100,7 +104,7 @@ export class Header extends Component {
       {to: `${url}/problems`, title: "문제"},
       {to: `${url}/status`, title: "제출내역"},
       {to: `${url}/qna`, title: "질문하기"},
-      {to: `${url}/ranking`, title: "랭킹"},
+      {to: `${url}/rank`, title: "순위"},
     ];
 
     if (user && user.isAdmin) {
@@ -157,19 +161,23 @@ export class Header extends Component {
               )}
               </div>
 
-              <div className="ml-4">
-                <span className="text-logo time-basis">맞은</span> 문제:&nbsp;
-                <span className="text-logo solved-value font-weight-bold">
-                  {userContestInfo.acceptedCnt}개
-                </span>
-              </div>
+              {!isEmpty(userContestInfo.acceptedCnt) && (
+                <div className="ml-4">
+                  <span className="text-logo time-basis">맞은</span> 문제:&nbsp;
+                  <span className="text-logo solved-value font-weight-bold">
+                      {userContestInfo.acceptedCnt}개
+                    </span>
+                </div>
+              )}
 
-              <div className="ml-4">
-                <span className="text-logo time-basis">랭크</span>:&nbsp;
-                <span className="text-logo solved-value font-weight-bold">
-                  {userContestInfo.rank}위
-                </span>
-              </div>
+              {!isEmpty(userContestInfo.rank) && (
+                <div className="ml-4">
+                  <span className="text-logo time-basis">랭크</span>:&nbsp;
+                  <span className="text-logo solved-value font-weight-bold">
+                      {userContestInfo.rank}위
+                    </span>
+                </div>
+              )}
 
             </div>
           </div>

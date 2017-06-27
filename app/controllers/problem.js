@@ -74,6 +74,8 @@ router.post('/:problemCode/data',
 
     const dataPath = path.resolve(filePath, 'data', problem.id+'');
 
+    console.log(dataPath);
+
     rimraf.sync(dataPath);
     fs.mkdirSync(dataPath);
 

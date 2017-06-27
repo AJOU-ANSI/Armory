@@ -17,6 +17,7 @@ export const ProblemItem = ({problem, className, match}) => {
     case 'fail':
       btnClass = 'btn-danger'; btnLabel = '재시도'; break;
     default:
+      btnLabel = '문제 풀기';
   }
 
   return (
