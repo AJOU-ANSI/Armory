@@ -13,7 +13,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Switch>
-            <Redirect exact from="/" to="/contests" />
+            <Redirect exact from="/" to="/2017final" />
             <Route path="/contests" component={ContestList} />
             <Route path="/:contestName" component={Contest} />
 
