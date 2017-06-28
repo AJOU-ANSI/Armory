@@ -20,6 +20,9 @@ export class ProblemList extends Component {
   }
 
   render() {
+    const {problemStatuses} = this.props;
+
+    console.log(problemStatuses);
     /*
     <% for(var i = 0 ; i < problems.length; i++ ) {  %>
       <%var problem = problems[i]; var code = String.fromCharCode(problem.num+'A'.charCodeAt(0)); %>
@@ -78,7 +81,7 @@ export class ProblemList extends Component {
   }
 }
 
-const stateToProps = ({problemList}) => ({problemList});
+const stateToProps = ({problemList, problemStatuses}) => ({problemList, problemStatuses});
 const actionToProps = {
   fetchGetProblemList,
   fetchGetProblemStatuses,
