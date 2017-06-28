@@ -4,20 +4,26 @@ import {Link} from 'react-router-dom';
 
 import './ProblemItem.css';
 
-export const ProblemItem = ({problem, className, match}) => {
-  const {result} = problem;
-
+export const ProblemItem = ({problem, className, match, status}) => {
   let btnClass, btnLabel;
 
-  switch(result) {
-    case 'none':
-      btnClass = 'btn-black'; btnLabel = '문제 풀기'; break;
-    case 'success':
-      btnClass = 'btn-info'; btnLabel = '정답'; break;
-    case 'fail':
-      btnClass = 'btn-danger'; btnLabel = '재시도'; break;
-    default:
-      btnLabel = '문제 풀기';
+  console.log(problem, status);
+
+  if (!status) {
+    btnClass = 'btn-white text-logo'; btnLabel = '문제 풀기';
+  }
+  else {
+    const {accepted, wrong} = status;
+
+    if (accepted) {
+      btnClass = 'btn-info'; btnLabel = '정답';
+    }
+    else if (wrong) {
+      btnClass = 'btn-danger'; btnLabel = '재시도';
+    }
+    else {
+      btnClass = 'btn-white text-logo'; btnLabel = '문제 풀기';
+    }
   }
 
   return (

@@ -20,9 +20,6 @@ export class ProblemList extends Component {
   }
 
   render() {
-    const {problemStatuses} = this.props;
-
-    console.log(problemStatuses);
     /*
     <% for(var i = 0 ; i < problems.length; i++ ) {  %>
       <%var problem = problems[i]; var code = String.fromCharCode(problem.num+'A'.charCodeAt(0)); %>
@@ -50,7 +47,15 @@ export class ProblemList extends Component {
         </div>
         <% } %>
      */
-    const {match, problemList} = this.props;
+    const {match, problemList, problemStatuses} = this.props;
+
+    console.log(problemStatuses);
+    
+    const problemStatusMap = !problemStatuses ? {} : problemStatuses.reduce((ret, cur) => {
+      ret[cur.problemId] = cur;
+
+      return ret;
+    }, {});
 
     return (
       <div className="page">
@@ -70,7 +75,13 @@ export class ProblemList extends Component {
             <div className="row">
               {
                 problemList && problemList.map((problem, index) => (
-                  <ProblemItem match={match} problem={problem} key={index} className="col-10 offset-1 mb-2" />
+                  <ProblemItem
+                    match={match}
+                    problem={problem}
+                    status={problemStatusMap[problem.id]}
+                    key={index}
+                    className="col-10 offset-1 mb-2"
+                  />
                 ))
               }
             </div>
