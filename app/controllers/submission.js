@@ -14,7 +14,6 @@ module.exports = function (app) {
 router.post('/checked',
   contestMws.selectContestByNameParamMw,
   async function (req, res) {
-    console.log(req.body);
     const {results: checkedSubmissions} = req.body;
 
     checkedSubmissions.forEach(({userId, acceptedCnt, rank}) => {

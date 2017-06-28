@@ -16,3 +16,4 @@ router.get('/byName/:contestName',
   contestMws.selectContestByNameParamMw,
   contestMws.sendContestMw
 );
+

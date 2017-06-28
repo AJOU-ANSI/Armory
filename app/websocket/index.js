@@ -99,12 +99,8 @@ obj.sendQnaAnswered = function (userId) {
 };
 
 obj.sendProblemChecked = function (userId, {acceptedCnt, rank}) {
-  console.log(userId);
-  console.log(userSocketMap);
-
   if (userSocketMap[userId]) {
     userSocketMap[userId].forEach(socketId => {
-      console.log(socketId);
       io.sockets.connected[socketId].emit('problemChecked', {acceptedCnt, rank});
     });
   }
