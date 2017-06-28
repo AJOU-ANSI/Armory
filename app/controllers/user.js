@@ -47,6 +47,7 @@ router.get('/:userId/contestInfo',
         }
       })
     }
+
     const uri = `${rankServer}${infoUrl}/${userId}`;
 
     try {
@@ -61,7 +62,7 @@ router.get('/:userId/contestInfo',
       }});
     }
     catch (e) {
-      return next(e);
+      return res.status(400).send({});
     }
   }
 );

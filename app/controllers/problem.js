@@ -11,7 +11,8 @@ const
   rimraf = require('rimraf'),
   ncp = require('ncp').ncp,
   glob = require('glob'),
-  mkdirp = require('mkdirp');
+  mkdirp = require('mkdirp'),
+  request = require('request-promise-native');
 
 
 
@@ -30,6 +31,34 @@ router.get('/',
   contestMws.checkContestOpenedOrAdminMw,
   problemMws.selectProblemListByContestMw,
   problemMws.sendProblemListMw
+);
+
+let rankServer = 'http://localhost:8080';
+if (process.env.NODE_ENV === 'production') {
+  rankServer = 'http://rank1:8080';
+}
+
+const statusUrl = '/api/problemStatuses';
+
+router.get('/status',
+  authMws.checkLoggedInMw,
+  async function (req, res) {
+    const {user} = req;
+
+    try {
+      const ret = await request({
+        uri: `${rankServer}${statusUrl}/${user.id}`,
+        json: true,
+      });
+
+      return res.send({
+        result: {problemStatuses: ret}
+      });
+    }
+    catch (err) {
+      return res.status(400).send({});
+    }
+  }
 );
 
 router.get('/:problemCode',
