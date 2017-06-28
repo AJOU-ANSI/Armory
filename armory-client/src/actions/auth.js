@@ -66,13 +66,13 @@ export const fetchLogin = (contestName, data) => {
       return dispatch(login(new Error(body.message)));
     }
 
-    const body = await resp.json();
+    const {result: {user}} = await resp.json();
 
     toastr.success("시스템 메세지", "로그인이 완료되었습니다.");
 
-    dispatch(fetchGetUserContestInfo(contestName));
-
-    return dispatch(login(body.result.user));
+    dispatch(fetchGetUserContestInfo(contestName, user));
+    
+    return dispatch(login(user));
   };
 };
 
@@ -86,11 +86,11 @@ export const fetchLoggedIn = (contestName) => {
       return dispatch(loggedIn(new Error(body.message)));
     }
 
-    const body = await resp.json();
+    const {result: {user}} = await resp.json();
 
-    dispatch(fetchGetUserContestInfo(contestName));
+    dispatch(fetchGetUserContestInfo(contestName, user));
 
-    return dispatch(loggedIn(body.result.user));
+    return dispatch(loggedIn(user));
   }
 };
 

@@ -39,6 +39,14 @@ router.get('/:userId/contestInfo',
   async function (req, res, next) {
     const {userId} = req.params;
 
+    if (process.env.NODE_ENV === 'development') {
+      return res.send({
+        "result": {
+          "rank": 1,
+          "acceptedCnt": 1,
+        }
+      })
+    }
     const uri = `${rankServer}${infoUrl}/${userId}`;
 
     try {

@@ -7,9 +7,22 @@ export const getUserContestInfo = createAction('GET_USER_CONTEST_INFO');
 
 const contestUrl = '/api/contests';
 
-export const fetchGetUserContestInfo = (contestName) => {
+export const fetchGetUserContestInfo = (contestName, user) => {
   return async (dispatch) => {
-    return dispatch(getUserContestInfo({acceptedCnt: 0, rank: 1}));
+    try {
+      const resp = await fetch(`/api/${contestName}/users/${user.id}/contestInfo`);
+
+      if (!resp.ok) {
+        throw new Error();
+      }
+
+      const {result: contestInfo} = await resp.json();
+
+      return dispatch(getUserContestInfo(contestInfo));
+    }
+    catch(err) {
+      return dispatch(getUserContestInfo(err));
+    }
   }
 };
 
