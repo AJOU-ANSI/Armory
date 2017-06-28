@@ -51,6 +51,8 @@ router.get('/status',
         json: true,
       });
 
+      console.log(ret);
+
       return res.send({
         result: {problemStatuses: ret}
       });
