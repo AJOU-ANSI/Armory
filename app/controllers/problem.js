@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const statusUrl = '/api/problemStatuses';
 
-router.get('/status',
+router.get('/myStatus',
   authMws.checkLoggedInMw,
   async function (req, res) {
     const {user} = req;
@@ -58,6 +58,7 @@ router.get('/status',
       });
     }
     catch (err) {
+      console.log(err);
       return res.status(400).send({});
     }
   }

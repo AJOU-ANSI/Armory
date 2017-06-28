@@ -14,29 +14,6 @@ const loginUrl = (contestName) => (`/auth/${contestName}/login`);
 const loggedInUrl = (contestName) => (`/auth/${contestName}/loggedin`);
 const logoutUrl = (contestName) => (`/auth/${contestName}/logout`);
 
-// export const fetchSignup = (data: SignupUser) => {
-//   return async (dispatch: Function) => {
-//     const resp = await fetch(signupUrl, {
-//       headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//       },
-//       method: 'POST',
-//       body: JSON.stringify(data)
-//     });
-//
-//     if(!resp.ok) {
-//       const body: authFailResponse = await resp.json();
-//
-//       return dispatch(signup(new Error(body.msg)));
-//     }
-//
-//     const body: authResponse = await resp.json();
-//
-//     return dispatch(signup(body.result.user));
-//   };
-// };
-//
 export const fetchLogin = (contestName, data) => {
   return async (dispatch) => {
     const resp = await fetch(loginUrl(contestName), {

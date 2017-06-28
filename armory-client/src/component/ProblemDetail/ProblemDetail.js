@@ -152,7 +152,7 @@ export class ProblemDetail extends Component {
 
 const stateToProps = ({problemMap}) => ({problemMap});
 const actionToProps = {
-  fetchGetProblemByCode
+  fetchGetProblemByCode,
 };
 
 export default connect(stateToProps, actionToProps)(ProblemDetail);

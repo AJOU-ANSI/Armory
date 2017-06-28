@@ -3,6 +3,7 @@ import {createAction} from 'redux-actions';
 export const getProblemList = createAction('GET_PROBLEM_LIST');
 export const saveProblem = createAction('SAVE_PROBLEM');
 export const getProblemByCode = createAction('GET_PROBLEM_BY_CODE');
+export const getProblemStatuses = createAction('GET_PROBLEM_STATUSES');
 
 export const fetchGetProblemList = (contestName) => {
   return async (dispatch) => {
@@ -105,6 +106,29 @@ export const fetchGetProblemByCode = (contestName, problemCode) => {
     }
     catch (e) {
       return dispatch(getProblemByCode(e));
+    }
+  }
+}
+
+export const fetchGetProblemStatuses = (contestName) => {
+  return async (dispatch) => {
+    try {
+      const resp = await fetch(`/api/${contestName}/problems/myStatus`, {
+        method: 'GET',
+        credentials: 'include'
+      });
+
+      if (!resp.ok) {
+        throw new Error('Bad request');
+      }
+
+      const body = await resp.json();
+      const {result: {problemStatuses}} = body;
+
+      return dispatch(getProblemStatuses(problemStatuses));
+    }
+    catch (e) {
+      return dispatch(getProblemStatuses(e));
     }
   }
 }

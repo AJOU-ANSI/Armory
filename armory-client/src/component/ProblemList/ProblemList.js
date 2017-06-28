@@ -5,13 +5,18 @@ import './ProblemList.css';
 import ProblemItem from './ProblemItem';
 // import problems from '../../data/problems.json';
 import {connect} from 'react-redux';
-import {fetchGetProblemList} from '../../actions/problem';
+import {fetchGetProblemList, fetchGetProblemStatuses} from '../../actions/problem';
 
 export class ProblemList extends Component {
   componentWillMount() {
-    const {match: {params: {contestName}}} = this.props;
+    const {
+      match: {params: {contestName}},
+      fetchGetProblemList,
+      fetchGetProblemStatuses,
+    } = this.props;
 
-    this.props.fetchGetProblemList(contestName);
+    fetchGetProblemList(contestName);
+    fetchGetProblemStatuses(contestName);
   }
 
   render() {
@@ -75,7 +80,8 @@ export class ProblemList extends Component {
 
 const stateToProps = ({problemList}) => ({problemList});
 const actionToProps = {
-  fetchGetProblemList
+  fetchGetProblemList,
+  fetchGetProblemStatuses,
 };
 
 export default connect(stateToProps, actionToProps)(ProblemList);
