@@ -102,14 +102,24 @@ export class Status extends Component {
       if (result < 4) {
         return '채점중';
       }
-      else if (result === 4) {
-        return '맞았습니다!'
-      }
-      else if (result === 11) {
-        return '컴파일 에러'
-      }
       else {
-        return '틀렸습니다.'
+        switch (result) {
+          case 4:
+            return '맞았습니다!';
+          case 5:
+            return 'Presentation Error';
+          case 6:
+            return '틀렸습니다.';
+          case 7:
+            return '시간 제한 초과';
+          case 8:
+            return '메모리 제한 초과';
+          case 10:
+            return '런타임 에';
+          case 11:
+            return '컴파일 에러';
+
+        }
       }
     };
 
