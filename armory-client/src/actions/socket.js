@@ -2,6 +2,7 @@ import {createAction} from 'redux-actions';
 import io from 'socket.io-client';
 import {toastr} from 'react-redux-toastr';
 import {getUserContestInfo} from './contest';
+import h5noti from '../helper/h5noti';
 
 export const connectWebSocket = createAction('CONNECT_WEBSOCKET');
 export const closeWebSocket = createAction('CLOSE_WEBSOCKET');
@@ -23,17 +24,26 @@ function init(socket, dispatch) {
   });
 
   socket.on('notification', function (message) {
-    toastr.success('시스템 메세지', '새로운 공지가 등록되었습니다. 확인 부탁드립니다.');
+    const msg = '새로운 공지가 등록되었습니다. 확인 부탁드립니다.';
+
+    toastr.success('시스템 메세지', msg);
+    h5noti.sendMessage(msg);
   });
 
   socket.on('answered', function (message) {
-    toastr.success('시스템 메세지', '질문에 대한 답변이 등록되었습니다. 확인 부탁드립니다.');
+    const msg = '질문에 대한 답변이 등록되었습니다. 확인 부탁드립니다.';
+
+    toastr.success('시스템 메세지', msg);
+    h5noti.sendMessage(msg);
   });
 
   socket.on('problemChecked', function ({acceptedCnt, rank}) {
     dispatch(getUserContestInfo({acceptedCnt, rank}));
 
-    toastr.success('시스템 메세지', '문제 채점이 완료되었습니다. 확인 부탁드립니다.');
+    const msg = '문제 채점이 완료되었습니다. 확인 부탁드립니다.';
+
+    toastr.success('시스템 메세지', msg);
+    h5noti.sendMessage(msg);
   });
 
   socket.on('disconnect', function () {

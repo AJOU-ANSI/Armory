@@ -35,7 +35,7 @@ export class Header extends Component {
       }
 
       if (0 <= (now - end) && (now - end) < 1000) {
-        toastr.warning('시스템 메세지', '대회가 종료되었습니다. 고생 많으셨습니다.');
+        toastr.warning('시스템 메세지', '대회가 종료되었습니다. 고생 많으셨습니다. :)');
       }
 
       if (start < now && now < end) {
