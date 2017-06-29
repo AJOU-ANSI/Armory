@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import moment from 'moment';
+import {toastr} from 'react-redux-toastr';
 
 import blackLogo from '../../image/black-logo.png';
 import {NavLink, Link} from 'react-router-dom';
@@ -28,6 +29,14 @@ export class Header extends Component {
     this.timer = setInterval(() => {
       const now = (new Date()).getTime();
       let remainTime;
+
+      if (0 <= (start - now) && (start - now) < 1000) {
+        toastr.info('시스템 메세지', '대회가 시작되었습니다!');
+      }
+
+      if (0 <= (now - end) && (now - end) < 1000) {
+        toastr.warning('시스템 메세지', '대회가 종료되었습니다. 고생 많으셨습니다.');
+      }
 
       if (start < now && now < end) {
         remainTime = end - now;

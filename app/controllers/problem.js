@@ -45,13 +45,27 @@ router.get('/myStatus',
   async function (req, res) {
     const {user} = req;
 
+    if (process.env.NODE_ENV === 'development') {
+      return res.send({
+        result:
+          {"problemStatuses":
+            [
+              {"problemId":3,"accepted":false,"wrong":true},
+              {"problemId":4,"accepted":false,"wrong":false},
+              {"problemId":5,"accepted":false,"wrong":false},
+              {"problemId":6,"accepted":false,"wrong":false},
+              {"problemId":1,"accepted":true,"wrong":false},
+              {"problemId":2,"accepted":false,"wrong":false},
+            ]
+          }
+      })
+    }
+
     try {
       const ret = await request({
         uri: `${rankServer}${statusUrl}/${user.id}`,
         json: true,
       });
-
-      console.log(ret);
 
       return res.send({
         result: {problemStatuses: ret}

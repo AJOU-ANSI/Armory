@@ -7,63 +7,42 @@ export class Rank extends Component {
     super(props);
 
     this.state = {
-      rankData: [
-        {
-          strId: 'test01',
-          rank: 2,
-          acceptedCnt: 2,
-          penalty: 10000000,
-          problemStatuses: [
-            {wrongCount: 0, accepted: true},
-            {wrongCount: 1, accepted: true},
-            {wrongCount: 4, accepted: false}
-          ]
-        },
-        {
-          strId: 'test02',
-          rank: 3,
-          acceptedCnt: 2,
-          penalty: 10010001,
-          problemStatuses: [
-            {wrongCount: 0, accepted: false},
-            {wrongCount: 1, accepted: true},
-            {wrongCount: 3, accepted: true}
-          ]
-        },
-        {
-          strId: 'test30',
-          rank: 1,
-          acceptedCnt: 3,
-          penalty: 10010101,
-          problemStatuses: [
-            {wrongCount: 0, accepted: true},
-            {wrongCount: 1, accepted: true},
-            {wrongCount: 3, accepted: true}
-          ]
-        },
-      ]
+      rankData: []
     }
   }
 
   componentWillMount() {
-    setInterval(() => {
-      const rankData = this.state.rankData.slice();
+    this.updateRank();
 
-      const checked = [];
-
-      for (let i = 0 ; i < rankData.length ;i++) {
-        const rank = Math.floor(Math.random()*rankData.length);
-
-        if (checked[rank]) { i--; continue; }
-
-        checked[rank] = true;
-
-        rankData[i].rank = (rank+1);
-      }
-      console.log(rankData);
-
-      this.setState({rankData});
+    this.timer = setInterval(() => {
+      this.updateRank();
     }, 5000);
+  }
+
+  componentWillUnmount() {
+    if (this.timer) {
+      clearInterval(this.timer);
+
+      delete this.timer;
+    }
+  }
+
+  updateRank = () => {
+    const {match: {params: {contestName}}} = this.props;
+
+    fetch(`/api/${contestName}/ranking`)
+      .then(resp => {
+        if (!resp) {
+          throw new Error();
+        }
+        return resp.json();
+      })
+      .then(({result: {rankData}}) => {
+        this.setState({rankData});
+      })
+      .catch(() => {
+        this.setState({rankData: []});
+      });
   }
 
   render () {
@@ -106,7 +85,7 @@ export class Rank extends Component {
                         <td> {rankDetail.strId} </td>
                         <td> {rankDetail.acceptedCnt} </td>
                         <td />
-                        <td> {rankDetail.penalty} </td>
+                        <td> {Math.floor(rankDetail.penalty/1000/1000/1000/60)} </td>
                       </tr>
                     );
                   })
