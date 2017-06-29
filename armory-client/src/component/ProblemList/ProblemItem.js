@@ -7,8 +7,6 @@ import './ProblemItem.css';
 export const ProblemItem = ({problem, className, match, status}) => {
   let btnClass, btnLabel;
 
-  console.log(problem, status);
-
   if (!status) {
     btnClass = 'btn-white text-logo'; btnLabel = '문제 풀기';
   }
@@ -36,7 +34,7 @@ export const ProblemItem = ({problem, className, match, status}) => {
           </h5>
 
           <span className="d-flex">
-            <Link to={`${match.url}/${problem.code}`} className={classnames('btn btn-custom', btnClass)}>
+            <Link to={status.accepted ? null : `${match.url}/${problem.code}`} className={classnames('btn btn-custom', btnClass)}>
               {btnLabel}
             </Link>
           </span>
