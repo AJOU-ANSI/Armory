@@ -34,9 +34,16 @@ export const ProblemItem = ({problem, className, match, status}) => {
           </h5>
 
           <span className="d-flex">
-            <Link to={`${match.url}/${problem.code}`} className={classnames('btn btn-custom', btnClass)}>
-              {btnLabel}
-            </Link>
+            {
+              status.accepted ? (
+                <button className={classnames('btn btn-custom', btnClass)} disabled> {btnLabel} </button>
+              ) : (
+                <Link to={`${match.url}/${problem.code}`} className={classnames('btn btn-custom', btnClass)}>
+                  {btnLabel}
+                </Link>
+              )
+            }
+
           </span>
         </div>
       </div>
