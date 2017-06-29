@@ -115,7 +115,7 @@ export class Status extends Component {
           case 8:
             return '메모리 제한 초과';
           case 10:
-            return '런타임 에';
+            return '런타임 에러';
           case 11:
             return '컴파일 에러';
 
