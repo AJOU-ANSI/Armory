@@ -113,7 +113,7 @@ export class Header extends Component {
       {to: `${url}/rank`, title: "순위"},
     ];
 
-    if (user) {
+    if (user && user.isAuth) {
       menus.push(
         {to: `${url}/problems`, title: "문제"},
         {to: `${url}/status`, title: "제출내역"},
