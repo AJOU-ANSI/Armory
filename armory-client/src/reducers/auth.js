@@ -41,6 +41,6 @@ export default handleActions({
       return state;
     }
 
-    return {};
+    return initialState;
   }
 }, initialState);

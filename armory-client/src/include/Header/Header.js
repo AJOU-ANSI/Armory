@@ -110,12 +110,16 @@ export class Header extends Component {
     const menus = [
       {to: `${url}`, title: "메인"},
       {to: `${url}/noti`, title: "공지"},
-      {to: `${url}/problems`, title: "문제"},
-      {to: `${url}/status`, title: "제출내역"},
-      {to: `${url}/qna`, title: "질문하기"},
       {to: `${url}/rank`, title: "순위"},
     ];
 
+    if (user) {
+      menus.push(
+        {to: `${url}/problems`, title: "문제"},
+        {to: `${url}/status`, title: "제출내역"},
+        {to: `${url}/qna`, title: "질문하기"},
+      );
+    }
     if (user && user.isAdmin) {
       menus.push(
         {to: `${url}/admin`, title: "관리자"}
