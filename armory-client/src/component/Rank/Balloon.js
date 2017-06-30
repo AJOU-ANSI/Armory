@@ -31,7 +31,7 @@ export class Balloon extends Component {
 
     return (
       <span>
-        <img src={balloonMap[code]} style={{width: 40, height: 50}} id={`b-${strId}-${code}`} />
+        <img src={balloonMap[code]} style={{width: 40, height: 50}} id={`b-${strId}-${code}`} alt={code} />
         <Tooltip placement="top" isOpen={this.state.tooltipOpen} target={`b-${strId}-${code}`} toggle={this.toggle}>
           {code}
         </Tooltip>

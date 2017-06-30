@@ -51,6 +51,12 @@ export class Rank extends Component {
     let {rankData} = this.state;
 
     rankData = rankData.sort((a, b) => {
+      if (a.rank === b.rank) {
+        if (a.strId < b.strId) return -1;
+        else if (a.strId > b.strId) return 1;
+        return 0;
+      }
+
       return a.rank - b.rank;
     });
 

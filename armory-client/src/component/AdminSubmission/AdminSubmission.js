@@ -14,6 +14,7 @@ export class AdminSubmission extends Component {
 
   componentWillMount() {
     this.updateSubmissionList();
+    this.updateUserList();
   }
 
   handleChangeSearch = ({target: {value}}) => {
@@ -38,11 +39,37 @@ export class AdminSubmission extends Component {
       });
   }
 
+  updateUserList = () => {
+    const {match: {params: {contestName}}} = this.props;
+
+    fetch(`/api/${contestName}/users`, {
+      credentials: 'include'
+    })
+      .then(resp => {
+        if (!resp.ok) {
+          throw new Error('Not ok');
+        }
+
+        return resp.json();
+      })
+      .then(({result: {user_list: userList}}) => {
+        this.setState({userList});
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
   render () {
     const {match: {params: {contestName}}} = this.props;
-    let {submissionList, search} = this.state;
+    let {submissionList, userList, search} = this.state;
 
-    if (!submissionList) return null;
+    if (!submissionList || !userList) return null;
+
+    const userMap = userList.reduce((ret, cur) => {
+      ret[cur.id] = cur;
+      return ret;
+    }, {});
 
     submissionList = submissionList.filter(s => {
       if (search === '') return true;
@@ -62,6 +89,7 @@ export class AdminSubmission extends Component {
         <StatusTable
           className="paper"
           submissionList={submissionList}
+          userMap={userMap}
           contest={{name: contestName}}
           admin={true}
         />

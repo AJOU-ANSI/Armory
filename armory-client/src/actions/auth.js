@@ -2,7 +2,7 @@
 
 import {createAction} from 'redux-actions';
 import {toastr} from 'react-redux-toastr';
-import {fetchGetUserContestInfo, getUserContestInfo} from './contest';
+import {getUserContestInfo} from './contest';
 
 // export const signup = createAction('SIGNUP');
 export const login = createAction('LOGIN');

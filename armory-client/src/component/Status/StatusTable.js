@@ -46,6 +46,7 @@ export class StatusTable extends Component {
         case 8:
         case 10:
           return '런타임 에러';
+        default:
       }
     }
   };
@@ -83,7 +84,7 @@ export class StatusTable extends Component {
   };
 
   render() {
-    const {submissionList, contest, admin, className} = this.props;
+    const {submissionList, userMap, contest, admin, className} = this.props;
     const {compileModalOpen, codeModalOpen, target} = this.state;
 
     if (submissionList === null) return null;
@@ -153,7 +154,7 @@ export class StatusTable extends Component {
                   <tr key={submission.id} className={classnames(rowColor)}>
                     <td> {submission.id} </td>
                     {admin && (
-                      <td> {submission.UserId} </td>
+                      <td> {userMap[submission.UserId].strId} </td>
                     )}
                     <td>
                       <Link to={`/${contest.name}/problems/${submission.problem_code}`}>
