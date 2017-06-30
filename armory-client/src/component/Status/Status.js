@@ -5,13 +5,20 @@ import classnames from 'classnames';
 
 import './Status.css';
 import {Link} from 'react-router-dom';
+import {Modal, ModalBody, ModalHeader} from 'reactstrap';
+import CodeMirror from 'react-codemirror';
 
 export class Status extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      submissionList: null
+      submissionList: null,
+      compileModalOpen: false,
+      compileModalValue: null,
+      codeModalOpen: false,
+      codeModalValue: null,
+      codeModalLanguage: null,
     };
   }
 
@@ -39,66 +46,123 @@ export class Status extends Component {
       });
   }
 
+  handleClickCompileErrorMessage = (e, value) => {
+    e.preventDefault();
+
+    this.setState({
+      compileModalValue: value,
+    });
+    this.toggleCompileErrorModal();
+  }
+
+  handleClickLanguageMessage = (e, submission) => {
+    e.preventDefault();
+
+    this.setState({
+      codeModalValue: submission.code,
+      codeModalLanguage: ['text/x-csrc', 'text/x-c++src', 'text/x-java'][submission.language],
+    });
+    this.toggleCodeModal();
+  }
+
+  toggleCompileErrorModal = () => {
+    const {compileModalOpen} = this.state;
+
+    this.setState({
+      compileModalOpen: !compileModalOpen,
+    });
+  };
+
+  toggleCodeModal = () => {
+    const {codeModalOpen} = this.state;
+
+    this.setState({
+      codeModalOpen: !codeModalOpen,
+    });
+  };
+
   render() {
-    const {submissionList} = this.state;
+    // const {submissionList} = this.state;
+    const {compileModalOpen, compileModalValue, codeModalOpen, codeModalValue, codeModalLanguage} = this.state;
     const {contest} = this.props;
-    //
-    // const createDate = function(offset) { // second
-    //   const now = (new Date()).getTime();
-    //
-    //   const date = new Date(now - offset*1000);
-    //
-    //   return date;
-    // }
-    //
-    //
-    // const submissionList = [
-    //   {
-    //     language: 0,
-    //     code: '//This is compile error',
-    //     result: 11,
-    //     result_message: 'You have compile error in line 0',
-    //     problem_code: 'A',
-    //     memory_usage: 0,
-    //     time_usage: 0,
-    //     createdAt: createDate(10),
-    //     id: 1
-    //   },
-    //   {
-    //     language: 0,
-    //     code: '//This is wrong',
-    //     result: 6,
-    //     memory_usage: 10000,
-    //     time_usage: 100,
-    //     problem_code: 'A',
-    //     createdAt: createDate(8),
-    //     id: 2
-    //   },
-    //   {
-    //     language: 0,
-    //     code: '//This is right',
-    //     result: 4,
-    //     memory_usage: 10000,
-    //     time_usage: 100,
-    //     problem_code: 'A',
-    //     createdAt: createDate(6),
-    //     id: 3
-    //   },
-    //   {
-    //     language: 0,
-    //     code: '//This is pending',
-    //     result: 0,
-    //     problem_code: 'B',
-    //     createdAt: createDate(4),
-    //     id: 4
-    //   }
-    // ];
+    
+    const createDate = function(offset) { // second
+      const now = (new Date()).getTime();
+
+      const date = new Date(now - offset*1000);
+
+      return date;
+    }
+
+
+    const submissionList = [
+      {
+        language: 0,
+        code: '//This is compile error',
+        result: 11,
+        result_message: "Main.cc: In function ‘int main()’:\nMain.cc:3:17: error: ‘scanf’ was not declared in this scope\n   scanf(\"%d\", &n);\n                 ^\nMain.cc:5:19: error: ‘printf’ was not declared in this scope\n   printf(\"%d\\n\", n);\n                   ^\n",
+        problem_code: 'A',
+        memory_usage: 0,
+        time_usage: 0,
+        createdAt: createDate(10),
+        id: 1
+      },
+      {
+        language: 0,
+        code: "#include<cstdio>\nint main(){\nprintf(\"Hello World\");\n}",
+        result: 6,
+        memory_usage: 10000,
+        time_usage: 100,
+        problem_code: 'A',
+        createdAt: createDate(8),
+        id: 2
+      },
+      {
+        language: 1,
+        code: '//This is right',
+        result: 4,
+        memory_usage: 10000,
+        time_usage: 100,
+        problem_code: 'A',
+        createdAt: createDate(6),
+        id: 3
+      },
+      {
+        language: 2,
+        code: '//This is pending',
+        result: 0,
+        problem_code: 'B',
+        createdAt: createDate(4),
+        id: 4
+      },
+      {
+        language: 0,
+        code: '//This is compile error',
+        result: 11,
+        result_message: "Another compile error message",
+        problem_code: 'A',
+        memory_usage: 0,
+        time_usage: 0,
+        createdAt: createDate(2),
+        id: 5
+      },
+    ];
 
     const now = (new Date()).getTime();
 
     const languageList = ['C', 'C++', 'JAVA'];
 
-    const checkResult = (result) => {
+    const checkResult = (submission) => {
+      const {result} = submission;
+
+      if (result === 11) {
+        return (
+          <a href="" onClick={(e) => this.handleClickCompileErrorMessage(e, submission.result_message)}>
+            컴파일 에러
+          </a>
+        );
+      }
+
       if (result < 4) {
         return '채점중';
       }
@@ -113,18 +177,37 @@ export class Status extends Component {
           case 7:
             return '시간 제한 초과';
           case 8:
-            return '메모리 제한 초과';
           case 10:
             return '런타임 에러';
-          case 11:
-            return '컴파일 에러';
-
         }
       }
     };
 
     return (
       <div className="page Status">
+        <Modal isOpen={compileModalOpen} toggle={this.toggleCompileErrorModal} size="lg">
+          <ModalHeader toggle={this.toggleCompileErrorModal}>
+            컴파일 에러 메세지
+          </ModalHeader>
+
+          <ModalBody>
+            <pre>{compileModalValue}</pre>
+          </ModalBody>
+        </Modal>
+
+        <Modal isOpen={codeModalOpen} toggle={this.toggleCodeModal} size="lg">
+          <ModalHeader toggle={this.toggleCodeModal}>
+            제출 코드
+          </ModalHeader>
+
+          <ModalBody>
+            <CodeMirror
+              defaultValue={codeModalValue}
+              options={{lineNumbers: true, mode: codeModalLanguage, theme: 'monokai'}}
+            />
+          </ModalBody>
+        </Modal>
+
         <div className="page-title">
           <div className="container">
             <div className="row">
@@ -169,8 +252,18 @@ export class Status extends Component {
                           timeFormat = 's초 전'
                         }
 
-                        const isAccepted = (submission.result === 4);
-                        const isWrong = (submission.result > 5);
+                        let resultColor;
+
+                        switch (submission.result) {
+                          case 0:
+                            resultColor = ''; break;
+                          case 4:
+                            resultColor = 'text-success'; break;
+                          case 11:
+                            resultColor = ''; break;
+                          default:
+                            resultColor = 'text-danger';
+                        }
 
                         return (
                           <tr key={submission.id}>
@@ -181,13 +274,17 @@ export class Status extends Component {
                               </Link>
                             </td>
                             <td>
-                              <span className={classnames(isAccepted && 'text-success', isWrong && 'text-danger')}>
-                                {checkResult(submission.result)}
+                              <span className={classnames(resultColor)}>
+                                {checkResult(submission)}
                               </span>
                             </td>
                             <td> {submission.result !== 0 && `${submission.memory_usage}KB`} </td>
                             <td> {submission.result !== 0 && `${submission.time_usage}ms`} </td>
-                            <td> {languageList[submission.language]} </td>
+                            <td>
+                              <a href="" onClick={(e) => this.handleClickLanguageMessage(e, submission)}>
+                                {languageList[submission.language]}
+                              </a>
+                            </td>
                             <td> {moment.duration(submissionDuration).format(timeFormat)} </td>
                           </tr>
                         );

@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {toastr} from 'react-redux-toastr';
+import {Link} from 'react-router-dom';
 
-import 'codemirror/mode/clike/clike';
 import './ProblemDetail.css';
 
 import {fetchGetProblemByCode} from '../../actions/problem';
 import ProblemView from './ProblemView';
 import ProblemInfoView from './ProblemInfoView';
 import {ProblemSubmitModal} from './ProblemSubmitModal';
-import {Link} from 'react-router-dom';
 
 export class ProblemDetail extends Component {
   constructor(props) {
