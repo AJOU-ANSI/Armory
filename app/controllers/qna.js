@@ -26,6 +26,8 @@ router.post('/',
         UserId: user.id
       });
 
+      websocket.sendNewQna();
+
       return next();
     }
     catch(e) {

@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === 'production') {
 const infoUrl = '/api/acceptedCnts';
 
 router.get('/:userId/contestInfo',
-  async function (req, res, next) {
+  async function (req, res) {
     const {userId} = req.params;
 
     if (process.env.NODE_ENV === 'development') {

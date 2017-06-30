@@ -26,7 +26,17 @@ module.exports = function (sequelize, DataTypes) {
       get() {
         return this.getDataValue('end').getTime();
       }
-    }
+    },
+    freezeAt: {
+      type: DataTypes.DATE,
+      get() {
+        const freezeAt = this.getDataValue('freezeAt');
+
+        if (freezeAt === null) return 0;
+        return freezeAt.getTime();
+      }
+    },
+
   }, {
     classMethods: {
       associate: function (models) {

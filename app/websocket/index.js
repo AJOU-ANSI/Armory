@@ -51,9 +51,16 @@ obj.init = function (server) {
 
     Log(`${strId}이 접속!`);
 
-    socket.join(contestId, function () {
-      Log(`${strId}가 ${contestId}번 방 접속!` )
-    });
+    if (socket.request.user.isAdmin) {
+      socket.join('admins', function () {
+        Log(`${strId}가 어드민에 접속!` );
+      });
+    }
+    else {
+      socket.join(contestId, function () {
+        Log(`${strId}가 ${contestId}번 방 접속!` );
+      });
+    }
 
     socket.on('logout', function () {
       Log(`${strId}이 로그아웃!`);
@@ -67,9 +74,9 @@ obj.init = function (server) {
       Log(`${strId}가 접속종료!`);
     });
 
-    setInterval(function () {
-      socket.emit('greeting_response', 'annyeong');
-    }, 10000);
+    // setInterval(function () {
+    //   socket.emit('greeting_response', 'annyeong');
+    // }, 10000);
   });
 
   io.on('error', function(err) {
@@ -104,4 +111,9 @@ obj.sendProblemChecked = function (userId, {acceptedCnt, rank}) {
       io.sockets.connected[socketId].emit('problemChecked', {acceptedCnt, rank});
     });
   }
-}
+};
+
+obj.sendNewQna = function () {
+  console.log('hi');
+  io.to('admins').emit('admin_new_qna', 'hello');
+};
