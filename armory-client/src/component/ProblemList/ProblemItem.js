@@ -36,7 +36,7 @@ export const ProblemItem = ({problem, className, match, status}) => {
           <span className="d-flex">
             {
               (status && status.accepted) ? (
-                <button className={classnames('btn btn-custom', btnClass)} disabled> {btnLabel} </button>
+                <button className={classnames('btn btn-custom', btnClass)}> {btnLabel} </button>
               ) : (
                 <Link to={`${match.url}/${problem.code}`} className={classnames('btn btn-custom', btnClass)}>
                   {btnLabel}
