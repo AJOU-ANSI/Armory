@@ -19,9 +19,9 @@ function init(socket, dispatch) {
   socket.on('connect', function () {
     console.log('connected!!!');
   })
-  socket.on('greeting_response', function (message) {
-    console.log(message);
-  });
+  // socket.on('greeting_response', function (message) {
+  //   console.log(message);
+  // });
 
   socket.on('notification', function (message) {
     const msg = '새로운 공지가 등록되었습니다. 확인 부탁드립니다.';

@@ -119,7 +119,7 @@ export class QnA extends Component {
   render () {
     const {problemCodeList, formOpen, defaultProblemCode, qnaList} = this.state;
 
-    console.log(qnaList);
+    // console.log(qnaList);
 
     return (
       <div className="QnA page">

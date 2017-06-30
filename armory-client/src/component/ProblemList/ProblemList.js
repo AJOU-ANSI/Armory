@@ -49,7 +49,7 @@ export class ProblemList extends Component {
      */
     const {match, problemList, problemStatuses} = this.props;
 
-    console.log(problemStatuses);
+    // console.log(problemStatuses);
     
     const problemStatusMap = !problemStatuses ? {} : problemStatuses.reduce((ret, cur) => {
       ret[cur.problemId] = cur;
