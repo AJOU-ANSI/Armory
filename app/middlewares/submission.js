@@ -49,6 +49,18 @@ obj.selectSubmissionListByUserMw = async function (req, res, next) {
 
 };
 
+obj.selectSubmissionListByContestMw = async function (req, res, next) {
+  const {contest} = req;
+  try {
+    req.submission_list = await contest.getSubmissions();
+
+    return next();
+  }
+  catch(e) {
+    return next(e);
+  }
+};
+
 obj.sendSubmissionMw = function (req, res) {
   const {submission} = req;
 
