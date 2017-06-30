@@ -8,6 +8,7 @@ import {NavLink, Link} from 'react-router-dom';
 import './Header.css';
 import {connect} from "react-redux";
 import {Dropdown, DropdownItem, DropdownMenu} from "reactstrap";
+import {fetchGetUserContestInfo} from '../../actions/contest';
 
 function isEmpty (value) {
   return value === null || value === undefined;
@@ -24,7 +25,7 @@ export class Header extends Component {
   }
 
   componentDidMount() {
-    const {contest: {start, end}} = this.props;
+    const {contest: {start, end, name: contestName}, fetchGetUserContestInfo} = this.props;
 
     this.timer = setInterval(() => {
       const now = (new Date()).getTime();
@@ -51,10 +52,20 @@ export class Header extends Component {
 
       this.setState({remainTime});
     }, 1000);
+
+    if (this.props.user && this.props.user.isAuth) {
+      fetchGetUserContestInfo(contestName, this.props.user);
+    }
+    this.infoTimer = setInterval(() => {
+      if (this.props.user && this.props.user.isAuth) {
+        fetchGetUserContestInfo(contestName, this.props.user);
+      }
+    }, 5000);
   }
 
   componentWillUnmount() {
     clearInterval(this.timer);
+    clearInterval(this.infoTimer);
   }
 
   handleClickLogin = (e) => {
@@ -201,5 +212,8 @@ export class Header extends Component {
 }
 
 const stateToProps = ({user, userContestInfo}) => ({user, userContestInfo});
+const actionToProps = {
+  fetchGetUserContestInfo
+};
 
-export default connect(stateToProps)(Header);
+export default connect(stateToProps, actionToProps)(Header);

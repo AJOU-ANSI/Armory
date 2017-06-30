@@ -47,7 +47,7 @@ export const fetchLogin = (contestName, data) => {
 
     toastr.success("시스템 메세지", "로그인이 완료되었습니다.");
 
-    dispatch(fetchGetUserContestInfo(contestName, user));
+    // dispatch(fetchGetUserContestInfo(contestName, user));
 
     return dispatch(login(user));
   };
@@ -65,7 +65,7 @@ export const fetchLoggedIn = (contestName) => {
 
     const {result: {user}} = await resp.json();
 
-    dispatch(fetchGetUserContestInfo(contestName, user));
+    // dispatch(fetchGetUserContestInfo(contestName, user));
 
     return dispatch(loggedIn(user));
   }
