@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import moment from 'moment';
 import 'moment-duration-format';
 import classnames from 'classnames';
+import {Link} from 'react-router-dom';
 
 import './Status.css';
-import {Link} from 'react-router-dom';
-import {Modal, ModalBody, ModalHeader} from 'reactstrap';
-import CodeMirror from 'react-codemirror';
+import CodeModal from './CodeModal';
+import CompileErrorModal from './CompileErrorModal';
 
 export class Status extends Component {
   constructor(props) {
@@ -15,10 +15,8 @@ export class Status extends Component {
     this.state = {
       submissionList: null,
       compileModalOpen: false,
-      compileModalValue: null,
       codeModalOpen: false,
-      codeModalValue: null,
-      codeModalLanguage: null,
+      target: null,
     };
   }
 
@@ -46,11 +44,11 @@ export class Status extends Component {
       });
   }
 
-  handleClickCompileErrorMessage = (e, value) => {
+  handleClickCompileErrorMessage = (e, submission) => {
     e.preventDefault();
 
     this.setState({
-      compileModalValue: value,
+      target: submission,
     });
     this.toggleCompileErrorModal();
   }
@@ -59,8 +57,7 @@ export class Status extends Component {
     e.preventDefault();
 
     this.setState({
-      codeModalValue: submission.code,
-      codeModalLanguage: ['text/x-csrc', 'text/x-c++src', 'text/x-java'][submission.language],
+      target: submission,
     });
     this.toggleCodeModal();
   }
@@ -82,8 +79,8 @@ export class Status extends Component {
   };
 
   render() {
-    const {submissionList, codeModalOpen, codeModalValue, codeModalLanguage} = this.state;
-    const {compileModalOpen, compileModalValue} = this.state;
+    const {submissionList} = this.state;
+    const {codeModalOpen, compileModalOpen, target} = this.state;
     const {contest} = this.props;
 
     // const createDate = function(offset) { // second
@@ -95,58 +92,10 @@ export class Status extends Component {
     // }
     //
     //
-    // const submissionList = [
-    //   {
-    //     language: 0,
-    //     code: '//This is compile error',
-    //     result: 11,
-    //     result_message: "Main.cc: In function ‘int main()’:\nMain.cc:3:17: error: ‘scanf’ was not declared in this scope\n   scanf(\"%d\", &n);\n                 ^\nMain.cc:5:19: error: ‘printf’ was not declared in this scope\n   printf(\"%d\\n\", n);\n                   ^\n",
-    //     problem_code: 'A',
-    //     memory_usage: 0,
-    //     time_usage: 0,
-    //     createdAt: createDate(10),
-    //     id: 1
-    //   },
-    //   {
-    //     language: 0,
-    //     code: "#include<cstdio>\nint main(){\nprintf(\"Hello World\");\n}",
-    //     result: 6,
-    //     memory_usage: 10000,
-    //     time_usage: 100,
-    //     problem_code: 'A',
-    //     createdAt: createDate(8),
-    //     id: 2
-    //   },
-    //   {
-    //     language: 1,
-    //     code: '//This is right',
-    //     result: 4,
-    //     memory_usage: 10000,
-    //     time_usage: 100,
-    //     problem_code: 'A',
-    //     createdAt: createDate(6),
-    //     id: 3
-    //   },
-    //   {
-    //     language: 2,
-    //     code: '//This is pending',
-    //     result: 0,
-    //     problem_code: 'B',
-    //     createdAt: createDate(4),
-    //     id: 4
-    //   },
-    //   {
-    //     language: 0,
-    //     code: '//This is compile error',
-    //     result: 11,
-    //     result_message: "Another compile error message",
-    //     problem_code: 'A',
-    //     memory_usage: 0,
-    //     time_usage: 0,
-    //     createdAt: createDate(2),
-    //     id: 5
-    //   },
-    // ];
+    // const submissionList = require('./data.json');
+    // submissionList.forEach((submission, index) => {
+    //   submission.createdAt = createDate(20 - index*2);
+    // });
 
     const now = (new Date()).getTime();
 
@@ -157,7 +106,7 @@ export class Status extends Component {
 
       if (result === 11) {
         return (
-          <a href="" onClick={(e) => this.handleClickCompileErrorMessage(e, submission.result_message)}>
+          <a href="" onClick={(e) => this.handleClickCompileErrorMessage(e, submission)}>
             컴파일 에러
           </a>
         );
@@ -185,28 +134,17 @@ export class Status extends Component {
 
     return (
       <div className="page Status">
-        <Modal isOpen={compileModalOpen} toggle={this.toggleCompileErrorModal} size="lg">
-          <ModalHeader toggle={this.toggleCompileErrorModal}>
-            컴파일 에러 메세지
-          </ModalHeader>
+        <CodeModal
+          isOpen={codeModalOpen}
+          target={target}
+          toggle={this.toggleCodeModal}
+        />
 
-          <ModalBody>
-            <pre>{compileModalValue}</pre>
-          </ModalBody>
-        </Modal>
-
-        <Modal isOpen={codeModalOpen} toggle={this.toggleCodeModal} size="lg">
-          <ModalHeader toggle={this.toggleCodeModal}>
-            제출 코드
-          </ModalHeader>
-
-          <ModalBody>
-            <CodeMirror
-              defaultValue={codeModalValue}
-              options={{lineNumbers: true, mode: codeModalLanguage, theme: 'monokai'}}
-            />
-          </ModalBody>
-        </Modal>
+        <CompileErrorModal
+          isOpen={compileModalOpen}
+          target={target}
+          toggle={this.toggleCompileErrorModal}
+        />
 
         <div className="page-title">
           <div className="container">
@@ -252,21 +190,21 @@ export class Status extends Component {
                           timeFormat = 's초 전'
                         }
 
-                        let resultColor;
+                        let resultColor, rowColor;
 
                         switch (submission.result) {
                           case 0:
                             resultColor = ''; break;
                           case 4:
-                            resultColor = 'text-success'; break;
+                            resultColor = 'text-success'; rowColor = 'table-success'; break;
                           case 11:
                             resultColor = ''; break;
                           default:
-                            resultColor = 'text-danger';
+                            resultColor = 'text-danger'; rowColor = 'table-danger';
                         }
 
                         return (
-                          <tr key={submission.id}>
+                          <tr key={submission.id} className={classnames(rowColor)}>
                             <td> {submission.id} </td>
                             <td>
                               <Link to={`/${contest.name}/problems/${submission.problem_code}`}>

@@ -1,8 +1,3 @@
 .Status th {
   font-weight: 500;
   font-size: 14px; }
-
-.Status .table-custom tbody > tr {
-  transition: all .3s ease; }
-  .Status .table-custom tbody > tr:hover {
-    background-color: #fbe9e7; }

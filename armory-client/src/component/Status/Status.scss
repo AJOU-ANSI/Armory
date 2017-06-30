@@ -3,13 +3,4 @@
     font-weight: 500;
     font-size: 14px;
   }
-
-  .table-custom {
-    tbody > tr {
-      transition: all .3s ease;
-      &:hover {
-        background-color: #fbe9e7;
-      }
-    }
-  }
 }
