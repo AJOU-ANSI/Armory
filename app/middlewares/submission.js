@@ -60,11 +60,19 @@ obj.sendSubmissionMw = function (req, res) {
 };
 
 obj.sendSubmissionListMw = function (req, res) {
-  const {submission_list} = req;
+  let {submission_list} = req;
+
+  submission_list = submission_list.get({plain: true});
+
+  for (let i = 0; i < submission_list.length; i++) {
+    if (submission_list[i].result !== 11) { // compile error
+      delete submission_list[i].result;
+    }
+  }
 
   res.send({
     result: {
       submission_list
     }
-  })
+  });
 };
