@@ -41,7 +41,7 @@ router.get('/',
 
 router.get('/admin',
   authMws.checkAdminMw,
-  submissionMws.selectContestByNameParamMw,
+  contestMws.selectContestByNameParamMw,
   submissionMws.selectSubmissionListByContestMw,
   submissionMws.sendSubmissionListMw
 );
