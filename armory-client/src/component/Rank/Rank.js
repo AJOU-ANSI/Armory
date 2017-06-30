@@ -8,7 +8,8 @@ export class Rank extends Component {
     super(props);
 
     this.state = {
-      rankData: []
+      rankData: [],
+      isFreezing: false,
     }
   }
 
@@ -33,7 +34,7 @@ export class Rank extends Component {
 
     fetch(`/api/${contestName}/ranking`)
       .then(resp => {
-        if (!resp) {
+        if (!resp.ok) {
           throw new Error();
         }
         return resp.json();
@@ -44,11 +45,28 @@ export class Rank extends Component {
       .catch(() => {
         this.setState({rankData: []});
       });
+
+    fetch(`/api/contests/byName/${contestName}`)
+      .then(resp => {
+        if (!resp.ok) {
+          throw new Error();
+        }
+        return resp.json();
+      })
+      .then(({result: {contest}}) => {
+        if (contest.freezeAt !== 0 && contest.freezeAt < (new Date()).getTime()) {
+          this.setState({isFreezing:true});
+        }
+
+      })
+      .catch(err => {
+        console.error(err);
+      })
   }
 
   render () {
     const {user} = this.props;
-    let {rankData} = this.state;
+    let {rankData, isFreezing} = this.state;
 
     rankData = rankData.sort((a, b) => {
       if (a.rank === b.rank) {
@@ -64,11 +82,11 @@ export class Rank extends Component {
       <div className="page Rank">
         <div className="container">
           <div className="page-title">
-            <h1> 순위 </h1>
+            <h1> 순위 {isFreezing && (<small className="text-info">프리징</small>)}</h1>
             <p> 현재 진행중인 대회의 순위입니다. </p>
           </div>
 
-          <div className="card paper">
+          <div className={classnames('card paper', isFreezing && 'bg-info')}>
             <div className="card-block">
               <table className="table-custom" style={{width: '100%'}}>
                 <thead>
