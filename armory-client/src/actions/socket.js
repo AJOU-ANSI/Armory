@@ -46,6 +46,13 @@ function init(socket, dispatch) {
     h5noti.sendMessage(msg);
   });
 
+  socket.on('admin_new_qna', function () {
+    const msg = '새로운 qna가 도착했습니다. 확인 부탁드립니다.';
+
+    toastr.success('시스템 메세지', msg);
+    h5noti.sendMessage(msg);
+  });
+
   socket.on('disconnect', function () {
     console.log('disconnected!!!');
     dispatch(fetchCloseWebSocket());

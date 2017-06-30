@@ -8,6 +8,16 @@ import './StatusTable.css';
 import CodeModal from './CodeModal';
 import CompileErrorModal from './CompileErrorModal';
 
+const resultMessageMap = {
+  4: '맞았습니다!',
+  5: 'Presentation Error',
+  6: '틀렸습니다.',
+  7: '시간 제한 초과',
+  8: '런타임 에러',
+  10: '런타임 에러',
+  11: '컴파일 에러'
+};
+
 export class StatusTable extends Component {
   constructor(props) {
     super(props);
@@ -22,32 +32,21 @@ export class StatusTable extends Component {
   checkResult = (submission) => {
     const {result} = submission;
 
+    let str = '채점중';
+
+    if (result >= 4) {
+      str = resultMessageMap[result];
+    }
+
     if (submission.result_message) {
       return (
         <a href="" onClick={(e) => this.handleClickCompileError(e, submission)}>
-          컴파일 에러
+          {str}
         </a>
       );
     }
-
-    if (result < 4) {
-      return '채점중';
-    }
     else {
-      switch (result) {
-        case 4:
-          return '맞았습니다!';
-        case 5:
-          return 'Presentation Error';
-        case 6:
-          return '틀렸습니다.';
-        case 7:
-          return '시간 제한 초과';
-        case 8:
-        case 10:
-          return '런타임 에러';
-        default:
-      }
+      return str;
     }
   };
 
