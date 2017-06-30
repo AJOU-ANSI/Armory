@@ -1,13 +1,18 @@
 import React, {Component} from 'react';
 import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 import CodeMirror from 'react-codemirror';
+import Cookies from 'js-cookie';
 
 export class ProblemSubmitModal extends Component {
   constructor(props) {
     super(props);
 
+    if (Cookies.get('language') === undefined) {
+      Cookies.set('language', 'text/x-csrc');
+    }
+
     this.state = {
-      language: 'text/x-csrc',
+      language: Cookies.get('language'),
       code: '// Code'
     };
   }
@@ -21,6 +26,8 @@ export class ProblemSubmitModal extends Component {
   handleChangeLanguage = (event) => {
     const newLanguage = event.target.value;
 
+    Cookies.set('language', newLanguage);
+    
     this.setState({
       language: newLanguage
     });

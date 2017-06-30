@@ -63,6 +63,13 @@ obj.checkContestOpenedOrAdminMw = async (req, res, next) => {
 
       throw error;
     }
+
+    if (contest.end < now) { // contest ended
+      const error = new Error('대회가 종료되었습니다.');
+      error.status = 400;
+
+      throw error;
+    }
   }
   catch(err) {
     e = err;

@@ -9,13 +9,13 @@
     kRunning,
     // Judge results
     kAccepted,
-    kPresentationError,
-    kWrongAnswer,
-    kTimeLimitExceed,
-    kMemoryLimitExceed,
-    kOutputLimitExceed,
-    kRuntimeError,
-    kCompileError,
+    kPresentationError,   5
+    kWrongAnswer,         6
+    kTimeLimitExceed,     7
+    kMemoryLimitExceed,   8
+    kOutputLimitExceed,   9
+    kRuntimeError,        10
+    kCompileError,        11
     kCompileSuccess
 };
  */
