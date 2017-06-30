@@ -154,7 +154,7 @@ export class StatusTable extends Component {
                   <tr key={submission.id} className={classnames(rowColor)}>
                     <td> {submission.id} </td>
                     {admin && (
-                      <td> {userMap[submission.UserId].strId} </td>
+                      <td> {(userMap[submission.UserId] || {}).strId || submission.UserId} </td>
                     )}
                     <td>
                       <Link to={`/${contest.name}/problems/${submission.problem_code}`}>

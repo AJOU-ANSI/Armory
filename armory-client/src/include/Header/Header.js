@@ -57,7 +57,7 @@ export class Header extends Component {
       fetchGetUserContestInfo(contestName, this.props.user);
     }
     this.infoTimer = setInterval(() => {
-      if (this.props.user && this.props.user.isAuth) {
+      if (this.props.user && this.props.user.isAuth && !this.props.user.isAdmin) {
         fetchGetUserContestInfo(contestName, this.props.user);
       }
     }, 5000);
