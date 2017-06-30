@@ -62,13 +62,15 @@ obj.sendSubmissionMw = function (req, res) {
 obj.sendSubmissionListMw = function (req, res) {
   let {submission_list} = req;
 
-  submission_list = submission_list.get({plain: true});
+  submission_list = submission_list.map(submission => {
+    submission = submission.get({plain: true});
 
-  for (let i = 0; i < submission_list.length; i++) {
-    if (submission_list[i].result !== 11) { // compile error
-      delete submission_list[i].result;
+    if (submission.result !== 11) {
+      delete submission.result_message;
     }
-  }
+
+    return submission;
+  });
 
   res.send({
     result: {
