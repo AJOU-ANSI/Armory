@@ -50,7 +50,7 @@ export class ProblemList extends Component {
     const {match, problemList, problemStatuses} = this.props;
 
     // console.log(problemStatuses);
-    
+
     const problemStatusMap = !problemStatuses ? {} : problemStatuses.reduce((ret, cur) => {
       ret[cur.problemId] = cur;
 
@@ -63,7 +63,7 @@ export class ProblemList extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-10 offset-md-1">
-                <h1>Problems</h1>
+                <h1>문제</h1>
                 <p>문제 목록입니다.</p>
               </div>
             </div>

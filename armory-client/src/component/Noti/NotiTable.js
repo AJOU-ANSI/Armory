@@ -19,7 +19,7 @@ export class NotiTable extends Component {
         {
           notiList.map((noti, index) => (
             <tr key={index}>
-              <td className="index"> {index} </td>
+              <td className="index"> {index+1} </td>
               <td>{moment(noti.createdAt).format('HH:mm:ss')}</td>
               <td>
                 <pre style={{whiteSpace: 'pre-line'}}>{noti.content}</pre>

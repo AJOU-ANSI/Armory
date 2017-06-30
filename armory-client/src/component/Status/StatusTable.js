@@ -140,6 +140,9 @@ export class StatusTable extends Component {
 
                 switch (submission.result) {
                   case 0:
+                  case 1:
+                  case 2:
+                  case 3:
                     resultColor = ''; break;
                   case 4:
                     resultColor = 'text-success'; rowColor = 'table-success'; break;
