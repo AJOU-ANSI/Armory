@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
+import Balloon from './Balloon';
 
 export class Rank extends Component {
   constructor(props) {
@@ -63,12 +64,12 @@ export class Rank extends Component {
 
           <div className="card paper">
             <div className="card-block">
-              <table className="table-custom">
+              <table className="table-custom" style={{width: '100%'}}>
                 <thead>
                   <tr>
-                    <th> 순위 </th>
-                    <th> 아이디 </th>
-                    <th> 개수 </th>
+                    <th style={{width: 80}}> 순위 </th>
+                    <th style={{width: 80}}> 아이디 </th>
+                    <th style={{width: 80}}> 개수 </th>
                     <th> 맞은 문제들 </th>
                     <th> 패널티 </th>
                   </tr>
@@ -84,7 +85,13 @@ export class Rank extends Component {
                         <td> {rankDetail.rank} </td>
                         <td> {rankDetail.strId} </td>
                         <td> {rankDetail.acceptedCnt} </td>
-                        <td />
+                        <td className="p-0 py-2">
+                          {rankDetail.problemStatus
+                            .sort((a, b) => a.problemCode.charCodeAt(0) - b.problemCode.charCodeAt(0))
+                            .map(p => (
+                              p.accepted && <Balloon key={p.problemId} code={p.problemCode} strId={rankDetail.strId} />
+                            ))}
+                        </td>
                         <td> {Math.floor(rankDetail.penalty/1000/1000/1000/60)} </td>
                       </tr>
                     );
