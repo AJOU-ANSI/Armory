@@ -37,22 +37,22 @@ export class Status extends Component {
   }
 
   render() {
-    // const {submissionList} = this.state;
+    const {submissionList} = this.state;
     const {contest} = this.props;
 
-    const createDate = function(offset) { // second
-      const now = (new Date()).getTime();
-
-      const date = new Date(now - offset*1000);
-
-      return date;
-    }
-
-
-    const submissionList = require('./data.json');
-    submissionList.forEach((submission, index) => {
-      submission.createdAt = createDate(20 - index*2);
-    });
+    // const createDate = function(offset) { // second
+    //   const now = (new Date()).getTime();
+    //
+    //   const date = new Date(now - offset*1000);
+    //
+    //   return date;
+    // }
+    //
+    //
+    // const submissionList = require('./data.json');
+    // submissionList.forEach((submission, index) => {
+    //   submission.createdAt = createDate(20 - index*2);
+    // });
 
     return (
       <div className="page Status">
