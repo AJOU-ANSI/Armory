@@ -8,11 +8,16 @@ export class AdminSubmission extends Component {
     this.state = {
       userList: null,
       submissionsList: null,
+      search: '',
     }
   }
 
   componentWillMount() {
     this.updateSubmissionList();
+  }
+
+  handleChangeSearch = ({target: {value}}) => {
+    this.setState({search: value});
   }
 
   updateSubmissionList = () => {
@@ -35,13 +40,24 @@ export class AdminSubmission extends Component {
 
   render () {
     const {match: {params: {contestName}}} = this.props;
-    const {submissionList} = this.state;
+    let {submissionList, search} = this.state;
 
     if (!submissionList) return null;
+
+    submissionList = submissionList.filter(s => {
+      if (search === '') return true;
+
+      return s.id + '' === search;
+    });
 
     return (
       <div className="page">
         <h5> 제출 확인 </h5>
+
+        <div className="form-group">
+          <label> 제출 번호 </label>
+          <input type="number" onChange={this.handleChangeSearch} value={this.state.search} />
+        </div>
 
         <StatusTable
           className="paper"
