@@ -6,6 +6,7 @@ import AdminProblem from '../AdminProblem/AdminProblem';
 import AdminUser from '../AdminUser/AdminUser';
 import AdminNoti from "../AdminNoti/AdminNoti";
 import AdminQnA from '../AdminQnA/AdminQnA';
+import AdminSubmission from '../AdminSubmission/AdminSubmission';
 
 export class AdminHome extends Component {
   render () {
@@ -23,14 +24,16 @@ export class AdminHome extends Component {
       {to: `${url}/contest`, title: '콘테스트 관리'},
       {to: `${url}/users`, title: '유저 관리'},
       {to: `${url}/notifications`, title: '공지 관리'},
-      {to: `${url}/qnas`, title: 'QnA 관리'}
+      {to: `${url}/qnas`, title: 'QnA 관리'},
+      {to: `${url}/submissions`, title: '제출 확인'},
     ];
 
     const subTitle = {
       [`${url}/problems`]: '문제 관리',
       [`${url}/users`]: '유저 관리',
       [`${url}/notifications`]: '공지 관리',
-      [`${url}/qnas`]: 'QnA 관리'
+      [`${url}/qnas`]: 'QnA 관리',
+      [`${url}/submissions`]: '제출 확인',
     };
 
     return (
@@ -63,6 +66,7 @@ export class AdminHome extends Component {
             <Route path={`${path}/users`} component={AdminUser} />
             <Route path={`${path}/notifications`} component={AdminNoti} />
             <Route path={`${path}/qnas`} component={AdminQnA} />
+            <Route path={`${path}/submissions`} component={AdminSubmission} />
           </Switch>
         </div>
       </div>

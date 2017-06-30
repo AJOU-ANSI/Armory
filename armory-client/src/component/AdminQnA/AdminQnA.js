@@ -82,8 +82,6 @@ export class AdminQnA extends Component {
   render () {
     const {qnaList, formOpen, target} = this.state;
 
-    console.log(formOpen);
-
     return (
       <div className="page">
         {

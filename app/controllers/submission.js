@@ -36,5 +36,11 @@ router.post('/:problemCode',
 router.get('/',
   authMws.checkLoggedInMw,
   submissionMws.selectSubmissionListByUserMw,
+  submissionMws.sendSubmissionListWithoutResultMessageMw
+);
+
+router.get('/admin',
+  authMws.checkAdminMw,
+  submissionMws.selectSubmissionListByUserMw,
   submissionMws.sendSubmissionListMw
 );

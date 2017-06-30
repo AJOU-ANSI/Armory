@@ -59,7 +59,7 @@ obj.sendSubmissionMw = function (req, res) {
   });
 };
 
-obj.sendSubmissionListMw = function (req, res) {
+obj.sendSubmissionListWithoutResultMessageMw = function (req, res) {
   let {submission_list} = req;
 
   submission_list = submission_list.map(submission => {
@@ -71,6 +71,16 @@ obj.sendSubmissionListMw = function (req, res) {
 
     return submission;
   });
+
+  res.send({
+    result: {
+      submission_list
+    }
+  });
+};
+
+obj.sendSubmissionListMw = function (req, res) {
+  let {submission_list} = req;
 
   res.send({
     result: {
