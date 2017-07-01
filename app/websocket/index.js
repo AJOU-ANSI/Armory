@@ -114,6 +114,5 @@ obj.sendProblemChecked = function (userId, {acceptedCnt, rank, accepted}) {
 };
 
 obj.sendNewQna = function () {
-  console.log('hi');
   io.to('admins').emit('admin_new_qna', 'hello');
 };
