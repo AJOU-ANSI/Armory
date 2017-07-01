@@ -105,10 +105,10 @@ obj.sendQnaAnswered = function (userId) {
   }
 };
 
-obj.sendProblemChecked = function (userId, {acceptedCnt, rank}) {
+obj.sendProblemChecked = function (userId, {acceptedCnt, rank, accepted}) {
   if (userSocketMap[userId]) {
     userSocketMap[userId].forEach(socketId => {
-      io.sockets.connected[socketId].emit('problemChecked', {acceptedCnt, rank});
+      io.sockets.connected[socketId].emit('problemChecked', {acceptedCnt, rank, accepted});
     });
   }
 };

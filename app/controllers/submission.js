@@ -5,7 +5,8 @@ const
   contestMws = require('../middlewares/contest'),
   problemMws = require('../middlewares/problem'),
   submissionMws = require('../middlewares/submission'),
-  websocket = require('../websocket');
+  websocket = require('../websocket'),
+  db = require('../models');
 
 module.exports = function (app) {
   app.use('/api/:contestName/submissions', router);
@@ -16,9 +17,18 @@ router.post('/checked',
   async function (req, res) {
     const {results: checkedSubmissions} = req.body;
 
-    checkedSubmissions.forEach(({userId, acceptedCnt, rank}) => {
-      websocket.sendProblemChecked(userId, {acceptedCnt, rank});
-    });
+    for (let i = 0; i < checkedSubmissions.length ; i++) {
+      const {userId, acceptedCnt, rank, lastSubId} = checkedSubmissions[i];
+
+      const lastSub = await db.Submission.findById(lastSubId);
+
+      let accepted = null;
+      if (lastSub !== null) {
+        accepted = lastSub.result === 4;
+      }
+
+      websocket.sendProblemChecked(userId, {acceptedCnt, rank, accepted});
+    }
 
     return res.send({});
   }
