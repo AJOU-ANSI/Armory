@@ -205,8 +205,9 @@ export class Header extends Component {
                 <div className="ml-4">
                   <span className="text-logo time-basis">랭크</span>:&nbsp;
                   <span className="text-logo solved-value font-weight-bold">
-                    {userContestInfo.rank}위 {isFreezing && <span className="text-info"> 프리징 </span>}
-                    </span>
+                    {userContestInfo.rank}위
+                  </span>
+                  {isFreezing && <span className="text-info"> 랭크 프리징 </span>}
                 </div>
               )}
             </div>
