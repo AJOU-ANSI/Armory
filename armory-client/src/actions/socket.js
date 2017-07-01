@@ -12,9 +12,9 @@ export const fetchCloseWebSocket = () => {
 };
 
 function init(socket, dispatch) {
-  setInterval(function () {
-    socket.emit('greeting', 'hello');
-  }, 10000);
+  // setInterval(function () {
+  //   socket.emit('greeting', 'hello');
+  // }, 10000);
 
   socket.on('connect', function () {
     console.log('connected!!!');
@@ -37,12 +37,21 @@ function init(socket, dispatch) {
     h5noti.sendMessage(msg);
   });
 
-  socket.on('problemChecked', function ({acceptedCnt, rank}) {
+  socket.on('problemChecked', function ({acceptedCnt, rank, accepted}) {
     dispatch(getUserContestInfo({acceptedCnt, rank}));
 
-    const msg = '문제 채점이 완료되었습니다. 확인 부탁드립니다.';
+    // const msg = '문제 채점이 완료되었습니다. 확인 부탁드립니다.';
 
-    toastr.success('시스템 메세지', msg);
+    let msg;
+    if (accepted) {
+      msg = '문제 채점이 완료되었습니다. 맞았습니다!!';
+      toastr.success('시스템 메세지', msg);
+    }
+    else {
+      msg = '문제 채점이 완료되었습니다. 틀렸습니다 :(';
+      toastr.warning('시스템 메세지', msg);
+    }
+
     h5noti.sendMessage(msg);
   });
 
