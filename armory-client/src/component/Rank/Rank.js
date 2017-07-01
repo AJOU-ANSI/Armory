@@ -95,10 +95,10 @@ export class Rank extends Component {
 
                     return (
                       <tr key={rankDetail.strId} className={classnames(isUser && 'table-success')}>
-                        <td> {rankDetail.rank} </td>
-                        <td> {rankDetail.strId} </td>
-                        <td> {rankDetail.acceptedCnt} </td>
-                        <td className="py-3">
+                        <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.rank} </td>
+                        <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.strId} </td>
+                        <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.acceptedCnt} </td>
+                        <td style={{borderBottom: '1px solid #eee'}} className="py-3">
                           {rankDetail.problemStatus
                             .sort((a, b) => a.problemCode.charCodeAt(0) - b.problemCode.charCodeAt(0))
                             .map(p => (
@@ -107,7 +107,7 @@ export class Rank extends Component {
                               )
                             ))}
                         </td>
-                        <td> {Math.floor(rankDetail.penalty/1000/1000/1000/60)} </td>
+                        <td style={{borderBottom: '1px solid #eee'}}> {Math.floor(rankDetail.penalty/1000/1000/1000/60)} </td>
                       </tr>
                     );
                   })
