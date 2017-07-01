@@ -8,8 +8,7 @@ export class Rank extends Component {
     super(props);
 
     this.state = {
-      rankData: [],
-      isFreezing: false,
+      rankData: []
     }
   }
 
@@ -42,31 +41,21 @@ export class Rank extends Component {
       .then(({result: {rankData}}) => {
         this.setState({rankData});
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error(err);
         this.setState({rankData: []});
       });
-
-    fetch(`/api/contests/byName/${contestName}`)
-      .then(resp => {
-        if (!resp.ok) {
-          throw new Error();
-        }
-        return resp.json();
-      })
-      .then(({result: {contest}}) => {
-        if (contest.freezeAt !== 0 && contest.freezeAt < (new Date()).getTime()) {
-          this.setState({isFreezing:true});
-        }
-
-      })
-      .catch(err => {
-        console.error(err);
-      })
   }
 
   render () {
-    const {user} = this.props;
-    let {rankData, isFreezing} = this.state;
+    const {match: {params: {contestName}}} = this.props;
+    const {user, contestMap: {[contestName]: contest}} = this.props;
+    let {rankData} = this.state;
+    let isFreezing = false;
+
+    if (contest && contest.freezeAt !== 0 && contest.freezeAt < (new Date()).getTime()) {
+      isFreezing = true;
+    }
 
     rankData = rankData.sort((a, b) => {
       if (a.rank === b.rank) {
@@ -86,7 +75,7 @@ export class Rank extends Component {
             <p> 현재 진행중인 대회의 순위입니다. </p>
           </div>
 
-          <div className={classnames('card paper', isFreezing && 'bg-info')}>
+          <div className={classnames('card paper', isFreezing && 'bg-info text-white')}>
             <div className="card-block">
               <table className="table-custom" style={{width: '100%'}}>
                 <thead>
@@ -109,11 +98,13 @@ export class Rank extends Component {
                         <td> {rankDetail.rank} </td>
                         <td> {rankDetail.strId} </td>
                         <td> {rankDetail.acceptedCnt} </td>
-                        <td className="p-0 py-2">
+                        <td className="py-3">
                           {rankDetail.problemStatus
                             .sort((a, b) => a.problemCode.charCodeAt(0) - b.problemCode.charCodeAt(0))
                             .map(p => (
-                              p.accepted && <Balloon key={p.problemId} code={p.problemCode} strId={rankDetail.strId} />
+                              p.accepted && (
+                                <Balloon className="ml-3" key={p.problemId} code={p.problemCode} strId={rankDetail.strId} />
+                              )
                             ))}
                         </td>
                         <td> {Math.floor(rankDetail.penalty/1000/1000/1000/60)} </td>
@@ -131,4 +122,4 @@ export class Rank extends Component {
   }
 }
 
-export default connect(({user}) => ({user}))(Rank);
+export default connect(({user, contestMap}) => ({user, contestMap}))(Rank);

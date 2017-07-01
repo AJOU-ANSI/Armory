@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Tooltip} from 'reactstrap';
+import classnames from 'classnames';
 
 const balloonMap = {
   'A': '/images/balloons/purple.png',
@@ -27,10 +28,10 @@ export class Balloon extends Component {
   }
 
   render () {
-    const {code, strId} = this.props;
+    const {code, strId, className} = this.props;
 
     return (
-      <span>
+      <span className={classnames(className)}>
         <img src={balloonMap[code]} style={{width: 40, height: 50}} id={`b-${strId}-${code}`} alt={code} />
         <Tooltip placement="top" isOpen={this.state.tooltipOpen} target={`b-${strId}-${code}`} toggle={this.toggle}>
           {code}

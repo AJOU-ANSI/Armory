@@ -8,7 +8,7 @@ import {NavLink, Link} from 'react-router-dom';
 import './Header.css';
 import {connect} from "react-redux";
 import {Dropdown, DropdownItem, DropdownMenu} from "reactstrap";
-import {fetchGetUserContestInfo} from '../../actions/contest';
+import {fetchGetContestByName, fetchGetUserContestInfo} from '../../actions/contest';
 
 function isEmpty (value) {
   return value === null || value === undefined;
@@ -25,7 +25,7 @@ export class Header extends Component {
   }
 
   componentDidMount() {
-    const {contest: {start, end, name: contestName}, fetchGetUserContestInfo} = this.props;
+    const {contest: {start, end, name: contestName}, fetchGetUserContestInfo, fetchGetContestByName} = this.props;
 
     this.timer = setInterval(() => {
       const now = (new Date()).getTime();
@@ -60,6 +60,7 @@ export class Header extends Component {
       if (this.props.user && this.props.user.isAuth && !this.props.user.isAdmin) {
         fetchGetUserContestInfo(contestName, this.props.user);
       }
+      fetchGetContestByName(contestName);
     }, 5000);
   }
 
@@ -113,8 +114,14 @@ export class Header extends Component {
   }
 
   render() {
-    const {match: {url}, user, userContestInfo} = this.props;
+    const {match: {url}, user, userContestInfo, contest, contestMap: {[contest.name]: newContest}} = this.props;
     const {remainTime} = this.state;
+
+    let isFreezing;
+
+    if (newContest && newContest.freezeAt !== 0 && newContest.freezeAt < (new Date()).getTime()) {
+      isFreezing = true;
+    }
 
     const timeFormat = 'HH시간 mm분 ss초';
 
@@ -198,11 +205,10 @@ export class Header extends Component {
                 <div className="ml-4">
                   <span className="text-logo time-basis">랭크</span>:&nbsp;
                   <span className="text-logo solved-value font-weight-bold">
-                      {userContestInfo.rank}위
+                    {userContestInfo.rank}위 {isFreezing && <span className="text-info"> 프리징 </span>}
                     </span>
                 </div>
               )}
-
             </div>
           </div>
         </div>
@@ -211,9 +217,10 @@ export class Header extends Component {
   }
 }
 
-const stateToProps = ({user, userContestInfo}) => ({user, userContestInfo});
+const stateToProps = ({user, userContestInfo, contestMap}) => ({user, userContestInfo, contestMap});
 const actionToProps = {
-  fetchGetUserContestInfo
+  fetchGetUserContestInfo,
+  fetchGetContestByName,
 };
 
 export default connect(stateToProps, actionToProps)(Header);
