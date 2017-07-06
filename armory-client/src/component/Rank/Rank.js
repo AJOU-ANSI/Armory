@@ -104,8 +104,10 @@ export class Rank extends Component {
                   rankData && rankData.map(rankDetail => {
                     const isUser = rankDetail.strId === user.strId;
 
-                    const group = rankDetail.strId.split(' ')[0];
-                    const name = rankDetail.strId.split(' ')[1];
+                    const strList = rankDetail.strId.split(' ');
+
+                    const group = strList.slice(0, strList.length-1).join(' ');
+                    const name = strList[strList.length-1];
 
                     return (
                       <tr key={rankDetail.strId} className={classnames(isUser && 'table-success')}>
