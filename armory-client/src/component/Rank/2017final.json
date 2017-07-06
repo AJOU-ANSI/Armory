@@ -1,0 +1,3122 @@
+[
+  {
+    "lastSubId": 0,
+    "strId": "아주대학교 김연교",
+    "penalty": 36766000000000,
+    "userId": 16,
+    "rank": 5,
+    "acceptedCnt": 4,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "경희대학교 정재봉",
+    "penalty": 3632000000000,
+    "userId": 24,
+    "rank": 29,
+    "acceptedCnt": 1,
+    "problemStatus": [
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한국항공대학교 김정우",
+    "penalty": 0,
+    "userId": 63,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한양대학교 ERICA 황예찬",
+    "penalty": 24002000000000,
+    "userId": 73,
+    "rank": 27,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "아주대학교 조현성",
+    "penalty": 17015000000000,
+    "userId": 14,
+    "rank": 7,
+    "acceptedCnt": 3,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "성균관대학교 윤응구",
+    "penalty": 9466000000000,
+    "userId": 38,
+    "rank": 14,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "인하대학교 김진서",
+    "penalty": 31426000000000,
+    "userId": 44,
+    "rank": 11,
+    "acceptedCnt": 3,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "성균관대학교 류호준",
+    "penalty": 28576000000000,
+    "userId": 34,
+    "rank": 2,
+    "acceptedCnt": 5,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "성균관대학교 황준원",
+    "penalty": 11948000000000,
+    "userId": 35,
+    "rank": 16,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "인하대학교 황지수",
+    "penalty": 10763000000000,
+    "userId": 48,
+    "rank": 35,
+    "acceptedCnt": 1,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한국항공대학교 이준희",
+    "penalty": 0,
+    "userId": 60,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한양대학교 ERICA 박경록",
+    "penalty": 0,
+    "userId": 69,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "아주대학교 김진영",
+    "penalty": 23214000000000,
+    "userId": 22,
+    "rank": 26,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "경희대학교 최기준",
+    "penalty": 0,
+    "userId": 31,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "인하대학교 최지효",
+    "penalty": 24445000000000,
+    "userId": 50,
+    "rank": 10,
+    "acceptedCnt": 3,
+    "problemStatus": [
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "인하대학교 정지원",
+    "penalty": 14810000000000,
+    "userId": 51,
+    "rank": 42,
+    "acceptedCnt": 1,
+    "problemStatus": [
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한국항공대학교 남규서",
+    "penalty": 0,
+    "userId": 61,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한양대학교 ERICA 모지환",
+    "penalty": 3663000000000,
+    "userId": 68,
+    "rank": 30,
+    "acceptedCnt": 1,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한양대학교 ERICA 윤지우",
+    "penalty": 0,
+    "userId": 70,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "아주대학교 홍준표",
+    "penalty": 42577000000000,
+    "userId": 21,
+    "rank": 6,
+    "acceptedCnt": 4,
+    "problemStatus": [
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "경희대학교 황진하",
+    "penalty": 0,
+    "userId": 27,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "성균관대학교 이하석",
+    "penalty": 9947000000000,
+    "userId": 39,
+    "rank": 34,
+    "acceptedCnt": 1,
+    "problemStatus": [
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한국항공대학교 이찬효",
+    "penalty": 7458000000000,
+    "userId": 59,
+    "rank": 32,
+    "acceptedCnt": 1,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한양대학교 ERICA 권혁제",
+    "penalty": 0,
+    "userId": 64,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한양대학교 ERICA 나윤환",
+    "penalty": 0,
+    "userId": 66,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한양대학교 ERICA 이제형",
+    "penalty": 0,
+    "userId": 72,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "경희대학교 강태우",
+    "penalty": 0,
+    "userId": 32,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "성균관대학교 강태진",
+    "penalty": 11648000000000,
+    "userId": 40,
+    "rank": 15,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한국항공대학교 황성호",
+    "penalty": 21927000000000,
+    "userId": 54,
+    "rank": 3,
+    "acceptedCnt": 4,
+    "problemStatus": [
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한국항공대학교 윤석창",
+    "penalty": 18449000000000,
+    "userId": 57,
+    "rank": 24,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한국항공대학교 신태민",
+    "penalty": 32609000000000,
+    "userId": 55,
+    "rank": 4,
+    "acceptedCnt": 4,
+    "problemStatus": [
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": true,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한양대학교 ERICA 김재연",
+    "penalty": 13030000000000,
+    "userId": 65,
+    "rank": 38,
+    "acceptedCnt": 1,
+    "problemStatus": [
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한양대학교 ERICA 이상영",
+    "penalty": 0,
+    "userId": 71,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "아주대학교 김형호",
+    "penalty": 16829000000000,
+    "userId": 18,
+    "rank": 23,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "경희대학교 정석현",
+    "penalty": 13385000000000,
+    "userId": 29,
+    "rank": 40,
+    "acceptedCnt": 1,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "인하대학교 박정률",
+    "penalty": 15817000000000,
+    "userId": 46,
+    "rank": 21,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "아주대학교 민서현",
+    "penalty": 11602000000000,
+    "userId": 20,
+    "rank": 36,
+    "acceptedCnt": 1,
+    "problemStatus": [
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "경희대학교 김문원",
+    "penalty": 0,
+    "userId": 25,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "경희대학교 한진호",
+    "penalty": 0,
+    "userId": 30,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "경희대학교 오세준",
+    "penalty": 0,
+    "userId": 33,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "성균관대학교 김지혜",
+    "penalty": 13384000000000,
+    "userId": 36,
+    "rank": 17,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "아주대학교 이성록",
+    "penalty": 17957000000000,
+    "userId": 17,
+    "rank": 8,
+    "acceptedCnt": 3,
+    "problemStatus": [
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "경희대학교 오창석",
+    "penalty": 0,
+    "userId": 26,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "인하대학교 박철용",
+    "penalty": 14214000000000,
+    "userId": 45,
+    "rank": 1,
+    "acceptedCnt": 5,
+    "problemStatus": [
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "인하대학교 윤성준",
+    "penalty": 20147000000000,
+    "userId": 52,
+    "rank": 9,
+    "acceptedCnt": 3,
+    "problemStatus": [
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한국항공대학교 원도연",
+    "penalty": 13237000000000,
+    "userId": 56,
+    "rank": 39,
+    "acceptedCnt": 1,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "아주대학교 이태경",
+    "penalty": 14192000000000,
+    "userId": 15,
+    "rank": 18,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "아주대학교 이종빈",
+    "penalty": 15171000000000,
+    "userId": 19,
+    "rank": 20,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "인하대학교 이태경",
+    "penalty": 0,
+    "userId": 49,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "아주대학교 정진원",
+    "penalty": 13475000000000,
+    "userId": 23,
+    "rank": 41,
+    "acceptedCnt": 1,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "인하대학교 추교정",
+    "penalty": 6129000000000,
+    "userId": 53,
+    "rank": 31,
+    "acceptedCnt": 1,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한양대학교 ERICA 남대현",
+    "penalty": 28432000000000,
+    "userId": 67,
+    "rank": 28,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "성균관대학교 정한길",
+    "penalty": 9914000000000,
+    "userId": 43,
+    "rank": 33,
+    "acceptedCnt": 1,
+    "problemStatus": [
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "경희대학교 박정현",
+    "penalty": 0,
+    "userId": 28,
+    "rank": 43,
+    "acceptedCnt": 0,
+    "problemStatus": [
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "성균관대학교 왕희일",
+    "penalty": 32125000000000,
+    "userId": 37,
+    "rank": 12,
+    "acceptedCnt": 3,
+    "problemStatus": [
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "성균관대학교 신희찬",
+    "penalty": 14329000000000,
+    "userId": 41,
+    "rank": 19,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "성균관대학교 정윤기",
+    "penalty": 9003000000000,
+    "userId": 42,
+    "rank": 13,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한국항공대학교 김태환",
+    "penalty": 11687000000000,
+    "userId": 62,
+    "rank": 37,
+    "acceptedCnt": 1,
+    "problemStatus": [
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "인하대학교 김일호",
+    "penalty": 22185000000000,
+    "userId": 47,
+    "rank": 25,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": false
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": true
+      }
+    ]
+  },
+  {
+    "lastSubId": 0,
+    "strId": "한국항공대학교 김종혁",
+    "penalty": 16787000000000,
+    "userId": 58,
+    "rank": 22,
+    "acceptedCnt": 2,
+    "problemStatus": [
+      {
+        "problemId": 4,
+        "problemCode": "D",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 5,
+        "problemCode": "E",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 6,
+        "problemCode": "F",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 7,
+        "problemCode": "G",
+        "accepted": true,
+        "wrong": true
+      },
+      {
+        "problemId": 1,
+        "problemCode": "A",
+        "accepted": false,
+        "wrong": true
+      },
+      {
+        "problemId": 2,
+        "problemCode": "B",
+        "accepted": false,
+        "wrong": false
+      },
+      {
+        "problemId": 3,
+        "problemCode": "C",
+        "accepted": false,
+        "wrong": false
+      }
+    ]
+  }
+]

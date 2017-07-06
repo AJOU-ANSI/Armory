@@ -23,7 +23,6 @@ obj.selectContestByNameParamMw = async (req, res, next) => {
 
   try {
     req.contest = await obj.contestSvc.selectContestByName(req.params.contestName);
-    console.log(req.contest);
   }
   catch (err) /* istanbul ignore next */ {
     console.error(err);

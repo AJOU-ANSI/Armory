@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import classnames from 'classnames';
 import Balloon from './Balloon';
 
+import finalRank from './2017final.json';
+
 export class Rank extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +15,7 @@ export class Rank extends Component {
   }
 
   componentWillMount() {
+
     this.updateRank();
 
     this.timer = setInterval(() => {
@@ -30,6 +33,14 @@ export class Rank extends Component {
 
   updateRank = () => {
     const {match: {params: {contestName}}} = this.props;
+
+    if (contestName === '2017final') {
+      this.setState({
+        rankData: finalRank
+      });
+
+      return;
+    }
 
     fetch(`/api/${contestName}/ranking`)
       .then(resp => {
@@ -81,7 +92,7 @@ export class Rank extends Component {
                 <thead>
                   <tr>
                     <th style={{width: 80}}> 순위 </th>
-                    <th style={{width: 80}}> 아이디 </th>
+                    <th style={{width: 240}}> 아이디 </th>
                     <th style={{width: 80}}> 개수 </th>
                     <th> 맞은 문제들 </th>
                     <th> 패널티 </th>
@@ -93,10 +104,13 @@ export class Rank extends Component {
                   rankData && rankData.map(rankDetail => {
                     const isUser = rankDetail.strId === user.strId;
 
+                    const group = rankDetail.strId.split(' ')[0];
+                    const name = rankDetail.strId.split(' ')[1];
+
                     return (
                       <tr key={rankDetail.strId} className={classnames(isUser && 'table-success')}>
                         <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.rank} </td>
-                        <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.strId} </td>
+                        <td style={{borderBottom: '1px solid #eee'}}> {group} <strong>{name}</strong> </td>
                         <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.acceptedCnt} </td>
                         <td style={{borderBottom: '1px solid #eee'}} className="py-3">
                           {rankDetail.problemStatus
@@ -105,7 +119,8 @@ export class Rank extends Component {
                               p.accepted && (
                                 <Balloon className="ml-3" key={p.problemId} code={p.problemCode} strId={rankDetail.strId} />
                               )
-                            ))}
+                            ))
+                          }
                         </td>
                         <td style={{borderBottom: '1px solid #eee'}}> {Math.floor(rankDetail.penalty/1000/1000/1000/60)} </td>
                       </tr>
