@@ -143,6 +143,15 @@ module.exports = function(app, config) {
     require(controller)(app);
   });
 
+  app.use(function (req, res, next) {
+    const originSchemeFromLB = req.headers('X-Forwarded-Proto');
+    if (originSchemeFromLB && originSchemeFromLB === 'http') {
+      return res.redirect("https://" + req.headers.host + req.url);
+    }
+
+    next();
+  });
+
   app.use('/hello', function (req, res) {
     res.status(200).end();
   });
