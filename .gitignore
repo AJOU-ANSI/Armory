@@ -1,5 +1,4 @@
 node_modules/
-public/components
 .nyc_output
 .sass-cache
 
@@ -136,10 +135,8 @@ fabric.properties
 .idea/
 config.js
 public/
-admin_public/
 
 !armory-client/public
-!armory-admin/public
 
 temp
 data

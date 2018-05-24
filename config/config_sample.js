@@ -31,9 +31,9 @@ var config = {
       name: 'armory'
     },
     port: process.env.PORT || 3000,
-    db: 'mysql://localhost/armory-production',
-    secret: 'this is prod secret',
-    superAdminToken: '12345' // in production mode, it is recommended to create a long token
+    db: process.env.DB || 'mysql://localhost/armory-production',
+    secret: process.env.SECRET || 'this is prod secret',
+    superAdminToken: process.env.SUPER_ADMIN_TOKEN || '12345'
   }
 };
 

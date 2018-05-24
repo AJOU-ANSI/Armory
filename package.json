@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node app.js",
     "dev": "cross-env NODE_ENV=development node app.js",
-    "gulp:dev": "cross-env NODE_ENV=development gulp",
     "test": "npm run eslint && cross-env NODE_ENV=test PORT=7654 mocha -r test/test_helper.js --recursive test",
     "test:chrome": "cross-env NODE_ENV=test mocha --inspect-brk test",
     "test:coverage": "nyc --reporter=lcov npm run test",
@@ -62,18 +61,13 @@
     "debug": "^2.2.0",
     "eslint-plugin-mocha": "^4.10.1",
     "eslint-plugin-node": "^5.0.0",
-    "gulp": "^3.9.0",
-    "gulp-livereload": "^3.8.0",
-    "gulp-nodemon": "^2.0.2",
-    "gulp-plumber": "^1.0.0",
-    "gulp-sass": "^3.0.0",
     "mocha": "^3.0.2",
     "mock-socket": "^6.1.0",
     "nyc": "^10.0.0",
     "supertest": "^2.0.0"
   },
   "engines": {
-    "node": ">= 8.1.0"
+    "node": ">= 10.1.0"
   },
   "license": "MIT"
 }
