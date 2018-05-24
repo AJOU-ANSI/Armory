@@ -5,15 +5,9 @@ const
 
 module.exports = (app) => {
   app.use('/api/:contestName/ranking', router);
-}
+};
 
-let rankServer = 'http://localhost:8080';
-
-if (process.env.NODE_ENV === 'production') {
-  rankServer = 'http://rank1:8080';
-}
-
-const rankUrl = (c) => `${rankServer}/api/${c}/ranking`;
+const rankUrl = (c) => `${global.config.rankServer}/api/${c}/ranking`;
 
 router.get('/', function (req, res) {
   const {contestName} = req.params;
@@ -30,4 +24,4 @@ router.get('/', function (req, res) {
       result: {rankData}
     });
   });
-})
+});

@@ -29,12 +29,6 @@ router.get('/',
   userMws.sendUserListFromReqMw
 );
 
-
-let rankServer = 'http://localhost:8080';
-if (process.env.NODE_ENV === 'production') {
-  rankServer = 'http://rank1:8080';
-}
-
 const infoUrl = '/api/acceptedCnts';
 
 router.post('/admin',
@@ -71,7 +65,7 @@ router.get('/:userId/contestInfo',
       })
     }
 
-    const uri = `${rankServer}${infoUrl}/${userId}`;
+    const uri = `${global.config.rankServer}${infoUrl}/${userId}`;
 
     try {
       const ret = await request({

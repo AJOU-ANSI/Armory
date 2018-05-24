@@ -11,7 +11,8 @@ var config = {
     port: process.env.PORT || 3000,
     db: 'mysql://localhost/armory-development',
     secret: 'this is dev secret',
-    superAdminToken: '12345'
+    superAdminToken: '12345',
+    rankServer: 'http://localhost:8080'
   },
 
   test: {
@@ -22,7 +23,8 @@ var config = {
     port: process.env.PORT || 3000,
     db: 'mysql://localhost/armory-test',
     secret: 'this is test secret',
-    superAdminToken: '12345'
+    superAdminToken: '12345',
+    rankServer: 'http://localhost:8080'
   },
 
   production: {
@@ -33,7 +35,8 @@ var config = {
     port: process.env.PORT || 3000,
     db: process.env.DB || 'mysql://localhost/armory-production',
     secret: process.env.SECRET || 'this is prod secret',
-    superAdminToken: process.env.SUPER_ADMIN_TOKEN || '12345'
+    superAdminToken: process.env.SUPER_ADMIN_TOKEN || '12345',
+    rankServer: process.env.RANK_HOST || 'http://localhost:8080'
   }
 };
 

@@ -33,11 +33,6 @@ router.get('/',
   problemMws.sendProblemListMw
 );
 
-let rankServer = 'http://localhost:8080';
-if (process.env.NODE_ENV === 'production') {
-  rankServer = 'http://rank1:8080';
-}
-
 const statusUrl = '/api/problemStatuses';
 
 router.get('/myStatus',
@@ -63,7 +58,7 @@ router.get('/myStatus',
 
     try {
       const ret = await request({
-        uri: `${rankServer}${statusUrl}/${user.id}`,
+        uri: `${global.config.rankServer}${statusUrl}/${user.id}`,
         json: true,
       });
 
