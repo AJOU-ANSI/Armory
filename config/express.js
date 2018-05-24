@@ -144,7 +144,7 @@ module.exports = function(app, config) {
   });
 
   app.use(function (req, res, next) {
-    const originSchemeFromLB = req.headers('X-Forwarded-Proto');
+    const originSchemeFromLB = req.header('X-Forwarded-Proto');
     if (originSchemeFromLB && originSchemeFromLB === 'http') {
       return res.redirect("https://" + req.headers.host + req.url);
     }
