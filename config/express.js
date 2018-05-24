@@ -143,6 +143,10 @@ module.exports = function(app, config) {
     require(controller)(app);
   });
 
+  app.use('/hello', function (req, res) {
+    res.status(200).end();
+  });
+
   app.use('/api', function (req, res) {
     if (!res.headerSent) {
       res.status(404).send({message: 'Not Found'});
