@@ -5,6 +5,11 @@
     "mocha": true,
     "node": true
   },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
   "rules": {
     "node/exports-style": [
       "error",

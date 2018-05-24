@@ -72,7 +72,7 @@ router.get('/myStatus',
       });
     }
     catch (err) {
-      console.log(err);
+      console.error(err);
       return res.status(400).send({});
     }
   }

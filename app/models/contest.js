@@ -32,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
       get() {
         const freezeAt = this.getDataValue('freezeAt');
 
-        if (freezeAt === null) return 0;
+        if (freezeAt === null || freezeAt === undefined) return 0;
         return freezeAt.getTime();
       }
     },

@@ -1,9 +1,9 @@
 if (!global.config) {
-  global.config = require('../config/config.js');
+  global.config = require('../config/config');
 }
 
 const
-  db = require('../app/models/index'),
+  db = require('../app/models'),
   chai = require('chai'),
   chaiDeepMatch = require('chai-deep-match'),
   chaiArrays = require('chai-arrays');
@@ -16,9 +16,9 @@ global.expect = chai.expect;
 global.setup = async function () {
   this.timeout(5000);
 
-  await db.sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+  await db.sequelize.query('SET FOREIGN_KEY_CHECKS = 0', {raw: true});
   await db.sequelize.sync({force: true});
-  await db.sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
+  await db.sequelize.query('SET FOREIGN_KEY_CHECKS = 1', {raw: true});
 };
 
 global.teardown = async function () {
@@ -89,21 +89,29 @@ global.defaultProblemListInfo = [
   {title: 'Problem D', code: 'D', description: 'problem d', memory_limit: 256, time_limit: 1},
 ];
 
+global.prepareContest = async (
+  agent,
+  contestInfo = global.defaultContestInfo
+) => {
+  let contest = await db.Contest.create(contestInfo);
+
+  return contest;
+};
+
 global.prepareUserAndContest = async (
     agent,
     contestInfo = global.defaultContestInfo,
     userInfo = global.defaultUserInfo
   ) => {
 
-  let user = await db.User.create(userInfo);
   let contest = await db.Contest.create(contestInfo);
+  let user = await db.User.create(userInfo);
 
-  await user.setContest(contest);
-
+  await contest.addUser(user);
   expect(user).to.have.property('strId', userInfo.strId);
 
   return [user, contest];
-}
+};
 
 global.insertProblemListToContest = async (
     agent,

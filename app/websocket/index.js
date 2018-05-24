@@ -1,6 +1,6 @@
 const
-  passportSocketIo = require('passport.socketio'),
-  session = require('express-session');
+  passportSocketIo = require('passport.socketio');
+  // session = require('express-session');
   // RedisStore = require('connect-redis')(session),
   // redis = require('redis'),
   // client = redis.createClient({host: config.redisHost, port: config.redisPort});
@@ -95,6 +95,7 @@ obj.sendNotification = function (contestId, message) {
 };
 
 obj.closeServer = function () {
+  console.log(io);
   io.close();
 };
 

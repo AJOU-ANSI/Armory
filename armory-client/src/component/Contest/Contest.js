@@ -62,7 +62,7 @@ export class Contest extends Component {
     this.setState({
       loginModal: true
     });
-  }
+  };
 
   handleLogin = (userId, userPwd) => {
     const {match: {params: {contestName}}, fetchLogin} = this.props;

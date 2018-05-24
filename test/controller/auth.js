@@ -8,7 +8,7 @@ describe('auth controller', function () {
 
   let agent, app;
 
-  beforeEach(function () {
+  beforeEach(async function () {
     app = require('../../app');
     agent = request.agent(app);
   });

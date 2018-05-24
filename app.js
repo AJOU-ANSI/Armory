@@ -1,4 +1,5 @@
 global.config = require('./config/config');
+require('express-async-errors');
 
 const express = require('express'),
   db = require('./app/models'),
@@ -29,4 +30,3 @@ db.sequelize
   }).catch(function (e) {
     throw new Error(e);
   });
-

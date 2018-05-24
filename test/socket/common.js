@@ -10,12 +10,19 @@ describe('Notification websocket', function () {
 
   let agent, app, server;
 
-  beforeEach(function () {
+  beforeEach(function (done) {
+    this.timeout(10000);
+
     app = require('../../app');
     server = app.listen(config.port);
     agent = request.agent(server);
 
     websocket.init(app.memoryStore, server);
+
+    setTimeout(() => {
+      done();
+    }, 5000);
+
   });
 
   afterEach(function () {

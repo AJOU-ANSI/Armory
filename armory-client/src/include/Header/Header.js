@@ -56,6 +56,7 @@ export class Header extends Component {
     if (this.props.user && this.props.user.isAuth) {
       fetchGetUserContestInfo(contestName, this.props.user);
     }
+
     this.infoTimer = setInterval(() => {
       if (this.props.user && this.props.user.isAuth && !this.props.user.isAdmin) {
         fetchGetUserContestInfo(contestName, this.props.user);
@@ -73,11 +74,11 @@ export class Header extends Component {
     e.preventDefault();
 
     this.props.onClickLogin();
-  }
+  };
 
   handleLogout = () => {
     this.props.onLogout();
-  }
+  };
 
   handleToggleMenu = (e) => {
     if (e) e.preventDefault();
@@ -85,7 +86,7 @@ export class Header extends Component {
     this.setState({
       menuOpen: !this.state.menuOpen
     });
-  }
+  };
 
   renderLogin = (user) => {
     if (user === null) {

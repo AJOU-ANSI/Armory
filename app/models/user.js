@@ -46,8 +46,10 @@ module.exports = function (sequelize, DataTypes) {
     },
     hooks: {
       afterValidate: function(user) {
-        let hmac = crypto.createHmac('sha256', secret);
-        user.password = hmac.update(user.password).digest('hex');
+        if (user.password) {
+          let hmac = crypto.createHmac('sha256', secret);
+          user.password = hmac.update(user.password).digest('hex');
+        }
       }
     }
   });

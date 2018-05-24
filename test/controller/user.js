@@ -4,7 +4,7 @@ const
   fs = require('fs'),
   db = require('../../app/models');
 
-describe.only('User controller', function () {
+describe('User controller', function () {
   beforeEach(global.setup);
   afterEach(global.teardown);
 

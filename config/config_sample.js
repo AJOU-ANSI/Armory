@@ -10,7 +10,8 @@ var config = {
     },
     port: process.env.PORT || 3000,
     db: 'mysql://localhost/armory-development',
-    secret: 'this is dev secret'
+    secret: 'this is dev secret',
+    superAdminToken: '12345'
   },
 
   test: {
@@ -20,7 +21,8 @@ var config = {
     },
     port: process.env.PORT || 3000,
     db: 'mysql://localhost/armory-test',
-    secret: 'this is test secret'
+    secret: 'this is test secret',
+    superAdminToken: '12345'
   },
 
   production: {
@@ -30,7 +32,8 @@ var config = {
     },
     port: process.env.PORT || 3000,
     db: 'mysql://localhost/armory-production',
-    secret: 'this is prod secret'
+    secret: 'this is prod secret',
+    superAdminToken: '12345' // in production mode, it is recommended to create a long token
   }
 };
 

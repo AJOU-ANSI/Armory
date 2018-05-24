@@ -156,7 +156,9 @@ module.exports = function(app, config) {
   });
 
   app.use(function (req, res) {
-    res.sendFile(config.root + '/public/index.html');
+    if (req.accepts('html')) {
+      res.sendFile(config.root + '/public/index.html');
+    }
   });
 
   // app.use(function (req, res, next) {
@@ -179,6 +181,7 @@ module.exports = function(app, config) {
   app.use(function (err, req, res, next) {
     res.status(err.status || 500);
 
+    console.error(err);
     res.send({
       message: err.message
     });
