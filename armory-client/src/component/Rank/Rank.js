@@ -43,22 +43,22 @@ export class Rank extends Component {
     }
 
     fetch(`/api/${contestName}/ranking`)
-      .then(resp => {
-        if (!resp.ok) {
-          throw new Error();
-        }
-        return resp.json();
-      })
-      .then(({result: {rankData}}) => {
-        this.setState({rankData});
-      })
-      .catch((err) => {
-        console.error(err);
-        this.setState({rankData: []});
-      });
+    .then(resp => {
+      if (!resp.ok) {
+        throw new Error();
+      }
+      return resp.json();
+    })
+    .then(({result: {rankData}}) => {
+      this.setState({rankData});
+    })
+    .catch((err) => {
+      console.error(err);
+      this.setState({rankData: []});
+    });
   }
 
-  render () {
+  render() {
     const {match: {params: {contestName}}} = this.props;
     const {user, contestMap: {[contestName]: contest}} = this.props;
     let {rankData} = this.state;
@@ -79,62 +79,62 @@ export class Rank extends Component {
     });
 
     return (
-      <div className="page Rank">
-        <div className="container">
-          <div className="page-title">
-            <h1> 순위 {isFreezing && (<small className="text-info">프리징</small>)}</h1>
-            <p> 현재 진행중인 대회의 순위입니다. </p>
-          </div>
+    <div className="page Rank">
+      <div className="container">
+        <div className="page-title">
+          <h1> 순위 {isFreezing && (<small className="text-info">프리징</small>)}</h1>
+          <p> 현재 진행중인 대회의 순위입니다. </p>
+        </div>
 
-          <div className={classnames('card paper', isFreezing && 'bg-info text-white')}>
-            <div className="card-block">
-              <table className="table-custom" style={{width: '100%'}}>
-                <thead>
-                  <tr>
-                    <th style={{width: 80}}> 순위 </th>
-                    <th style={{width: 240}}> 아이디 </th>
-                    <th style={{width: 80}}> 개수 </th>
-                    <th> 맞은 문제들 </th>
-                    <th> 패널티 </th>
-                  </tr>
-                </thead>
+        <div className={classnames('card paper', isFreezing && 'bg-info text-white')}>
+          <table className="table-custom" style={{width: '100%'}}>
+            <thead>
+            <tr>
+              <th style={{width: 80}}> 순위</th>
+              <th style={{width: 240}}> 아이디</th>
+              <th style={{width: 80}}> 개수</th>
+              <th> 맞은 문제들</th>
+              <th> 패널티</th>
+            </tr>
+            </thead>
 
-                <tbody>
-                {
-                  rankData && rankData.map(rankDetail => {
-                    const isUser = rankDetail.strId === user.strId;
+            <tbody>
+            {
+              rankData && rankData.map(rankDetail => {
+                const isUser = rankDetail.strId === user.strId;
 
-                    const strList = rankDetail.strId.split(' ');
+                const strList = rankDetail.strId.split(' ');
 
-                    const group = strList.slice(0, strList.length-1).join(' ');
-                    const name = strList[strList.length-1];
+                const group = strList.slice(0, strList.length - 1).join(' ');
+                const name = strList[strList.length - 1];
 
-                    return (
-                      <tr key={rankDetail.strId} className={classnames(isUser && 'table-success')}>
-                        <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.rank} </td>
-                        <td style={{borderBottom: '1px solid #eee'}}> {group} <strong>{name}</strong> </td>
-                        <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.acceptedCnt} </td>
-                        <td style={{borderBottom: '1px solid #eee'}} className="py-3">
-                          {rankDetail.problemStatus
-                            .sort((a, b) => a.problemCode.charCodeAt(0) - b.problemCode.charCodeAt(0))
-                            .map(p => (
-                              p.accepted && (
-                                <Balloon className="ml-3" key={p.problemId} code={p.problemCode} strId={rankDetail.strId} />
-                              )
-                            ))
-                          }
-                        </td>
-                        <td style={{borderBottom: '1px solid #eee'}}> {Math.floor(rankDetail.penalty/1000/1000/1000/60)} </td>
-                      </tr>
-                    );
-                  })
-                }
-                </tbody>
-              </table>
-            </div>
-          </div>
+                return (
+                <tr key={rankDetail.strId} className={classnames(isUser && 'table-success')}>
+                  <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.rank} </td>
+                  <td style={{borderBottom: '1px solid #eee'}}> {group} <strong>{name}</strong></td>
+                  <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.acceptedCnt} </td>
+                  <td style={{borderBottom: '1px solid #eee'}} className="py-3">
+                    {
+                      rankDetail.problemStatus
+                        .sort((a, b) => a.problemCode.charCodeAt(0) - b.problemCode.charCodeAt(0))
+                        .map(p => (
+                          p.accepted && (
+                            <Balloon className="ml-3" key={p.problemId} code={p.problemCode} strId={rankDetail.strId}/>
+                          )
+                        ))
+                    }
+                  </td>
+                  <td
+                  style={{borderBottom: '1px solid #eee'}}> {Math.floor(rankDetail.penalty / 1000 / 1000 / 1000 / 60)} </td>
+                </tr>
+                );
+              })
+            }
+            </tbody>
+          </table>
         </div>
       </div>
+    </div>
     )
   }
 }

@@ -15,11 +15,16 @@ export class AdminSubmission extends Component {
   componentWillMount() {
     this.updateSubmissionList();
     this.updateUserList();
+
+    setInterval(() => {
+      this.updateSubmissionList();
+      this.updateUserList();
+    }, 5000);
   }
 
   handleChangeSearch = ({target: {value}}) => {
     this.setState({search: value});
-  }
+  };
 
   updateSubmissionList = () => {
     const {match: {params: {contestName}}} = this.props;
@@ -37,7 +42,7 @@ export class AdminSubmission extends Component {
       .then(({result: {submission_list: submissionList}}) => {
         this.setState({submissionList});
       });
-  }
+  };
 
   updateUserList = () => {
     const {match: {params: {contestName}}} = this.props;
@@ -58,7 +63,7 @@ export class AdminSubmission extends Component {
       .catch(err => {
         console.error(err);
       });
-  }
+  };
 
   render () {
     const {match: {params: {contestName}}} = this.props;
