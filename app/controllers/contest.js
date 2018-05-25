@@ -11,6 +11,8 @@ module.exports = function (app) {
 };
 
 router.get('/byDefault', function (req, res) {
+  console.log(process.env.DEFAULT_CONTEST);
+
   res.status(200).send({
     result: {
       contestName: process.env.DEFAULT_CONTEST || ''

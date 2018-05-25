@@ -8,7 +8,13 @@ export class CodeModal extends Component {
 
     if (!target) return null;
     
-    const mode = ['text/x-csrc', 'text/x-c++src', 'text/x-java'][target.language];
+    const mode = [
+      'text/x-csrc',
+      'text/x-c++src',
+      'text/x-java',
+      {name: 'text/x-python', version: 2},
+      {name: 'text/x-python', version: 3},
+    ][target.language];
     
     return (
       <Modal isOpen={isOpen} toggle={toggle} size="lg">

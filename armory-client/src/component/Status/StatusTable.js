@@ -90,7 +90,7 @@ export class StatusTable extends Component {
 
     const now = (new Date()).getTime();
 
-    const languageList = ['C', 'C++', 'JAVA'];
+    const languageList = ['C', 'C++', 'JAVA', 'Python2.7', 'Python3'];
 
     return (
       <div className={classnames('StatusTable', className)}>

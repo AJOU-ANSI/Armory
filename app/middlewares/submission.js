@@ -7,7 +7,9 @@ module.exports = obj;
 const languageMap = {
   'text/x-csrc': 0,
   'text/x-c++src': 1,
-  'text/x-java': 2
+  'text/x-java': 2,
+  'python2.7': 3,
+  'python3': 4,
 };
 
 obj.saveSubmissionWithContestAndProblemMw = async function (req, res, next) {

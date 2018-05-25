@@ -127,7 +127,7 @@ export class Header extends Component {
     const timeFormat = 'HH시간 mm분 ss초';
 
     const menus = [
-      {to: `${url}`, title: "메인"},
+      // {to: `${url}`, title: "메인"},
       {to: `${url}/noti`, title: "공지"},
       {to: `${url}/rank`, title: "순위"},
     ];

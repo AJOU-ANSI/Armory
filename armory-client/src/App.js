@@ -8,6 +8,7 @@ import Contest from './component/Contest/Contest';
 import ContestList from './component/ContestList/ContestList';
 
 import 'codemirror/mode/clike/clike';
+import 'codemirror/mode/python/python';
 
 class App extends Component {
   state = {

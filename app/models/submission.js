@@ -26,7 +26,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER, // c/c++/java
       allowNull: false,
       validate: {
-        max: 2,
+        max: 4,
         min: 0
       }
     },

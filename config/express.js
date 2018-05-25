@@ -20,7 +20,10 @@ module.exports = function(app, config) {
 
   app.set('x-powered-by', false);
 
-  app.use(logger('dev'));
+  if (process.env.NODE_ENV && process.env.NODE_ENV !== 'production') {
+    app.use(logger('dev'));
+  }
+
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
     extended: true
@@ -28,6 +31,10 @@ module.exports = function(app, config) {
   app.use(cookieParser());
 
   app.use(function (req, res, next) {
+    if (req.header('x-forwarded-host') === 'localhost:3000') {
+      return next();
+    }
+
     const originSchemeFromLB = req.header('X-Forwarded-Proto');
     if (originSchemeFromLB && originSchemeFromLB === 'http') {
       return res.redirect("https://" + req.headers.host + req.url);

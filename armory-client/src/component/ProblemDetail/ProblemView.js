@@ -1,21 +1,12 @@
 import React, {Component} from 'react';
 import classnames from 'classnames';
-import Remarkable from 'remarkable';
-import remarkableKatex from 'remarkable-katex';
+import ReactMarkdown from 'react-markdown';
 
 import './ProblemView.css';
-
-const md = new Remarkable({
-  html: true
-});
-
-md.use(remarkableKatex);
 
 export class ProblemView extends Component {
   render () {
     const {problem, className} = this.props; // title, code, description
-
-    const desc = md.render(problem.description);
 
     return (
       <div className={classnames(className, 'ProblemView')}>
@@ -25,7 +16,7 @@ export class ProblemView extends Component {
           </div>
 
           <div className="card-block">
-            <div className="content" dangerouslySetInnerHTML={{__html: desc}} />
+            <ReactMarkdown source={problem.description} className={'content'} escapeHtml={false} />
           </div>
         </div>
       </div>
