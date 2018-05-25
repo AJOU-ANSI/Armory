@@ -19,8 +19,14 @@ module.exports = function(app, config) {
   app.locals.ENV = env;
   app.locals.ENV_DEVELOPMENT = env === 'development';
 
-  app.set('views', config.root + '/app/views');
-  app.set('view engine', 'ejs');
+  app.use(function (req, res, next) {
+    const originSchemeFromLB = req.header('X-Forwarded-Proto');
+    if (originSchemeFromLB && originSchemeFromLB === 'http') {
+      return res.redirect("https://" + req.headers.host + req.url);
+    }
+
+    next();
+  });
 
   app.set('x-powered-by', false);
 
@@ -141,15 +147,6 @@ module.exports = function(app, config) {
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach(function (controller) {
     require(controller)(app);
-  });
-
-  app.use(function (req, res, next) {
-    const originSchemeFromLB = req.header('X-Forwarded-Proto');
-    if (originSchemeFromLB && originSchemeFromLB === 'http') {
-      return res.redirect("https://" + req.headers.host + req.url);
-    }
-
-    next();
   });
 
   app.use('/hello', function (req, res) {
