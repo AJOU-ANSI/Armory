@@ -30,11 +30,12 @@ export class ProblemForm extends Component {
       problemCode: {value: code},
       problemDesc: {value: desc},
       problemMemoryLimit: {value: memoryLimit},
-      problemTimeLimit: {value: timeLimit}
+      problemTimeLimit: {value: timeLimit},
+      problemScore: {value: score}
     } = this.refs;
 
-    return {title, code, description: desc, memoryLimit, timeLimit};
-  }
+    return {title, code, description: desc, memoryLimit, timeLimit, score};
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -91,6 +92,16 @@ export class ProblemForm extends Component {
                 <p className="form-text text-muted">
                   유저한테 보여지는 문제 번호입니다.
                 </p>
+            </div>
+
+            <div className="form-group">
+              <label> 점수 </label>
+              <input
+              className="form-control"
+              type="text"
+              ref="problemScore"
+              placeholder="점수를 입력해주세요"
+              defaultValue={problem.score} />
             </div>
 
             <div className="form-group">

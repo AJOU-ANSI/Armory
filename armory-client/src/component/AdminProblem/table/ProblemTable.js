@@ -19,6 +19,7 @@ export class ProblemTable extends Component {
               <th> 선택 </th>
               <th> 번호 </th>
               <th> 제목 </th>
+              <th> 점수 </th>
               <th> 메모리 제한 </th>
               <th> 시간 제한 </th>
               <th> 데이터 등록 </th>

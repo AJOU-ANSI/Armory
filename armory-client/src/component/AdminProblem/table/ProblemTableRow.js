@@ -61,6 +61,7 @@ export class ProblemTableRow extends Component {
         </th>
         <th> {problem.code} </th>
         <th> {problem.title} </th>
+        <th> {problem.score} </th>
         <th> {problem.ProblemInfo.memory_limit}MB </th>
         <th> {problem.ProblemInfo.time_limit}초 </th>
         <th> {problemData && problemData.length > 0 && <span className="text-success">&#10004;</span>} </th>
