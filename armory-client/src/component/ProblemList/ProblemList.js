@@ -20,36 +20,7 @@ export class ProblemList extends Component {
   }
 
   render() {
-    /*
-    <% for(var i = 0 ; i < problems.length; i++ ) {  %>
-      <%var problem = problems[i]; var code = String.fromCharCode(problem.num+'A'.charCodeAt(0)); %>
-      <div className="panel scalable panel-default paper shadow-1">
-          <div className="panel-heading" role="tab" id="headingB">
-          <div className="pull-right">
-          <% if(problem.result == 'none' ) {  %>
-        <a href="/problem/<%=code%>" title="" className="btn btn-punch btn-xs btn-black btn-darker pull-right">문제 풀기</a>
-          <% } else if(problem.result == 'success' ) {  %>
-        <a href="/problem/<%=code%>" title="" className="btn btn-punch btn-xs btn-success btn-darker pull-right">맞았습니다</a>
-            <% } else if(problem.result == 'fail') {  %>
-        <a href="/problem/<%=code%>" title="" className="btn btn-punch btn-xs btn-primary btn-darker pull-right">재시도</a>
-            <% } else if(problem.result == 'admin' ) { %>
-        <a href="/problem/update/<%=problem.problem_id%>" title="" className="btn btn-punch btn-xs btn-black btn-darker pull-right">문제 수정</a>
-          <% } %>
-      </div>
-        <h4 className="panel-title">
-          <% if(problem.result == 'admin' ) { %>
-        <strong><%=problem.problem_id%></strong> <%=problem.title%>
-            <% } else { %>
-        <strong>문제 <%=code%></strong> <%=problem.title%>
-            <% } %>
-      </h4>
-        </div>
-        </div>
-        <% } %>
-     */
     const {match, problemList, problemStatuses} = this.props;
-
-    // console.log(problemStatuses);
 
     const problemStatusMap = !problemStatuses ? {} : problemStatuses.reduce((ret, cur) => {
       ret[cur.problemId] = cur;

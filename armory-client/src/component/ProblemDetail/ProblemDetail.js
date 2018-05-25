@@ -71,7 +71,8 @@ export class ProblemDetail extends Component {
 
     const problemInfo = {
       memoryLimit: problem.ProblemInfo.memory_limit,
-      timeLimit: problem.ProblemInfo.time_limit
+      timeLimit: problem.ProblemInfo.time_limit,
+      score: problem.score
     };
 
     return (
@@ -135,8 +136,7 @@ export class ProblemDetail extends Component {
 
                   <Link
                     className="btn btn-custom btn-info w-100 mt-2 py-3"
-                    to={{pathname: `/${contestName}/qna`, state: {problemCode}}}
-                  >
+                    to={{pathname: `/${contestName}/qna`, state: {problemCode}}}>
                     질문하기
                   </Link>
                 </div>

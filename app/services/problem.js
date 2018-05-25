@@ -42,7 +42,8 @@ obj.updateProblemById = async (problemId, problemInfo) => {
   problem = await problem.updateAttributes({
     title: problemInfo.title,
     code: problemInfo.code,
-    description: problemInfo.description
+    description: problemInfo.description,
+    score: problemInfo.score,
   });
 
   await problem.ProblemInfo.updateAttributes({

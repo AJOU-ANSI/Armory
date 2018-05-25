@@ -31,6 +31,7 @@ export const ProblemItem = ({problem, className, match, status}) => {
           <h5 className="d-flex mb-0">
             <strong>문제 {problem.code}</strong>
             <span className="ml-2 font-weight-light">{problem.title}</span>
+            <span className="badge badge-pill badge-default badge-shake">{problem.score}점 </span>
           </h5>
 
           <span className="d-flex">
