@@ -36,7 +36,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Switch>
-            <Redirect from="/" to={`/${this.state.contestName}`}/>
+            {this.state.contestName.length > 0 && <Redirect from="/" to={`/${this.state.contestName}`}/>}
             <Route path="/contests" component={ContestList} />
             <Route path="/:contestName" component={Contest} />
             <Route component={NotFound} />
