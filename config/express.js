@@ -4,7 +4,6 @@ const
   logger = require('morgan'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
-  methodOverride = require('method-override'),
   session = require('express-session'),
   passport= require('passport'),
   LocalStrategy = require('passport-local').Strategy,
@@ -27,8 +26,17 @@ module.exports = function(app, config) {
     extended: true
   }));
   app.use(cookieParser());
+
+  app.use(function (req, res, next) {
+    const originSchemeFromLB = req.header('X-Forwarded-Proto');
+    if (originSchemeFromLB && originSchemeFromLB === 'http') {
+      return res.redirect("https://" + req.headers.host + req.url);
+    }
+
+    next();
+  });
+
   app.use(express.static(config.root + '/public'));
-  app.use(methodOverride());
 
   /** -------------- session config ----------------- **/
   const sess = {
@@ -134,15 +142,6 @@ module.exports = function(app, config) {
   //   }, 5000);
   // });
   /** -------------- websocket.io end -------------- **/
-
-  app.use(function (req, res, next) {
-    const originSchemeFromLB = req.header('X-Forwarded-Proto');
-    if (originSchemeFromLB && originSchemeFromLB === 'http') {
-      return res.redirect("https://" + req.headers.host + req.url);
-    }
-
-    next();
-  });
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach(function (controller) {
