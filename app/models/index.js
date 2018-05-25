@@ -6,8 +6,10 @@ var fs = require('fs'),
 let options = {
   logging: (process.env.NODE_ENV === 'production') ? false : console.log,
   timezone: '+09:00',
+  dialectOptions: {
+    charset: 'utf8mb4'
+  },
   define: {
-    charset: 'utf8mb4',
     dialectOptions: {
       collate: 'utf8mb4_general_ci'
     }
