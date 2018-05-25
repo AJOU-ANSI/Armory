@@ -11,6 +11,12 @@
     padding: 60px;
     border-bottom-right-radius: 2px;
     border-bottom-left-radius: 2px; }
+  .ProblemView .language-box {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: #333;
+    background: #f0f0f0; }
   .ProblemView .content table {
     margin-bottom: 20px; }
     .ProblemView .content table td, .ProblemView .content table th {

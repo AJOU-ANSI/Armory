@@ -4,7 +4,7 @@ const
   // db = require('../../app/models'),
   io = require('socket.io-client');
 
-describe('Notification websocket', function () {
+describe.skip('Notification websocket', function () {
   beforeEach(global.setup);
   beforeEach(global.teardown);
 

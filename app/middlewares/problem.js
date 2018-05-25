@@ -44,7 +44,6 @@ obj.selectProblemByContestAndProblemCodeParamMw = async (req, res, next) => {
 
 obj.saveProblemFromBodyWithContestMw = async (req, res, next) => {
   const {contest, body: problemInfo} = req;
-
   let e;
 
   try {

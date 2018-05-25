@@ -5,14 +5,13 @@ const obj = {
 module.exports = obj;
 
 obj.saveProblemWithContest = (problemInfo, contest) => {
+  const {title, code, description, score} = problemInfo;
+  const {timeLimit: time_limit, memoryLimit: memory_limit, spj} = problemInfo;
+
   return obj.db.Problem.create({
-    title: problemInfo.title,
-    code: problemInfo.code,
-    description: problemInfo.description,
+    title, code, description, score,
     ProblemInfo: {
-      time_limit: problemInfo.timeLimit,
-      memory_limit: problemInfo.memoryLimit,
-      spj: problemInfo.spj
+      time_limit, memory_limit, spj
     },
     ContestId: contest.id
   }, {

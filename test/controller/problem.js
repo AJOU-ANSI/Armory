@@ -49,8 +49,8 @@ describe('Problem controller', function () {
             description: info.description,
             code: info.code,
             ProblemInfo: {
-              memory_limit: info.memory_limit,
-              time_limit: info.time_limit
+              memory_limit: info.memoryLimit,
+              time_limit: info.timeLimit
             }
           });
         });
@@ -153,12 +153,83 @@ describe('Problem controller', function () {
             description: info.description,
             code: info.code,
             ProblemInfo: {
-              memory_limit: info.memory_limit,
-              time_limit: info.time_limit
+              memory_limit: info.memoryLimit,
+              time_limit: info.timeLimit
             }
           });
         });
       });
     });
+  });
+
+  context('when admin account is prepared and contest is not yen open,', function () {
+    context('if admin creates a problem,', function () {
+      let contestInfo, adminInfo, problemListInfo;
+
+      beforeEach(async function() {
+        contestInfo = {
+          name: 'not yet open contest',
+          start: global.getContestTime(2, false),
+          end: global.getContestTime(7, false)
+        };
+
+        adminInfo = {...global.defaultAdminInfo};
+
+        problemListInfo = [...global.defaultProblemListInfo];
+
+        await global.prepareUserAndContest(agent, contestInfo, adminInfo);
+
+        await global.loginHelper(agent, {
+          userId: adminInfo.strId,
+          userPwd: adminInfo.password,
+          contestName: contestInfo.name
+        });
+      });
+
+      it('should create a problem and return the created problem.', async function () {
+        // return obj.db.Problem.create({
+        //   title: problemInfo.title,
+        //   code: problemInfo.code,
+        //   description: problemInfo.description,
+        //   ProblemInfo: {
+        //     time_limit: problemInfo.timeLimit,
+        //     memory_limit: problemInfo.memoryLimit,
+        //     spj: problemInfo.spj
+        //   },
+        //   ContestId: contest.id
+        // }, {
+        //   include: [obj.db.ProblemInfo]
+        // });
+
+        const createdProblemsList = [];
+
+        for(let i = 0; i < problemListInfo.length; i++) {
+          const problemInfo = problemListInfo[i];
+
+          const {body: {result: {problem: createdProblem}}} = await agent.post(`${global.urls.problem(contestInfo.name)}`)
+            .send(problemInfo)
+            .expect(200);
+
+          createdProblemsList[i] = createdProblem;
+        }
+
+        createdProblemsList.sort((a, b) => (a.code.charAt(0) - b.code.charAt(0)));
+
+        createdProblemsList.forEach((createdProblem, idx) => {
+          const problemInfo = problemListInfo[idx];
+
+          expect(createdProblem).to.deep.match({
+            title: problemInfo.title,
+            code: problemInfo.code,
+            description: problemInfo.description,
+            score: problemInfo.score,
+            ProblemInfo: {
+              memory_limit: problemInfo.memoryLimit,
+              time_limit: problemInfo.timeLimit,
+            }
+          })
+        })
+      });
+    })
   });
 });

@@ -12,6 +12,10 @@ module.exports = function (sequelize, DataTypes) {
     code: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    score: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
     indexes: [

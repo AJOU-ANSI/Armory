@@ -83,10 +83,10 @@ global.defaultAdminInfo = {
 };
 
 global.defaultProblemListInfo = [
-  {title: 'Problem A', code: 'A', description: 'problem a', memory_limit: 256, time_limit: 1},
-  {title: 'Problem B', code: 'B', description: 'problem b', memory_limit: 256, time_limit: 1},
-  {title: 'Problem C', code: 'C', description: 'problem c', memory_limit: 256, time_limit: 1},
-  {title: 'Problem D', code: 'D', description: 'problem d', memory_limit: 256, time_limit: 1},
+  {title: 'Problem A', code: 'A', description: 'problem a', memoryLimit: 256, timeLimit: 1, score: 10},
+  {title: 'Problem B', code: 'B', description: 'problem b', memoryLimit: 256, timeLimit: 1, score: 20},
+  {title: 'Problem C', code: 'C', description: 'problem c', memoryLimit: 256, timeLimit: 1, score: 30},
+  {title: 'Problem D', code: 'D', description: 'problem d', memoryLimit: 256, timeLimit: 1, score: 40},
 ];
 
 global.prepareContest = async (
@@ -126,9 +126,10 @@ global.insertProblemListToContest = async (
       title: pInfo.title,
       description: pInfo.description,
       code: pInfo.code,
+      score: pInfo.score,
       ProblemInfo: {
-        memory_limit: pInfo.memory_limit,
-        time_limit: pInfo.time_limit
+        memory_limit: pInfo.memoryLimit,
+        time_limit: pInfo.timeLimit
       },
       ContestId: contest.id
     }, {

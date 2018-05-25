@@ -2,7 +2,7 @@ const
   request = require('supertest'),
   db = require('../../app/models');
 
-describe.only('admins', function () {
+describe('admins', function () {
   beforeEach(global.setup);
   afterEach(global.teardown);
 
@@ -63,6 +63,70 @@ describe.only('admins', function () {
       const adminContest = await findAdminuser.getContest();
       expect(adminContest.dataValues).to.deep.match({
         name: contestInfo.name
+      });
+    });
+
+    context('when super admin user requests to create a contest with valid token', function () {
+      it('should return 401 error if user does not add superAdminToken to header.', async function() {
+        const contestName = 'newContestName';
+        const start = '2018-05-23T09:00:00+09:00';
+        const end ='2018-05-23T14:00:00+09:00';
+
+        await agent
+          .post(`${global.urls.contest}`)
+          .send({
+            name: contestName, start, end
+          })
+          .expect(401);
+      });
+
+      it('should return error if same name contest exists.', async function() {
+        const contestName = 'newContestName';
+        const start = '2018-05-23T09:00:00+09:00';
+        const end ='2018-05-23T14:00:00+09:00';
+
+        await agent
+          .post(`${global.urls.contest}`)
+          .set('Authorization', 'Bearer ' + global.config.superAdminToken)
+          .send({
+            name: contestName, start, end
+          })
+          .expect(200);
+
+        await agent
+          .post(`${global.urls.contest}`)
+          .set('Authorization', 'Bearer ' + global.config.superAdminToken)
+          .send({
+            name: contestName, start, end
+          })
+          .expect(400);
+      });
+
+      it('should crete a contest and return it with 200 status.', async function() {
+        const contestName = 'newContestName';
+        const start = '2018-05-23T09:00:00+09:00';
+        const end ='2018-05-23T14:00:00+09:00';
+
+        const resp = await agent
+          .post(`${global.urls.contest}`)
+          .set('Authorization', 'Bearer ' + global.config.superAdminToken)
+          .send({
+            name: contestName, start, end
+          })
+          .expect(200);
+
+        const {body: {result: {contest}}} = resp;
+        expect(contest).to.deep.match({
+          name: contestName,
+          start: new Date(start).getTime(),
+          end: new Date(end).getTime()});
+
+        const findContest = await db.Contest.findOne({where: {name: contestName}});
+        expect(findContest.dataValues).to.deep.match({
+          name: contestName,
+          start: new Date(start),
+          end: new Date(end),
+        })
       });
     });
   });
