@@ -5,7 +5,13 @@ var fs = require('fs'),
 
 let options = {
   logging: (process.env.NODE_ENV === 'production') ? false : console.log,
-  timezone: '+09:00'
+  timezone: '+09:00',
+  define: {
+    charset: 'utf8mb4',
+    dialectOptions: {
+      collate: 'utf8mb4_general_ci'
+    }
+  },
 };
 
 // For solve errors caused by 'ER_ROW_IS_REFERENCED'
