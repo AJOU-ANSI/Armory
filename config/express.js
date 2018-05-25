@@ -53,7 +53,7 @@ module.exports = function(app, config) {
     cookie: {
       maxAge: 1000 * 60 * 60 * 7
     },
-    store: app.memoryStore,
+    store: app.sessionStore,
     // store: new RedisStore({
     //   client
     // })

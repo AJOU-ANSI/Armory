@@ -36,12 +36,12 @@ function removeSocketFromMap (userId, socketId) {
   if (index !== -1) userSocketMap[userId].splice(index, 1);
 }
 
-obj.init = function (server, memoryStore) {
+obj.init = function (server, sessionStore) {
   io = require('socket.io')(server);
 
   io.use(passportSocketIo.authorize({
     secret:       config.secret,
-    store: memoryStore,
+    store: sessionStore,
     // store:        new RedisStore({client})
   }));
 
