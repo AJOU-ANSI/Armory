@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Switch, withRouter} from 'react-router-dom';
+import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import ReduxToastr from "react-redux-toastr";
 
@@ -124,7 +124,8 @@ export class Contest extends Component {
 
         <div>
           <Switch>
-            <Route exact path={`${path}`} render={() => <Home contest={contest} />} />
+            {/*<Route exact path={`${path}`} render={() => <Home contest={contest} />} />*/}
+            <Redirect from={`${path}`} to={`${path}/noti`}/>
             <Route exact path={`${path}/problems`} component={ProblemList} />
             <Route path={`${path}/problems/:problemCode`} component={ProblemDetail} />
 

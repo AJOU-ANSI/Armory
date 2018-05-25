@@ -10,6 +10,14 @@ module.exports = function (app) {
   app.use('/api/contests', router);
 };
 
+router.get('/byDefault', function (req, res) {
+  res.status(200).send({
+    result: {
+      contestName: process.env.DEFAULT_CONTEST || ''
+    }
+  });
+});
+
 router.get('/',
   contestMws.selectAllContestsMw,
   contestMws.sendContestsMw
