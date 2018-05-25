@@ -19,15 +19,6 @@ module.exports = function(app, config) {
   app.locals.ENV = env;
   app.locals.ENV_DEVELOPMENT = env === 'development';
 
-  app.use(function (req, res, next) {
-    const originSchemeFromLB = req.header('X-Forwarded-Proto');
-    if (originSchemeFromLB && originSchemeFromLB === 'http') {
-      return res.redirect("https://" + req.headers.host + req.url);
-    }
-
-    next();
-  });
-
   app.set('x-powered-by', false);
 
   app.use(logger('dev'));
@@ -143,6 +134,15 @@ module.exports = function(app, config) {
   //   }, 5000);
   // });
   /** -------------- websocket.io end -------------- **/
+
+  app.use(function (req, res, next) {
+    const originSchemeFromLB = req.header('X-Forwarded-Proto');
+    if (originSchemeFromLB && originSchemeFromLB === 'http') {
+      return res.redirect("https://" + req.headers.host + req.url);
+    }
+
+    next();
+  });
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach(function (controller) {
