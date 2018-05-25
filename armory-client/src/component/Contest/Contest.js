@@ -125,7 +125,7 @@ export class Contest extends Component {
         <div>
           <Switch>
             {/*<Route exact path={`${path}`} render={() => <Home contest={contest} />} />*/}
-            <Redirect exact from={`${path}`} to={`${path}/noti`}/>
+            <Redirect exact from={`${path}`} to={`/${contestName}/noti`}/>
             <Route exact path={`${path}/problems`} component={ProblemList} />
             <Route path={`${path}/problems/:problemCode`} component={ProblemDetail} />
 
