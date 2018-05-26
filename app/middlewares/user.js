@@ -13,6 +13,7 @@ obj.saveUserWithContestAndCsvFile = function (req, res, next) {
   csv()
     .fromString(file.buffer.toString())
     .on('csv', row => {
+      console.log(row);
       arr.push(db.User.create({
         strId: row[0],
         password: row[1],
@@ -21,16 +22,22 @@ obj.saveUserWithContestAndCsvFile = function (req, res, next) {
         ContestId: contest.id
       }));
     })
-    .on('end', () => {
-      Promise.all(arr)
-        .then(userList => {
-          req.userList = userList;
+    .on('end', async () => {
+      try {
+        let userList = [];
+        const uploadLen = 20;
 
-          return next();
-        })
-        .catch(e => {
-          return next(e);
-        });
+        for (let i = 0; i < arr.length; i+=uploadLen) {
+          userList = userList.concat(await Promise.all(arr.slice(i * uploadLen, (i + 1) * uploadLen)));
+          console.log(`${i}번째 그룹 업로드 완료`);
+        }
+
+        req.userList = userList;
+        return next();
+      }
+      catch (e) {
+        return next(e);
+      }
     });
 };
 

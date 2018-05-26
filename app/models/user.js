@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING(128),
       allowNull: false,
       validate: {
-        is: /^[A-Za-z0-9!@#$%]{8,20}$/
+        is: /^[A-Za-z0-9!?@#$%_*^]{8,20}$/
       }
     },
     strId: {

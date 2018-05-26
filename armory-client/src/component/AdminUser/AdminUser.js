@@ -92,7 +92,7 @@ export class AdminUser extends Component {
           </div>
         </div>
 
-        <h5 className="mt-3"> 유저 목록 </h5>
+        <h5 className="mt-3"> 유저 목록 <span className={'badge badge-default'}> {userList && userList.length} </span> </h5>
 
         <div className="card paper">
           <table className="table table-custom">
