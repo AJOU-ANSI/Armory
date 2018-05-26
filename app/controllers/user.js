@@ -75,7 +75,8 @@ router.get('/:userId/contestInfo',
 
       return res.send({result: {
         rank: ret.rank,
-        acceptedCnt: ret.acceptedCnt
+        acceptedCnt: ret.acceptedCnt,
+        totalScore: ret.totalScore,
       }});
     }
     catch (e) {

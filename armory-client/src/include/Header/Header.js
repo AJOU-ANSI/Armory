@@ -211,6 +211,15 @@ export class Header extends Component {
                   {isFreezing && <span className="text-info"> (랭크 프리징) </span>}
                 </div>
               )}
+
+              {!isEmpty(userContestInfo.totalScore) && (
+              <div className="ml-4">
+                <span className="text-logo time-basis">점수</span>:&nbsp;
+                <span className="text-logo solved-value font-weight-bold">
+                  {userContestInfo.totalScore}점
+                </span>
+              </div>
+              )}
             </div>
           </div>
         </div>

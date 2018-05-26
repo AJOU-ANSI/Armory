@@ -97,6 +97,7 @@ export class Rank extends Component {
               <th style={{width: 240}}> 아이디</th>
               <th style={{width: 80}}> 개수</th>
               <th> 맞은 문제들</th>
+              <th> 점수 </th>
               <th> 패널티</th>
             </tr>
             </thead>
@@ -104,7 +105,7 @@ export class Rank extends Component {
             <tbody>
             {
               rankData && rankData.map(rankDetail => {
-                const isUser = rankDetail.strId === user.strId;
+                const isUser = user && rankDetail.strId === user.strId;
 
                 const strList = rankDetail.strId.split(' ');
 
@@ -127,6 +128,7 @@ export class Rank extends Component {
                         ))
                     }
                   </td>
+                  <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.totalScore}점 </td>
                   <td
                   style={{borderBottom: '1px solid #eee'}}> {Math.floor(rankDetail.penalty / 1000 / 1000 / 1000 / 60)} </td>
                 </tr>
