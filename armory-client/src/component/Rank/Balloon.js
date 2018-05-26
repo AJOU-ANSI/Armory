@@ -25,16 +25,40 @@ export class Balloon extends Component {
     this.setState({
       tooltipOpen: !this.state.tooltipOpen
     });
-  }
+  };
 
   render () {
-    const {code, strId, className} = this.props;
+    let {code, strId, className, score} = this.props;
+
+    const isLarge = code.endsWith('2');
+    const isSmall = code.endsWith('1');
+
+    if (isLarge || isSmall) {
+      code = code.substring(0, 1);
+    }
 
     return (
-      <span className={classnames(className)}>
+      <span className={classnames(className)} style={{position: 'relative'}}>
         <img src={balloonMap[code]} style={{width: 40, height: 50}} id={`b-${strId}-${code}`} alt={code} />
+
+        {
+          isLarge && (
+            <span style={{width: 20, overflow: 'hidden', display: 'inline-block', position: 'absolute', left: -1}}>
+              <img src={'/images/balloons/white.png'} style={{width: 40, height: 50}} />
+            </span>
+          )
+        }
+
+        {
+          isSmall && (
+            <span style={{width: 20, overflow: 'hidden', display: 'inline-block', position: 'absolute', left: 20}}>
+              <img src={'/images/balloons/white.png'} style={{width: 40, height: 50, position: 'relative', left: -20}} />
+            </span>
+          )
+        }
+
         <Tooltip placement="top" isOpen={this.state.tooltipOpen} target={`b-${strId}-${code}`} toggle={this.toggle}>
-          {code}
+          {code}{isLarge ? '2' : (isSmall ? '1' : '')}: {score}점
         </Tooltip>
       </span>
     );

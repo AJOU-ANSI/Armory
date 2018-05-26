@@ -78,6 +78,26 @@ export class Rank extends Component {
       return a.rank - b.rank;
     });
 
+    rankData = [
+      {
+        "lastSubId":0,
+        "strId":"user013",
+        "penalty":85342000000000,
+        "userId":140,
+        "rank":1,
+        "acceptedCnt":4,
+        "problemStatus":[
+          {"problemId":20,"problemCode":"A","accepted":true,"wrong":false,"score":10},
+          {"problemId":21,"problemCode":"B1","accepted":true,"wrong":false,"score":20},
+          {"problemId":22,"problemCode":"B2","accepted":false,"wrong":true,"score":20},
+          {"problemId":23,"problemCode":"C1","accepted":true,"wrong":true,"score":50},
+          {"problemId":24,"problemCode":"C2","accepted":true,"wrong":false,"score":120},
+          {"problemId":25,"problemCode":"D2","accepted":true,"wrong":false,"score":90},
+        ],
+        "totalScore":200
+      }
+    ];
+
     return (
     <div className="page Rank">
       <div className="container">
@@ -94,10 +114,9 @@ export class Rank extends Component {
             <thead>
             <tr>
               <th style={{width: 80}}> 순위</th>
-              <th style={{width: 240}}> 아이디</th>
-              <th style={{width: 80}}> 개수</th>
+              <th style={{width: 100}}> 아이디</th>
+              <th style={{width: 80}}> 점수</th>
               <th> 맞은 문제들</th>
-              <th> 점수 </th>
               <th> 패널티</th>
             </tr>
             </thead>
@@ -116,19 +135,41 @@ export class Rank extends Component {
                 <tr key={rankDetail.strId} className={classnames(isUser && 'table-success')}>
                   <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.rank} </td>
                   <td style={{borderBottom: '1px solid #eee'}}> {group} <strong>{name}</strong></td>
-                  <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.acceptedCnt} </td>
+                  <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.totalScore}점 </td>
                   <td style={{borderBottom: '1px solid #eee'}} className="py-3">
                     {
                       rankDetail.problemStatus
                         .sort((a, b) => a.problemCode.charCodeAt(0) - b.problemCode.charCodeAt(0))
+                        .reduce((prevStatuses, cur) => {
+                          if (!cur.accepted) {
+                            return prevStatuses;
+                          }
+
+                          const targetIdx = prevStatuses.findIndex(
+                            status => status.problemCode[0] === cur.problemCode[0]
+                          );
+
+                          if (targetIdx === -1) {
+                            return prevStatuses.concat({...cur});
+                          }
+
+                          if (prevStatuses[targetIdx].problemCode !== cur.problemCode) {
+                            prevStatuses[targetIdx].problemCode = cur.problemCode[0];
+                            prevStatuses[targetIdx].score += cur.score;
+
+                            return prevStatuses;
+                          }
+                        }, [])
                         .map(p => (
                           p.accepted && (
-                            <Balloon className="ml-3" key={p.problemId} code={p.problemCode} strId={rankDetail.strId}/>
+                            <Balloon className="ml-3" key={p.problemId}
+                                     code={p.problemCode}
+                                     score={p.score}
+                                     strId={rankDetail.strId} />
                           )
                         ))
                     }
                   </td>
-                  <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.totalScore}점 </td>
                   <td
                   style={{borderBottom: '1px solid #eee'}}> {Math.floor(rankDetail.penalty / 1000 / 1000 / 1000 / 60)} </td>
                 </tr>
