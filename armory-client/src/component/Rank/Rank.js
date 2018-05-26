@@ -95,7 +95,7 @@ export class Rank extends Component {
             <tr>
               <th style={{width: 80}}> 순위</th>
               <th style={{width: 100}}> 아이디</th>
-              <th style={{width: 80}}> 점수</th>
+              <th style={{width: 120}}> 점수</th>
               <th> 맞은 문제들</th>
               <th> 패널티</th>
             </tr>
