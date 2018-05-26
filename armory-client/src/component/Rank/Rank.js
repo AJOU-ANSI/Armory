@@ -86,6 +86,9 @@ export class Rank extends Component {
           <p> 현재 진행중인 대회의 순위입니다. </p>
         </div>
 
+        <div className="text-danger">
+          순위 페이지는 현재 공사 중입니다. 모습이 바뀌거나 제대로 작동하지 않을 수 있으니 놀라지 마세요!
+        </div>
         <div className={classnames('card paper', isFreezing && 'bg-info text-white')}>
           <table className="table-custom" style={{width: '100%'}}>
             <thead>
