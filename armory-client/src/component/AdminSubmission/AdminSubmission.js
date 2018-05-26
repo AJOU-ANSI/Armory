@@ -18,8 +18,8 @@ export class AdminSubmission extends Component {
 
     setInterval(() => {
       this.updateSubmissionList();
-      this.updateUserList();
-    }, 5000);
+      // this.updateUserList();
+    }, 10000);
   }
 
   handleChangeSearch = ({target: {value}}) => {
