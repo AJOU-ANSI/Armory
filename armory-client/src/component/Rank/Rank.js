@@ -62,6 +62,12 @@ export class Rank extends Component {
     const {match: {params: {contestName}}} = this.props;
     const {user, contestMap: {[contestName]: contest}} = this.props;
     let {rankData} = this.state;
+    if (rankData === null) {
+      return (
+        <div> 랭크 정보가 없습니다... </div>
+      );
+    }
+
     let isFreezing = false;
 
     if (contest && contest.freezeAt !== 0 && contest.freezeAt < (new Date()).getTime()) {
