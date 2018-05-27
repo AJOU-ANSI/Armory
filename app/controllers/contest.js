@@ -33,14 +33,14 @@ router.get('/byName/:contestName',
 router.post('/',
   adminMws.checkSuperAdminTokenMw,
   async function createContest(req, res) {
-    const {name, start, end} = req.body;
+    const {name, start, end, rankServer} = req.body;
 
     let startValue = new Date(start);
     let endValue = new Date(end);
 
     let createContest;
     try {
-      createContest = await db.Contest.create({name, start: startValue, end: endValue});
+      createContest = await db.Contest.create({name, start: startValue, end: endValue, rankServer});
     }
     catch (e) {
       const err = new Error(e.message);

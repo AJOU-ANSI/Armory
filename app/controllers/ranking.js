@@ -1,27 +1,29 @@
 const
   express = require('express'),
   router = express.Router({mergeParams: true}),
-  request = require('request');
+  request = require('request'),
+  contestMws = require('../middlewares/contest');
 
 module.exports = (app) => {
   app.use('/api/:contestName/ranking', router);
 };
 
-const rankUrl = (c) => `${global.config.rankServer}/api/${c}/ranking`;
+router.get('/',
+  contestMws.selectContestRankServerByNameParamMw,
+  function (req, res) {
+    const {contestName} = req.params;
+    const {contestRankServer} = req;
 
-router.get('/', function (req, res) {
-  const {contestName} = req.params;
+    request({
+      uri: `${contestRankServer}/api/${contestName}/ranking`,
+      json: true,
+    }, function (err, r, rankData) {
+      if (err) {
+        return res.status(400).send({});
+      }
 
-  request({
-    uri: rankUrl(contestName),
-    json: true,
-  }, function (err, r, rankData) {
-    if (err) {
-      return res.status(400).send({});
-    }
-
-    res.send({
-      result: {rankData}
+      res.send({
+        result: {rankData}
+      });
     });
-  });
 });

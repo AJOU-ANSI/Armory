@@ -23,7 +23,7 @@ obj.sendMessage = (message) => {
       };
 
       //데스크탑 알림 요청
-      const notification = new Notification("shake17 서비스 메세지", options);
+      const notification = new Notification("shake2018 시스템 메세지", options);
 
       //알림 후 5초 뒤,
       setTimeout(function () {

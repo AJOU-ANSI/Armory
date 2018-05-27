@@ -18,6 +18,30 @@ obj.selectAllContestsMw = async (req, res, next) => {
   return next(e);
 };
 
+// const rankServerMap = {};
+obj.selectContestRankServerByNameParamMw = async (req, res, next) => {
+  const {contestName} = req.params;
+
+  // if (rankServerMap[contestName]) {
+  //   req.contestRankServer = rankServerMap[contestName];
+  //   return next();
+  // }
+
+  let e;
+
+  try {
+    const contest = await obj.contestSvc.selectContestByName(contestName);
+    // rankServerMap[contestName] = contest.rankServer;
+    req.contestRankServer = contest.rankServer;
+  }
+  catch (err) /* istanbul ignore next */ {
+    console.error(err);
+    e = err;
+  }
+
+  return next(e);
+};
+
 obj.selectContestByNameParamMw = async (req, res, next) => {
   let e;
 

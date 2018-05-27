@@ -20,6 +20,9 @@ module.exports = function (sequelize, DataTypes) {
         return this.getDataValue('start').getTime();
       }
     },
+    rankServer: {
+      type: DataTypes.STRING,
+    },
     end: {
       type: DataTypes.DATE,
       allowNull: false,

@@ -53,8 +53,10 @@ router.post('/admin',
 );
 
 router.get('/:userId/contestInfo',
+  contestMws.selectContestRankServerByNameParamMw,
   async function (req, res) {
     const {userId} = req.params;
+    const {contestRankServer} = req;
 
     if (process.env.NODE_ENV === 'development') {
       return res.send({
@@ -65,7 +67,7 @@ router.get('/:userId/contestInfo',
       })
     }
 
-    const uri = `${global.config.rankServer}${infoUrl}/${userId}`;
+    const uri = `${contestRankServer}${infoUrl}/${userId}`;
 
     try {
       const ret = await request({

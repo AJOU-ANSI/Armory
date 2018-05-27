@@ -42,7 +42,7 @@ export class Footer extends Component {
             <div className="col-xs-12 text-center">
               <div className="space"/>
               <div className="divider"/>
-              <p className="letter-spacing small-text"><strong>© shake! 2017.</strong>
+              <p className="letter-spacing small-text"><strong>© shake! 2018.</strong>
               </p>
             </div>
           </div>

@@ -37,8 +37,9 @@ const statusUrl = '/api/problemStatuses';
 
 router.get('/myStatus',
   authMws.checkLoggedInMw,
+  contestMws.selectContestRankServerByNameParamMw,
   async function (req, res) {
-    const {user} = req;
+    const {user, contestRankServer} = req;
 
     if (process.env.NODE_ENV === 'development') {
       return res.send({
@@ -58,7 +59,7 @@ router.get('/myStatus',
 
     try {
       const ret = await request({
-        uri: `${global.config.rankServer}${statusUrl}/${user.id}`,
+        uri: `${contestRankServer}${statusUrl}/${user.id}`,
         json: true,
       });
 
