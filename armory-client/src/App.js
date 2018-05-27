@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Link, Redirect, Route, Switch} from 'react-router-dom';
 
 import './App.css';
 
@@ -15,30 +15,47 @@ class App extends Component {
     contestName: null
   };
   async componentWillMount() {
-    const resp = await fetch('/api/contests/byDefault', {
-      method: 'GET',
-      credentials: 'include'
-    });
-
-    if (resp.ok) {
-      const {result: {contestName}} = await resp.json();
-
-      this.setState({contestName});
-    }
+    // Remove main component
+    // const resp = await fetch('/api/contests/byDefault', {
+    //   method: 'GET',
+    //   credentials: 'include'
+    // });
+    //
+    // if (resp.ok) {
+    //   const {result: {contestName}} = await resp.json();
+    //
+    //   this.setState({contestName});
+    // }
   }
   render() {
-    if (this.state.contestName === null) {
-      return (
-        <div> 메인 콘테스트 탐색중... </div>
-      );
-    }
+    const contests = [
+      {title: 'APC - div1', code: 'apc_div1'},
+      {title: 'APC - div2', code: 'apc_div2'},
+      {title: 'shake! 성균관대', code: 'shake_skku'},
+      {title: 'shake! 항공대', code: 'shake_krar'},
+    ];
 
     return (
       <BrowserRouter>
         <div className="App">
           <Switch>
-            {this.state.contestName.length > 0 && <Redirect exact from="/" to={`/${this.state.contestName}`}/>}
-            <Route path="/contests" component={ContestList} />
+            {/*{this.state.contestName.length > 0 && <Redirect exact from="/" to={`/${this.state.contestName}`}/>}*/}
+            {/*<Route path="/contests" component={ContestList} />*/}
+            <Route path="/" exact render={() => (
+              <div className={"container"}>
+                <h1>
+                  SHAKE 컨테스트 안내
+                </h1>
+                <ul>
+                  {
+                    contests.map((contest, idx) => (
+                      <li key={idx}>
+                        <Link to={`/${contest.code}`}> {contest.title} </Link>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>)} />
             <Route path="/:contestName" component={Contest} />
             <Route component={NotFound} />
           </Switch>
