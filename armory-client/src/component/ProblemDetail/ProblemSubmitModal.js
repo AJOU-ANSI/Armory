@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 import CodeMirror from 'react-codemirror';
 import Cookies from 'js-cookie';
+import 'codemirror/addon/display/placeholder';
 
 export class ProblemSubmitModal extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export class ProblemSubmitModal extends Component {
 
     this.state = {
       language: Cookies.get('language'),
-      code: '// Code'
+      code: ''
     };
   }
 
@@ -21,7 +22,7 @@ export class ProblemSubmitModal extends Component {
     this.setState({
       code: newCode
     });
-  }
+  };
 
   handleChangeLanguage = (event) => {
     const newLanguage = event.target.value;
@@ -81,7 +82,7 @@ export class ProblemSubmitModal extends Component {
               <CodeMirror
                 value={code}
                 onChange={this.handleChangeCode}
-                options={{lineNumbers: true, mode: cmLanguage, theme: 'monokai'}}
+                options={{lineNumbers: true, mode: cmLanguage, theme: 'monokai', placeholder: '코드를 입력해주세요'}}
               />
             </div>
           </form>

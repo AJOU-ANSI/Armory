@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "cross-env NODE_ENV=development node app.js",
+    "dev": "cross-env NODE_ENV=development PORT=8000 node app.js",
     "test": "npm run eslint && cross-env NODE_ENV=test PORT=7654 mocha -r test/test_helper.js --recursive test",
     "test:chrome": "cross-env NODE_ENV=test mocha --inspect-brk test",
     "test:coverage": "nyc --reporter=lcov npm run test",
