@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import ReduxToastr from "react-redux-toastr";
+import Helmet from 'react-helmet';
 
-import Home from '../Home/Home';
+import {fetchGetContestByName} from '../../actions/contest';
+import {fetchLoggedIn, fetchLogin, fetchLogout} from '../../actions/auth';
+import {fetchConnectWebSocket} from '../../actions/socket';
 
 import ProblemList from '../ProblemList/ProblemList';
 import ProblemDetail from '../ProblemDetail/ProblemDetail';
@@ -18,13 +21,10 @@ import Header from '../../include/Header/Header';
 import NotFound from '../NotFound/NotFound';
 import Login from '../../include/Login/Login';
 
-import './Contest.css';
-
-import {fetchGetContestByName} from '../../actions/contest';
-import {fetchLoggedIn, fetchLogin, fetchLogout} from '../../actions/auth';
-import {fetchConnectWebSocket} from '../../actions/socket';
 import QnA from '../QnA/QnA';
 import Rank from '../Rank/Rank';
+
+import './Contest.css';
 
 export class Contest extends Component {
   constructor(props) {
@@ -104,6 +104,10 @@ export class Contest extends Component {
 
     return (
       <div className="Contest">
+        <Helmet>
+          <title> Shake! 2018 결승 </title>
+        </Helmet>
+
         <ReduxToastr
           timeOut={4000}
           newestOnTop={false}
