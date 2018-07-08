@@ -177,7 +177,7 @@ export class QnA extends Component {
               <table className="table-custom table-qna">
                 <thead>
                 <tr>
-                  <th style={{minWidth: '80px'}}>번호</th>
+                  <th>번호</th>
                   <th>문제</th>
                   <th>답변시간</th>
                   <th>질문내용</th>
