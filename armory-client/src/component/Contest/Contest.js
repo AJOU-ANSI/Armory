@@ -105,7 +105,7 @@ export class Contest extends Component {
     return (
       <div className="Contest">
         <Helmet>
-          <title> Shake! 2018 결승 </title>
+          <title> shake! 2018 결승 </title>
         </Helmet>
 
         <ReduxToastr
