@@ -146,11 +146,11 @@ export class StatusTable extends Component {
                   case 3:
                     resultColor = ''; break;
                   case 4:
-                    resultColor = 'text-success'; rowColor = 'table-success'; break;
+                    resultColor = 'text-success'; rowColor = 'table-accepted'; break;
                   case 11:
                     resultColor = ''; break;
                   default:
-                    resultColor = 'text-danger'; rowColor = 'table-danger';
+                    resultColor = 'text-danger'; rowColor = 'table-wrong';
                 }
 
                 return (
