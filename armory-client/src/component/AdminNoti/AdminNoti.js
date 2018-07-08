@@ -67,7 +67,7 @@ export class AdminNoti extends Component {
         <h5> 공지 추가 </h5>
 
         <div className="card paper">
-          <div className="card-block">
+          <div className="card-body">
             <form className="form" onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label> 공지 내용 </label>
