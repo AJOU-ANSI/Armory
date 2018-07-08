@@ -3,3 +3,7 @@
   .StatusTable th {
     font-weight: 500;
     font-size: 14px; }
+  .StatusTable .table-accepted {
+    background-color: #C8E6C9; }
+  .StatusTable .table-wrong {
+    background-color: #FFEBEE; }
