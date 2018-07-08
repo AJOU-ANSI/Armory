@@ -46,7 +46,7 @@ export class Noti extends Component {
             <div className="row">
               <div className="col-md-10 offset-md-1">
                 <h1> 공지 </h1>
-                <p> 공지사항 페이지입니다. </p>
+                <p> 공지사항 목록입니다. </p>
               </div>
             </div>
           </div>

@@ -15,26 +15,24 @@ export class Footer extends Component {
             <div className="col-2 offset-2">
               <h6 className="uppercase-text letter-spacing">Credits</h6>
               <p><strong>Powered by</strong>
-                <br/><a href="http://linc.ajou.ac.kr">LINC사업단
-                  <small>아주대학교</small>
+                <br/><a href="http://linc.ajou.ac.kr">LINC사업단&nbsp;<small>아주대학교</small>
                 </a>
                 <br/>
                 <br/><strong>Directed by </strong>
-                <br/>A.N.S.I
-                <small> 아주대학교</small>
+                <br/>A.N.S.I.&nbsp;<small> 아주대학교</small>
               </p>
             </div>
             <div className="col-2">
               <h6 className="uppercase-text hidden-sm hidden-xs letter-spacing" style={{opacity:0}}>'</h6>
-              <p><strong>Sponsered by</strong>
-                <br/><a href="http://d2.naver.com">D2
-                  <small>Naver</small>
-                </a>
+              <p>
+                <strong>Sponsered by</strong>
+                <br/>
+                <a href="http://d2.naver.com">D2&nbsp;<small>NAVER</small></a>
                 <br/>
                 <br/>
                 <strong>Develop/Design</strong>
                 <a href="http://ansi.kr">
-                  <br/>A.N.S.I.
+                  <br/>A.N.S.I.&nbsp;<small> 아주대학교</small>
                 </a>
               </p>
 

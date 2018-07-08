@@ -164,7 +164,7 @@ export class QnA extends Component {
         <div className="container">
           <div className="page-title">
             <h1> QnA </h1>
-            <p> 질문과 답변</p>
+            <p> 질문과 답변 목록입니다.</p>
           </div>
 
           <div className={'mb-3'}>
