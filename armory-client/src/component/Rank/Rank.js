@@ -5,6 +5,8 @@ import Balloon from './Balloon';
 
 import finalRank from './2017final.json';
 
+import './Rank.css';
+
 export class Rank extends Component {
   constructor(props) {
     super(props);
