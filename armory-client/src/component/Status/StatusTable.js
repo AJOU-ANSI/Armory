@@ -129,7 +129,8 @@ export class StatusTable extends Component {
                 return 1;
               })
               .map(submission => {
-                const submissionDuration = now - (new Date(submission.createdAt)).getTime();
+                const createdDate = new Date(submission.createdAt);
+                const submissionDuration = now - createdDate.getTime();
                 let timeFormat = 'HH시간 mm분 전';
 
                 if (submissionDuration < 60000) { // 제출 후 1분이 안되었을때
@@ -175,7 +176,9 @@ export class StatusTable extends Component {
                         {languageList[submission.language]}
                       </a>
                     </td>
-                    <td> {moment.duration(submissionDuration).format(timeFormat)} </td>
+                    <td title={createdDate.toLocaleDateString()}>
+                      {moment.duration(submissionDuration).format(timeFormat)}
+                    </td>
                   </tr>
                 );
               }

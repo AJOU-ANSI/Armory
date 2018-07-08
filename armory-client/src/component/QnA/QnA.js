@@ -167,7 +167,7 @@ export class QnA extends Component {
             <p> 질문과 답변</p>
           </div>
 
-          <div>
+          <div className={'mb-3'}>
             <button className="btn text-white bg-logo" onClick={this.toggle}> 질문하기 </button>
           </div>
           <div className="card paper">
