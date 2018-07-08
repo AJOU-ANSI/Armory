@@ -3,13 +3,15 @@ import {Tooltip} from 'reactstrap';
 import classnames from 'classnames';
 
 const balloonMap = {
-  'A': '/images/balloons/purple.png',
-  'B': '/images/balloons/blue.png',
-  'C': '/images/balloons/lightblue.png',
-  'D': '/images/balloons/lime.png',
-  'E': '/images/balloons/yellow.png',
+  'A': '/images/balloons/turquoise.png',
+  'B': '/images/balloons/brown.png',
+  'C': '/images/balloons/pink.png',
+  'D': '/images/balloons/blue.png',
+  'E': '/images/balloons/red.png',
   'F': '/images/balloons/orange.png',
-  'G': '/images/balloons/red.png',
+  'G': '/images/balloons/yellow.png',
+  'H': '/images/balloons/gray.png',
+  'I': '/images/balloons/deeppink.png',
 };
 
 export class Balloon extends Component {
