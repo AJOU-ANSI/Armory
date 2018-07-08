@@ -92,7 +92,9 @@ export class Rank extends Component {
         <div className="page-title">
           <h1> 순위 {isFreezing && (<small className="text-info">프리징</small>)}</h1>
           <p> 현재 진행중인 대회의 순위입니다.
-            {isFreezing && (<span className={'text-info'}> 프리징되어 순위가 변경되지 않습니다.</span>)}
+            {isFreezing && (
+              <span className={'text-info font-weight-bold'}> 프리징되어 순위와 맞은 개수가 변경되지 않습니다.</span>
+            )}
           </p>
         </div>
 
