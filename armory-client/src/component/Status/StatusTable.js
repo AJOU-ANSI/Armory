@@ -176,7 +176,7 @@ export class StatusTable extends Component {
                         {languageList[submission.language]}
                       </a>
                     </td>
-                    <td title={createdDate.toLocaleDateString()}>
+                    <td title={createdDate.toLocaleTimeString()}>
                       {moment.duration(submissionDuration).format(timeFormat)}
                     </td>
                   </tr>

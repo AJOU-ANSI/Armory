@@ -63,3 +63,5 @@
       text-decoration: underline; }
     .Header .helper-wrapper .solved-value {
       text-decoration: underline; }
+  .Header .dropdown-item {
+    cursor: pointer; }
