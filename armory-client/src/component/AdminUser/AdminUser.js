@@ -74,7 +74,7 @@ export class AdminUser extends Component {
         <h5> 유저 추가 </h5>
 
         <div className="card paper">
-          <div className="card-block">
+          <div className="card-body">
             <form onSubmit={this.handleSubmit}>
 
 

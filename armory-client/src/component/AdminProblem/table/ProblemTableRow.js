@@ -50,13 +50,10 @@ export class ProblemTableRow extends Component {
       <tr key={problem.id}>
         <th>
           <div className="form-check">
-            <label className="form-check-label">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                checked={target === problem}
-                onChange={() => this.props.onSelectTarget(problem)} />
-            </label>
+            <input className="form-check-input" type="checkbox"
+              checked={target === problem}
+              onChange={() => this.props.onSelectTarget(problem)} />
+            <label className="form-check-label" />
           </div>
         </th>
         <th> {problem.code} </th>
