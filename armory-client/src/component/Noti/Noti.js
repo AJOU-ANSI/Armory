@@ -55,7 +55,6 @@ export class Noti extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-10 offset-md-1">
-              <h5> 공지사항 </h5>
               <div className="card paper">
                 <NotiTable notiList={notiList} />
               </div>

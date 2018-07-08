@@ -170,36 +170,32 @@ export class QnA extends Component {
           <div>
             <button className="btn text-white bg-logo" onClick={this.toggle}> 질문하기 </button>
           </div>
-          <h5 className="mt-3"> 질문과 답변 목록 </h5>
-
           <div className="card paper">
-            <div className="card-block">
-              <table className="table-custom table-qna">
-                <thead>
-                <tr>
-                  <th>번호</th>
-                  <th>문제</th>
-                  <th>답변시간</th>
-                  <th>질문내용</th>
-                  <th>답변내용</th>
-                </tr>
-                </thead>
+            <table className="table-custom table-qna">
+              <thead>
+              <tr>
+                <th>번호</th>
+                <th>문제</th>
+                <th>답변시간</th>
+                <th>질문내용</th>
+                <th>답변내용</th>
+              </tr>
+              </thead>
 
-                <tbody>
-                {
-                  qnaList && qnaList.map((qna, index) => (
-                    <tr key={qna.id}>
-                      <td className="index"> {index+1} </td>
-                      <td className="code"> {qna.problemCode} </td>
-                      <td> {moment(qna.createdAt).format('HH:mm:ss')} </td>
-                      <td className="question"> <pre className={'bg-light p-1 mb-0'}>{qna.question}</pre> </td>
-                      <td className="answer"> <pre className={'bg-light p-1 mb-0'}>{qna.answer}</pre> </td>
-                    </tr>
-                  ))
-                }
-                </tbody>
-              </table>
-            </div>
+              <tbody>
+              {
+                qnaList && qnaList.map((qna, index) => (
+                  <tr key={qna.id}>
+                    <td className="index"> {index+1} </td>
+                    <td className="code"> {qna.problemCode} </td>
+                    <td> {moment(qna.createdAt).format('HH:mm:ss')} </td>
+                    <td className="question"> <pre className={'bg-light p-1 mb-0'}>{qna.question}</pre> </td>
+                    <td className="answer"> <pre className={'bg-light p-1 mb-0'}>{qna.answer}</pre> </td>
+                  </tr>
+                ))
+              }
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
