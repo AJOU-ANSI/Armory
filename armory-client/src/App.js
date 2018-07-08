@@ -29,10 +29,7 @@ class App extends Component {
   }
   render() {
     const contests = [
-      {title: 'APC - div1', code: 'apc_div1'},
-      {title: 'APC - div2', code: 'apc_div2'},
-      {title: 'shake! 성균관대', code: 'shake_skku'},
-      {title: 'shake! 항공대', code: 'shake_krar'},
+      {title: 'shake! 2018 final', code: 'shake2018_final'},
     ];
 
     return (
