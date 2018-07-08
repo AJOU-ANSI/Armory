@@ -210,7 +210,7 @@ export class Header extends Component {
                   <span className="text-logo solved-value font-weight-bold">
                     {userContestInfo.rank}위
                   </span>
-                  {isFreezing && <span className="text-info"> (랭크 프리징) </span>}
+                  {isFreezing && <span className="text-info font-weight-bold"> (랭크 프리징) </span>}
                 </div>
               )}
 
