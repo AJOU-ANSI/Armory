@@ -9,7 +9,7 @@ export class NotiTable extends Component {
       <table className="table-custom table-announcement">
         <thead>
         <tr>
-          <th>번호</th>
+          <th style={{minWidth: '80px'}}>번호</th>
           <th>공지시간</th>
           <th>내용</th>
         </tr>
