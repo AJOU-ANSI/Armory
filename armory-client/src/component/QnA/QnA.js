@@ -192,8 +192,8 @@ export class QnA extends Component {
                       <td className="index"> {index+1} </td>
                       <td className="code"> {qna.problemCode} </td>
                       <td> {moment(qna.createdAt).format('HH:mm:ss')} </td>
-                      <td className="question"> <pre>{qna.question}</pre> </td>
-                      <td className="answer"> <pre>{qna.answer}</pre> </td>
+                      <td className="question"> <pre className={'bg-light p-1 mb-0'}>{qna.question}</pre> </td>
+                      <td className="answer"> <pre className={'bg-light p-1 mb-0'}>{qna.answer}</pre> </td>
                     </tr>
                   ))
                 }
