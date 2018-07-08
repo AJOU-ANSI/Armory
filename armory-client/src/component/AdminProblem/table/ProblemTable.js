@@ -13,7 +13,7 @@ export class ProblemTable extends Component {
 
     return (
       <div>
-        <table className="table">
+        <table className="table mb-0">
           <thead>
             <tr>
               <th> 선택 </th>

@@ -118,7 +118,7 @@ export class AdminQnA extends Component {
                       <td> {qna.problemCode} </td>
                       <td> {moment(qna.createdAt).format('MM-DD HH:mm:ss')} </td>
                       <td style={{maxWidth: 350}}>
-                        <pre style={{whiteSpace: 'pre-line'}}>{qna.question}</pre>
+                        <pre className={'bg-light p-1 mb-0'} style={{whiteSpace: 'pre-line'}}>{qna.question}</pre>
                       </td>
                       <td> {!!qna.answer && <span className="text-success">&#10004;</span>} </td>
                       <td>
