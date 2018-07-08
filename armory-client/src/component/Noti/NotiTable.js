@@ -22,7 +22,7 @@ export class NotiTable extends Component {
               <td className="index"> {index+1} </td>
               <td>{moment(noti.createdAt).format('HH:mm:ss')}</td>
               <td>
-                <pre style={{whiteSpace: 'pre-line'}}>{noti.content}</pre>
+                <pre className={'bg-light p-3 mb-0'} style={{whiteSpace: 'pre-line', borderRadius: '4px'}}>{noti.content}</pre>
               </td>
             </tr>
           ))
