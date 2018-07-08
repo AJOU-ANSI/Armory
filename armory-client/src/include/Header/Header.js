@@ -7,7 +7,7 @@ import {NavLink, Link} from 'react-router-dom';
 
 import './Header.css';
 import {connect} from "react-redux";
-import {Dropdown, DropdownItem, DropdownMenu} from "reactstrap";
+import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
 import {fetchGetContestByName, fetchGetUserContestInfo} from '../../actions/contest';
 
 function isEmpty (value) {
@@ -96,7 +96,9 @@ export class Header extends Component {
       return (
         <li className="menu-item">
           <Dropdown isOpen={this.state.menuOpen} toggle={this.handleToggleMenu}>
-            <a className="user-info" href="" onClick={this.handleToggleMenu}> {user.strId}님 </a>
+            <DropdownToggle caret={true} className={'user-info'} tag={'a'} onClick={this.handleToggleMenu}>
+              {user.strId}님
+            </DropdownToggle>
 
             <DropdownMenu right>
               <DropdownItem onClick={this.handleLogout}> 로그아웃 </DropdownItem>
@@ -112,7 +114,7 @@ export class Header extends Component {
         </li>
       )
     }
-  }
+  };
 
   render() {
     const {match: {url}, user, userContestInfo, contest, contestMap: {[contest.name]: newContest}} = this.props;
