@@ -61,7 +61,7 @@ export class Status extends Component {
             <div className="row">
               <div className="col-12">
                 <h1> 제출 현황 </h1>
-                <p> 문제 제출 현황을 보여주는 페이지입니다. </p>
+                <p> 문제 제출 현황 목록입니다. </p>
               </div>
             </div>
           </div>
