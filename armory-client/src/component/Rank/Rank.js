@@ -127,7 +127,7 @@ export class Rank extends Component {
                   <td style={{borderBottom: '1px solid #eee'}}> {rankDetail.totalScore}점 </td>
                   <td style={{borderBottom: '1px solid #eee'}} className="py-3">
                     {
-                      rankDetail.problemStatus
+                      rankDetail && rankDetail.problemStatus && rankDetail.problemStatus
                         .sort((a, b) => a.problemCode.charCodeAt(0) - b.problemCode.charCodeAt(0))
                         .reduce((prevStatuses, cur) => {
                           if (!cur.accepted) {
